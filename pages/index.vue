@@ -1,6 +1,6 @@
 <script setup>
 </script>
 <template >
-  <div>Home</div>
+  <div>{{ $t('contactMe') }}</div>
 </template>
 <style lang="scss"></style>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 const route = useRoute()
-const { locale: localLang,locales } = useI18n()
+const { locale: localLang, locales } = useI18n()
 const routes = computed(() => config .navbarRoutes)
 const currentRoute = computed(() => route.path)
 const switchLocalePath = useSwitchLocalePath()
@@ -11,6 +11,9 @@ const menuOpen = ref(false)
 const openMenu = () => {
   menuOpen.value = !menuOpen.value
 }
+
+const currentLang =  ref(localLang)
+
 onMounted(() => {
   // this.$gsap.from('.nav', { 
   //   y: -30,
@@ -241,8 +244,9 @@ const onLeave = (el: HTMLElement, done: () => void) => {
 }
 
 const setLang = () => {
-  localStorage.setItem('lang', localLang.value)
-  switchLocalePath(localLang.value)
+  console.log(currentLang.value)
+  const path = switchLocalePath(currentLang.value)
+  navigateTo(path)
 }
 </script>
 <template>
@@ -282,18 +286,18 @@ const setLang = () => {
         <div>
           <select
             id="lang-select"
-            v-model="$i18n.locale"
+            v-model="currentLang"
             class="hidden md:inline-block transition-all duration-300 ease-in-out bg-gray-100 dark:bg-gray-600 rounded-sm p-1 font-bold dark:text-white"
             name="language"
             @change="setLang()"
           >
-            <option
-              v-for="locale in $i18n.availableLocales"
-              :key="`locale-${locale}`"
-              :value="locale"
-            >
-              {{ locale.toUpperCase() }}
-            </option>
+          <option
+                v-for="{name,code} in locales"
+                :key="`locale-${code}`"
+                :value="code"
+              >
+                {{ code.toUpperCase() }}
+              </option>
           </select>
 
           <span class="hidden md:inline-block mx-3 dark:text-white/20">|</span>
@@ -351,6 +355,7 @@ const setLang = () => {
               id="lang-select"
               class="transition-all text-xl duration-300 ease-in-out bg-gray-100 dark:bg-gray-600 rounded-sm p-1 font-bold dark:text-white"
               name="language"
+              v-model="currentLang"
               @change="setLang()"
             >
               <option

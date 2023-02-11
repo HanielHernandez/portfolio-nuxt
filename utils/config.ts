@@ -1,7 +1,7 @@
 export const config = {
   navbarRoutes: [
     {
-      text: 'navbar.home',
+      text: "navbar.home",
       path: '/'
     },
     {

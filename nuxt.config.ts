@@ -15,12 +15,12 @@ export default defineNuxtConfig({
       {
         code: 'en',
         name: 'English',
-        file: 'en.ts'
+        file: 'en-US.js'
       },
       {
         code: 'es',
         name: 'Español',
-        file: 'es.ts'
+        file: 'es.js'
       }
     ],
     lazy: true,
