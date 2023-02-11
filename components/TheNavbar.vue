@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 const route = useRoute()
-const { locale: localLang, locales } = useI18n()
+const { locale: localLang, locales, setLocale } = useI18n()
 const routes = computed(() => config .navbarRoutes)
 const currentRoute = computed(() => route.path)
 const switchLocalePath = useSwitchLocalePath()
@@ -243,8 +243,9 @@ const onLeave = (el: HTMLElement, done: () => void) => {
   done()
 }
 
-const setLang = () => {
+function setLang () {
   console.log(currentLang.value)
+  setLocale(currentLang.vl)
   const path = switchLocalePath(currentLang.value)
   navigateTo(path)
 }
