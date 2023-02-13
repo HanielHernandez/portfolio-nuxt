@@ -52,6 +52,28 @@ const { locale } = useI18n()
     <div v-for="(experience, index) in experiences" 
         :key="`${index}-experience`"
         class="experience-row flex flex-col md:flex-row cursor-default items-center px-4 lg:p-0">
+      <ExpandingCard>
+        <template v-slot:title>
+          <div>
+            <h4 class="text-lg font-bold mb-0">
+            {{ $t(`myWork.professionalExperience.${experience.id }.title`) }}  
+            <span class="font-normal text-neutral-600">@ </span> 
+            <span>{{experience.companyName }}</span>
+          </h4> 
+          </div>
+        </template>
+        <div  class="flex justify-between w-full">
+            <span class="text-sm font-medium text-neutral-500 mb-2">   {{ experience.from }} - {{ experience.to }}</span>
+           </div>
+
+          <p class="text-neutral-600 text-justify text-clip"  v-html="
+            $t(`myWork.professionalExperience.${ experience.id }.description`)
+          "></p>
+
+
+
+      </ExpandingCard> 
+
       <!-- <div class="md:w-2/6 px-3 lg:px-0 py-4 font-bold text-neutral-500 dark:text-neutral-400">
         <p>{{ experience.from }} - {{ experience.to }}</p>
       </div>
@@ -69,7 +91,7 @@ const { locale } = useI18n()
           "></p>
         </div>
       </div> -->
-      <div class="flex border-neutral-100 border w-full dark:border-neutral-800   rounded-md transition-color ease-in-out duration-300 hover:shadow-md mb-4">
+      <!-- <div class="flex border-neutral-100 border w-full dark:border-neutral-800   rounded-md transition-color ease-in-out duration-300 hover:shadow-md mb-4">
         <div class="px-2 py-4 md:p-4 flex-0 flex justify-center flex-column items-center bg-neutral-300 dark:bg-neutral-700" >
           <img :src="`/img/works-places/${experience.companyLogo}`" class=" h-16 w-24 object-contain	" alt="">
         </div>
@@ -79,9 +101,6 @@ const { locale } = useI18n()
             <span class="font-normal text-neutral-600">{{ $t('at') + " " }}</span> 
             <span>{{experience.companyName }}</span>
           </h4> 
-          <!-- <h3 class="text-blue-500 dark:text-blue-500 text-bold text-sm my-1">
-            {{ experience.companyName }}
-          </h3> -->
           <div  class="flex justify-between w-full">
             <span class="text-sm font-medium text-neutral-500 mb-2">   {{ experience.from }} - {{ experience.to }}</span>
            </div>
@@ -90,7 +109,9 @@ const { locale } = useI18n()
             $t(`myWork.professionalExperience.${ experience.id }.description`)
           "></p>
         </div>
-      </div>
+      </div> -->
+
+
     </div>
   </div>
 </template>
