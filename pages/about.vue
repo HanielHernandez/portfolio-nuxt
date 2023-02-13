@@ -9,7 +9,7 @@ const { locale } = useI18n();
 
 </script>
 <template>
-  <div class="pt-6">
+  <div>
     <div class="flex flex-col md:flex-row">
       <div
         class="flex flex-col items-center w-full md:pr-4 lg:pr-8 md:w-2/5 p-4 md:p-0"

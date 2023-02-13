@@ -83,5 +83,6 @@ export default {
         text: 'Másculino'
       }
     }
-  }
+  },
+  at: 'en'
 }

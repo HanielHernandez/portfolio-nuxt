@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 <template>
   <div
-    class="transition-all pt-24 ease-in-out duration-300 w-full h-screen overflow-y-auto dark:bg-neutral-900"
+    class="transition-all pt-28 ease-in-out duration-300 w-full h-screen overflow-y-auto dark:bg-neutral-900"
   >
     <the-navbar id="navbar" />
     <div

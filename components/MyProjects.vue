@@ -64,7 +64,7 @@ const projects = [
 
 <style lang="scss" scoped>
 .card {
-  @apply cursor-default relative border rounded overflow-hidden shadow-sm border-neutral-200  dark:border-neutral-700;
+  @apply cursor-default  relative border rounded-sm overflow-hidden shadow-sm border-neutral-200  dark:border-neutral-700;
   &-title {
     @apply font-medium text-neutral-800 dark:text-neutral-100 mb-2;
     &:hover {
