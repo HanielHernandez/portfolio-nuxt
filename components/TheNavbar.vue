@@ -385,4 +385,9 @@ const changeTheme = ()=>{
   </div>
   </div>
 </template>
-<style lang="scss"></style>
+<style lang="scss" scoped>
+  ul{
+    list-style: none;
+    padding-left: 0;
+  }
+</style>

@@ -32,6 +32,7 @@ const experiences = ref([
     backgroundColor: 'bg-green-200 border-green-400'
   }
 ])
+const { locale } = useI18n()
 </script>
 <template>
   <div class="h-full flex flex-col">
@@ -41,25 +42,25 @@ const experiences = ref([
       {{ $t('myWork.professionalExperience.title') }}
     </section-title>
 
-    <div v-for="(experience, index) in experiences" :key="`${index}-experience`"
-      class="experience-row flex flex-col md:flex-row cursor-default items-center">
+    <div v-for="(experience, index) in experiences" 
+        :key="`${index}-experience`"
+        class="experience-row flex flex-col md:flex-row cursor-default items-center">
       <div class="md:w-2/6 px-3 lg:px-0 py-4 font-bold text-gray-500 dark:text-gray-400">
         <p>{{ experience.from }} - {{ experience.to }}</p>
       </div>
       <div class="w-full md:w-4/6 px-3 lg:px-0 py-4">
+
+
         <div
-          class="bg-blue-200 border-cyan-600 border p-4 rounded-sm transition-color ease-in-out duration-300 hover:shadow-md">
-          <h4 class="text-lg font-bold text-gray-800">
-            {{ $t(`myWork.professionalExperience.${experience.id }.title`) }}
-          </h4>
-          <h3 class="text-gray-500 text-sm my-1">
-            {{ experience.companyName }}
-          </h3>
-          <p class="text-gray-600 text-justify" v-html="
-            $t(`myWork.professionalExperience.${ experience.id }.description`)
-          "></p>
+          class=" border-neutral-300 border p-4 rounded-sm transition-color ease-in-out duration-300 hover:shadow-md">
+          <ContentDoc :path="`${locale}/works/${experience.id}`"/>
+
         </div>
       </div>
+
+
+
+
     </div>
   </div>
 </template>

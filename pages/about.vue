@@ -5,6 +5,8 @@ const paragraphs = ref([
   'aboutMe.paragraph2',
   'aboutMe.paragraph3'
 ])
+const { locale } = useI18n();
+
 </script>
 <template>
   <div class="pt-6">
@@ -24,19 +26,22 @@ const paragraphs = ref([
         </div>
       </div>
       <div id="skills_title" class="flex flex-col w-full md:w-3/5 p-4 lg:p-0">
-        <div class="title relative mb-4">
+        <!-- <div class="title relative mb-4">
           <h1
             class="font-bold text-2xl text-neutral-800 foreground dark:text-white"
           >
             {{ $t('aboutMe.title') }}
+
           </h1>
-        </div>
-        <p
+        </div> -->
+        <!-- <p
           v-for="(paragraph, index) in paragraphs"
           :key="`${index}-pagraph`"
           class="dark:text-neutral-400 text-justify text-neutral-600 mb-2 text-md font-regular aboutme-paragrah"
           v-html="$t(paragraph)"
-        ></p>
+        ></p> -->
+        <ContentDoc :path="`${locale}/aboutme`"/>
+
       </div>
     </div>
     <!-- Skills Section -->

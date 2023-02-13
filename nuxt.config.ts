@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxtjs/i18n',
     '@nuxtjs/color-mode',
+    '@nuxt/content'
   ],
   i18n: {
     locales: [
@@ -34,5 +35,14 @@ export default defineNuxtConfig({
     strategy: 'prefix',
     langDir: '/lang',
     defaultLocale: 'en',
+  },
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "@/assets/globals.scss" as *;'
+        }
+      }
+    }
   }
 })
