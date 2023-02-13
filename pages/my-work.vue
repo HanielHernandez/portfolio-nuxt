@@ -51,7 +51,7 @@ const { locale } = useI18n()
 
     <div v-for="(experience, index) in experiences" 
         :key="`${index}-experience`"
-        class="experience-row flex flex-col md:flex-row cursor-default items-center px-4 lg:py-0">
+        class="experience-row flex flex-col md:flex-row cursor-default items-center px-4 lg:p-0">
       <!-- <div class="md:w-2/6 px-3 lg:px-0 py-4 font-bold text-neutral-500 dark:text-neutral-400">
         <p>{{ experience.from }} - {{ experience.to }}</p>
       </div>
@@ -69,8 +69,8 @@ const { locale } = useI18n()
           "></p>
         </div>
       </div> -->
-      <div class="flex border-neutral-300 border w-full dark:border-neutral-800   rounded-md transition-color ease-in-out duration-300 hover:shadow-md mb-4">
-        <div class="px-2 py-4 md:p-4 flex-0 flex justify-center flex-column items-center bg-neutral-300" >
+      <div class="flex border-neutral-100 border w-full dark:border-neutral-800   rounded-md transition-color ease-in-out duration-300 hover:shadow-md mb-4">
+        <div class="px-2 py-4 md:p-4 flex-0 flex justify-center flex-column items-center bg-neutral-300 dark:bg-neutral-700" >
           <img :src="`/img/works-places/${experience.companyLogo}`" class=" h-16 w-24 object-contain	" alt="">
         </div>
         <div class="p-4 w-full ">
@@ -83,7 +83,7 @@ const { locale } = useI18n()
             {{ experience.companyName }}
           </h3> -->
           <div  class="flex justify-between w-full">
-            <span class="text-sm font-medium text-blue-500 mb-2">   {{ experience.from }} - {{ experience.to }}</span>
+            <span class="text-sm font-medium text-neutral-500 mb-2">   {{ experience.from }} - {{ experience.to }}</span>
            </div>
 
           <p class="text-neutral-600 text-justify text-clip"  v-html="
