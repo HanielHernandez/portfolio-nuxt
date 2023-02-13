@@ -308,6 +308,12 @@ const changeTheme = ()=>{
 
           <span class="hidden md:inline-block mx-3 dark:text-white/20">|</span>
 
+            <button class="hidden md:inline-block w-4 text-center"   @click="changeTheme">
+              <span v-if = "colorMode.preference == 'light'">☾</span>
+              <span class="text-white" v-else>🌣</span>
+            </button>
+          <span class="hidden md:inline-block mx-3 dark:text-white/20">|</span>
+
           <btn
             link
             href="mailto:haniel1121@outlook.com"
@@ -315,11 +321,6 @@ const changeTheme = ()=>{
           >
             {{ $t('navbar.contactMe') }}
           </btn>
-          <span class="hidden md:inline-block mx-3 dark:text-white/20">|</span>
-
-          <button @click="changeTheme">
-            Change lightmode
-          </button>
         </div>
 
         <button
