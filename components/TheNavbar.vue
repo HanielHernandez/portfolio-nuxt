@@ -12,6 +12,9 @@ const openMenu = () => {
   menuOpen.value = !menuOpen.value
 }
 
+
+const isDark = ref(colorMode.preference == 'dark' )
+
 const currentLang =  ref(localLang)
 
 onMounted(() => {
@@ -20,6 +23,8 @@ onMounted(() => {
   //   opacity: 0,
   //   duration: 1
   // })
+
+  isDark.value = colorMode.preference == 'dark' 
 })
 
 const getTimeline = (el: HTMLElement, done: () => void) => {
@@ -250,10 +255,15 @@ function setLang () {
   navigateTo(path)
 }
 
-const changeTheme = ()=>{
-  colorMode.preference = colorMode.preference == 'dark' ? 'light': 'dark'
- 
-}
+
+watch(isDark,(newval)=>{
+  console.log(newval)
+  colorMode.preference = newval ? 'dark': 'light'
+})
+
+
+
+
 </script>
 <template>
   <div>
@@ -289,7 +299,7 @@ const changeTheme = ()=>{
             </li>
           </ul>
         </div>
-        <div>
+        <div class="flex items-center">
           <select
             id="lang-select"
             v-model="currentLang"
@@ -306,13 +316,14 @@ const changeTheme = ()=>{
               </option>
           </select>
 
-          <span class="hidden md:inline-block mx-3 dark:text-white/20">|</span>
-
+          <span class="hidden md:inline-block mx-3 dark:text-white/20 text-neutral-300">|</span>
+            <Toggle v-model="isDark" />
+<!-- 
             <button class="hidden md:inline-block w-4 text-center"   @click="changeTheme">
               <span v-if = "colorMode.preference == 'light'">☾</span>
               <span class="text-white" v-else>🌣</span>
-            </button>
-          <span class="hidden md:inline-block mx-3 dark:text-white/20">|</span>
+            </button> -->
+          <span class="hidden md:inline-block mx-3 dark:text-white/20 text-neutral-300">|</span>
 
           <btn
             link
