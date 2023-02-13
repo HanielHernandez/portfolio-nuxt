@@ -7,7 +7,7 @@ const currentRoute = computed(() => route.path)
 const switchLocalePath = useSwitchLocalePath()
 const links = ref<any[]>([])
 const menuOpen = ref(false)
-
+const colorMode = useColorMode()
 const openMenu = () => {
   menuOpen.value = !menuOpen.value
 }
@@ -245,9 +245,14 @@ const onLeave = (el: HTMLElement, done: () => void) => {
 
 function setLang () {
   console.log(currentLang.value)
-  setLocale(currentLang.vl)
+  setLocale(currentLang.value)
   const path = switchLocalePath(currentLang.value)
   navigateTo(path)
+}
+
+const changeTheme = ()=>{
+  colorMode.preference = colorMode.preference == 'dark' ? 'light': 'dark'
+ 
 }
 </script>
 <template>
@@ -310,6 +315,11 @@ function setLang () {
           >
             {{ $t('navbar.contactMe') }}
           </btn>
+          <span class="hidden md:inline-block mx-3 dark:text-white/20">|</span>
+
+          <button @click="changeTheme">
+            Change lightmode
+          </button>
         </div>
 
         <button

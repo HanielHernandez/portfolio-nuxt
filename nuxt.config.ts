@@ -9,6 +9,7 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxtjs/i18n',
+    '@nuxtjs/color-mode',
   ],
   i18n: {
     locales: [
