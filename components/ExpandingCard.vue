@@ -1,13 +1,24 @@
-<script setup>
+<script setup lang="ts">
+const props = defineProps({
+  expanded: {
+    type: Boolean,
+    default: ()=>false
+  }
+})
+const emit = defineEmits(['onExpand'])
 
 
-const expanded = ref(false)
+const onExpanButtonClick = ()=>{
+  emit('onExpand',!props.expanded)
+}
 </script>
 <template lang="">
-  <div class="expanding-card relative  border border-neutral-200 rounded-sm  w-full mb-4 "  :class="{expanded}">
-    <div class="expanding-card-title flex p-4  pr-14">
+  <div class="expanding-card relative  border border-neutral-200 dark:border-neutral-700 rounded-sm  w-full mb-4 "  :class="{expanded}">
+    <div class="expanding-card-title flex p-4 pr-14 cursor-pointer" @click="onExpanButtonClick()">
       <slot name="title" />
-      <button @click="expanded = !expanded" class="expanding-card-button">⛛</button>
+      <button  class="expanding-card-button">
+        <img :src="'/img/icons/expand.svg'"  alt="expand icon">
+      </button>
     </div>
     <div class="expanding-card-content">
       <slot />
@@ -22,6 +33,7 @@ const expanded = ref(false)
   &-button {
     @apply w-12 h-12 absolute right-0 top-0  p-4;
     transition: all ease-in-out 0.3s;
+    background-image: url();
     .expanded & {
       transform: rotate(180deg);
     }

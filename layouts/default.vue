@@ -2,11 +2,12 @@
 <template>
   <div
     class="transition-all pt-28 ease-in-out duration-300 w-full h-screen overflow-y-auto dark:bg-neutral-900"
+    style="overflow: overlay;"
   >
     <the-navbar id="navbar" />
     <div
-      class="mx-auto h-full dar bgtransparent  transition-colors ease-in-out duration-300"
-      style="max-width: 1024px"
+      class="mx-auto h-full dar bgtransparent  transition-colors ease-in-out duration-300 "
+      style="max-width: 1024px; "
     >
       <slot />
 
