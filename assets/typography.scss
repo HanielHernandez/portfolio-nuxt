@@ -46,3 +46,26 @@ ul{
 select, input{
   outline: none;
 }
+
+
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: rgba(0,0,0,0.50);
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: white; 
+  border-radius: 30px;
+  border:1px  solid #ececec;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #CECECE; 
+}
