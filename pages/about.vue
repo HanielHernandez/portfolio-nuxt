@@ -23,30 +23,50 @@ definePageMeta({
   })
 </script>
 <template>
-  <div class="py-8">
-    <div class="grid grid-cols-3 gap-x-14">
-      <div
-        class="flex col-span-3 md:col-span-1 flex-col items-center w-full "
-      >
-        <div
-          id="profile_image"
-          class="border-4  border-blue-500 border-collapse mb-16 lg:mb-0"
-        >
-          <img
-            class="w-48 h-48 md:w-72 md:h-72 border-white border-4"
-            src="/img/profile_picture.jpg"
-            alt="profile piceture"
-          />
-        </div>
-      </div>
-      <div id="skills_title" class="p-4 lg:p-0 col-span-3 lg:col-span-2">
+  <div class="md:py-8 px-0 md:px-8">
+    <div class="flex flex-col-reverse md:flex-row md:gap-16">
+
+      <div id="skills_title" class="p-4 lg:p-0 col-span-3 lg:col-span-2  w-full md:w-2/3">
 
 
         <ContentDoc :path="`${locale}/aboutme`"/>
 
+      </div>
+      <div
+        class="flex flex-col items-center w-full p-4 md:p-0   md:w-1/3 "
+      >
+        <div
+          id="profile_image"
+          class=""
+        >
+          <img
+            class=" md:w-72 md:h-72 "
+            src="/img/profile_picture.jpg"
+            alt="profile piceture"
+          />
+          <div class="cover">
+
+          </div>
+        </div>
       </div>
     </div>
     <!-- Skills Section -->
     <SkillsSection />
   </div>
 </template>
+<style lang="scss">
+#profile_image {
+  position: relative;
+  
+  img {
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+    transition: all ease-in-out 0.3s;
+  }
+  
+  img:hover {
+    transform: scale(1.1);
+    filter: grayscale(0%);
+  }
+}
+</style>
