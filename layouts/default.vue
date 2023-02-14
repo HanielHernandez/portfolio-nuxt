@@ -6,7 +6,7 @@
   >
     <the-navbar id="navbar" />
     <div
-      class="mx-auto h-full dar bgtransparent  transition-colors ease-in-out duration-300 "
+      class="md:h-full mx-auto dar bgtransparent  transition-colors ease-in-out duration-300 "
       style="max-width: 1024px; "
     >
       <slot />
