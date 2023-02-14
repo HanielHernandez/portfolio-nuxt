@@ -18,7 +18,7 @@ export default {
       0
     )
     tl.from(
-      '#skills_title h4, #skills_title p',
+      '#a-bit-about-me , #skills_title p',
       {
         opacity: 0,
         x: 30,
@@ -69,7 +69,7 @@ export default {
       0
     )
     tl.to(
-      '#skills_title h4, #skills_title p',
+      '#a-bit-about-me, #skills_title p',
 
       {
         opacity: 0,
@@ -82,7 +82,7 @@ export default {
     )
 
     tl.to(
-      '.section_title',
+      '.section-title',
       {
         opacity: 0,
         x: -30,

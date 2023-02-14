@@ -24,22 +24,22 @@ definePageMeta({
 </script>
 <template>
   <div class="py-8">
-    <div class="flex flex-col md:flex-row">
+    <div class="grid grid-cols-3 gap-x-14">
       <div
-        class="flex flex-col items-center w-full md:pr-4 lg:pr-8 md:w-2/5 p-4 md:p-0"
+        class="flex col-span-3 md:col-span-1 flex-col items-center w-full "
       >
         <div
           id="profile_image"
-          class="border-4 rounded-full border-blue-500 border-collapse"
+          class="border-4  border-blue-500 border-collapse mb-16 lg:mb-0"
         >
           <img
-            class="rounded-full w-48 h-48 md:h-auto md:w-full shadow-md border-white border-4"
+            class="w-48 h-48 md:w-72 md:h-72 border-white border-4"
             src="/img/profile_picture.jpg"
             alt="profile piceture"
           />
         </div>
       </div>
-      <div id="skills_title" class="flex flex-col w-full md:w-3/5 p-4 md:pl-24 text-justify lg:pr-0">
+      <div id="skills_title" class="p-4 lg:p-0 col-span-3 lg:col-span-2">
 
 
         <ContentDoc :path="`${locale}/aboutme`"/>
