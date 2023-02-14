@@ -1,4 +1,20 @@
 <script setup lang="ts">
+  import animations from '~~/animations';
+  const toLocalePath = useLocalePath()
+
+  definePageMeta({
+    pageTransition: {
+      name: 'custom-transition',
+      mode: 'out-in',
+      onEnter: (el, done) => {
+        console.log('onenter',el)
+        animations['home'].onEnter(el,done)
+      },
+      onLeave: (el,done) => {
+        animations['home'].onLeave(el,done)
+      }
+    }
+  })
 
 </script>
 <template>
@@ -28,7 +44,7 @@
       </p>
       <div class="flex items-center justify-center md:justify-start">
         <NuxtLink
-          to="/my-work"
+          :to="toLocalePath('/my-work')"
           class="bg-blue-600 md:text-lg lg:text-xl font-bold transition-all ease-in-out btn shadow-md duration-300 hover:bg-blue-800 mr-4 border-ra text-white px-4 py-3 md:px-5 md:py-4 lg:px-5 lg:py-3 rounded-sm"
           >{{ $t('home.myWorkBtn') }}</NuxtLink
         >

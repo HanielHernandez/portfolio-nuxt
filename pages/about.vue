@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
+import animations from '~~/animations';
 const paragraphs = ref([
   'aboutMe.paragraph1',
   'aboutMe.paragraph2',
@@ -7,6 +8,19 @@ const paragraphs = ref([
 ])
 const { locale } = useI18n();
 
+definePageMeta({
+    pageTransition: {
+      name: 'custom-transition',
+      mode: 'out-in',
+      onEnter: (el, done) => {
+        console.log('onenter',el)
+        animations['about'].onEnter(el,done)
+      },
+      onLeave: (el,done) => {
+        animations['about'].onLeave(el,done)
+      }
+    }
+  })
 </script>
 <template>
   <div>

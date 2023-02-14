@@ -10,7 +10,8 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxtjs/i18n',
     '@nuxtjs/color-mode',
-    '@nuxt/content'
+    '@nuxt/content',
+    'nuxt-icon'
   ],
   i18n: {
     locales: [
@@ -45,8 +46,11 @@ export default defineNuxtConfig({
       }
     }
   },
-  loading: {
-    color: 'blue',
-    height: '5px'
-  }
+  build: {
+    transpile: ['gsap'],
+  },
+  app: {
+    pageTransition: { name: 'page', mode: 'out-in' }
+  },
 })
+

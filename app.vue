@@ -1,4 +1,9 @@
 <script setup lang="ts">
+
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+
 //   type Theme = 'light' | 'dark';
 // const LOCAL_STORAGE_THEME_KEY = 'theme'
 // const darkMode = useState('theme', () => false)
@@ -20,7 +25,7 @@
 // })
 const colorMode = useColorMode()
 
-
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 const changeTheme = ()=>{
   colorMode.preference = colorMode.preference == 'dark' ? 'light': 'dark'
 }

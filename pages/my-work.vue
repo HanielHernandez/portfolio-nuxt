@@ -1,5 +1,7 @@
 <!-- eslint-disable vue/no-v-html -->
 <script lang="ts" setup>
+import animations from '~~/animations';
+
 const experiences = ref([
   {
     companyName: "Curotec",
@@ -48,6 +50,20 @@ const currentExpanded = ref<string | number | null>(null);
 const setCurrentExpanded = (index: number | string) => {
   currentExpanded.value = currentExpanded.value == index ? null : index;
 };
+
+definePageMeta({
+    pageTransition: {
+      name: 'custom-transition',
+      mode: 'out-in',
+      onEnter: (el, done) => {
+        console.log('onenter',el)
+        animations['mywork'].onEnter(el,done)
+      },
+      onLeave: (el,done) => {
+        animations['mywork'].onLeave(el,done)
+      }
+    }
+  })
 </script>
 <template>
   <div class="h-full flex flex-col">
@@ -78,8 +94,9 @@ const setCurrentExpanded = (index: number | string) => {
         <div class="flex flex-col-reverse md:flex-row items-center md:items-start md:justify-between w-full" >
           <div class="md:pr-8 h-full ">
             <span class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-4">
-              {{ experience.location }}   <span class=" md:hidden">{{ experience.from }} - {{ experience.to }}</span> 
+              <Icon name="ic:baseline-place" class="h-5"/>  {{ experience.location }}  
             </span>
+            <span class=" md:hidden">{{ experience.from }} - {{ experience.to }}</span> 
             <p class="text-neutral-600 text-justify text-clip" v-html="
               $t(`myWork.professionalExperience.${ experience.id }.description`)
             "></p>
