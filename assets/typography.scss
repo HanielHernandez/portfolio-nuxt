@@ -3,7 +3,7 @@
 @mixin isHeadLine {
   @apply font-bold text-neutral-800;
   line-height: 1.25;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1em;
 
   .dark & {
     @apply text-gray-200;
