@@ -27,7 +27,7 @@ const props = defineProps({
 <template>
   <component
     :is="link ? 'a' : 'button'"
-    class="px-4 py-2  font-medium transitionates  "
+    class="px-4 py-2 font-medium transitionates inline-block"
     :class="classes"
   >
     <slot />

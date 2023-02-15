@@ -7,7 +7,6 @@
       name: 'custom-transition',
       mode: 'out-in',
       onEnter: (el, done) => {
-        console.log('onenter',el)
         animations['home'].onEnter(el,done)
       },
       onLeave: (el,done) => {
@@ -42,7 +41,7 @@
       >
         {{ $t('home.paragraph') }}
       </p>
-      <div class="cta-buttons flex items-center justify-center md:justify-start">
+      <div class="cta-buttons flex items-center justify-center md:justify-start mb-8">
         <NuxtLink
           :to="toLocalePath('/my-work')"
           class="bg-blue-600 md:text-lg lg:text-xl font-bold transition-all ease-in-out btn shadow-md duration-300 hover:bg-blue-800 mr-4 border-ra text-white px-4 py-3 md:px-5 md:py-4 lg:px-5 lg:py-3 rounded-sm"
@@ -53,6 +52,21 @@
           class="border border-blue-600 md:text-lg lg:text-xl font-bold btn transition-all ease-in-out rounded-sm duration-300 text-blue-600 hover:bg-blue-600 hover:text-white px-4 py-3 md:px-5 md:py-4 lg:px-5 lg:py-3"
           >{{ $t('contactMe') }}</a
         >
+      </div>
+      <div id="social_links" class="text-3xl ">
+
+        <a  href="https://www.linkedin.com/in/hanielhernandez/" 
+            alt="my linkedin profile"
+            class="social-link mr-2 text-neutral-900 hover:text-blue-600 transition-colors ease-in-out duration-200">
+            <Icon name="mdi:linkedin"/>
+          
+        </a>
+        <a  href="https://github.com/HanielHernandez/" 
+            alt="my github profile"
+            class="social-link mr-2 text-neutral-900 hover:text-blue-600 transition-colors ease-in-out duration-200">
+            <Icon name="mdi:github"/>
+        </a>
+
       </div>
     </div>
     <div
