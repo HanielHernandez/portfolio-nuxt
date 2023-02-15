@@ -7,11 +7,16 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 const nuxtApp = useNuxtApp();
 const loading = ref(true);
 const colorMode = useColorMode()
-
+const { finalizePendingLocaleChange } = useI18n()
+const onBeforeEnter = async () => {
+  await finalizePendingLocaleChange()
+}
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 const changeTheme = ()=>{
   colorMode.preference = colorMode.preference == 'dark' ? 'light': 'dark'
 }
+
+
 
 nuxtApp.hook("app:rendered", () => {
   console.log('page finished loading')
@@ -93,7 +98,11 @@ const onLeave = (el:HTMLElement, done: ()=>void)=>{
     <div class="h-screen">
    
     <NuxtLayout>
-      <NuxtPage />
+      <NuxtPage :transition="{
+      name: 'my',
+      mode: 'out-in',
+      onBeforeEnter
+    }"  />
     </NuxtLayout>
   </div>
   </body>

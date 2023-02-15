@@ -1,6 +1,8 @@
 <script setup lang="ts">
   import animations from '~~/animations';
   const toLocalePath = useLocalePath()
+  const route = useRoute()
+
 
   definePageMeta({
     pageTransition: {
@@ -14,6 +16,8 @@
       }
     }
   })
+
+
 
 </script>
 <template>
@@ -57,11 +61,13 @@
 
         <a  href="https://www.linkedin.com/in/hanielhernandez/" 
             alt="my linkedin profile"
+            target="_blank"
             class="social-link mr-2 text-neutral-900 hover:text-blue-600 transition-colors ease-in-out duration-200">
             <Icon name="mdi:linkedin"/>
           
         </a>
         <a  href="https://github.com/HanielHernandez/" 
+            target="_blank"
             alt="my github profile"
             class="social-link mr-2 text-neutral-900 hover:text-blue-600 transition-colors ease-in-out duration-200">
             <Icon name="mdi:github"/>

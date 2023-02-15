@@ -221,7 +221,7 @@ watch(isDark, (newval) => {
             </ul>
           </div>
           <div class="flex items-center">
-            <select
+            <!-- <select
               id="lang-select"
               v-model="currentLang"
               class="hidden md:inline-block transition-all duration-300 ease-in-out bg-gray-100 dark:bg-gray-600 rounded-sm p-1 font-bold dark:text-white"
@@ -235,7 +235,8 @@ watch(isDark, (newval) => {
               >
                 {{ code.toUpperCase() }}
               </option>
-            </select>
+            </select> -->
+            <LangSwitcher/>
 
             <span
               class="hidden md:inline-block mx-3 dark:text-white/20 text-neutral-300"
@@ -255,8 +256,8 @@ watch(isDark, (newval) => {
 
             <btn
               link
-              href="mailto:haniel1121@outlook.com"
-              class="hidden md:inline-block"
+              href="mailto:haniel1121@outlook.com "
+              class="hidden md:inline-block hover:drop-shadow-lg hover:shadow-md transition-shadow ease-in-out duration-500"
             >
               {{ $t("navbar.contactMe") }}
             </btn>

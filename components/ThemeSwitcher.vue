@@ -22,20 +22,20 @@ const animateIcon = async () => {
 
     if (beams) {
       if (modeIcon.value) {
-        tl.to(
-          modeIcon.value,
-          {
-            backgroundColor: "#171717",
-            ease: "power4.easeIn",
-            duration: 0.3,
-          },
-          0
-        );
+        // tl.to(
+        //   modeIcon.value,
+        //   {
+        //     backgroundColor: "#171717",
+        //     ease: "power4.easeIn",
+        //     duration: 0.3,
+        //   },
+        //   0
+        // );
 
         tl.to(
         modeIcon.value.getElementsByClassName("off-center"),
         {
-          backgroundColor: "171717",
+          // backgroundColor: "171717",
           ease: "power4.easeIn",
           transform: "translate(50% , -50%)",
           scale: 1,
@@ -44,16 +44,16 @@ const animateIcon = async () => {
         0.6
       );
 
-      tl.to(
-        modeIcon.value.getElementsByClassName("center"),
-        {
-          backgroundColor: "#white",
-          ease: "power4.easeIn",
-          scale: 1,
-          duration: 0.3,
-        },
-        0.6
-      );
+      // tl.to(
+      //   modeIcon.value.getElementsByClassName("center"),
+      //   {
+      //     backgroundColor: "#white",
+      //     ease: "power4.easeIn",
+      //     scale: 1,
+      //     duration: 0.3,
+      //   },
+      //   0.6
+      // );
       }
       
 
@@ -113,20 +113,20 @@ const animateIcon = async () => {
       );
     }
     if (modeIcon.value) {
-      tl.to(
-        modeIcon.value,
-        {
-          backgroundColor: "white",
-          ease: "power4.easeIn",
-          duration: 0.3,
-        },
-        1.2
-      );
+      // tl.to(
+      //   modeIcon.value,
+      //   {
+      //     backgroundColor: "white",
+      //     ease: "power4.easeIn",
+      //     duration: 0.3,
+      //   },
+      //   1.2
+      // );
 
       tl.to(
         modeIcon.value.getElementsByClassName("off-center"),
         {
-          backgroundColor: "white",
+          // backgroundColor: "white",
           ease: "power4.easeIn",
           transform: "translate(75%, -75%)",
           scale: 1.2,
@@ -135,16 +135,16 @@ const animateIcon = async () => {
         1.2
       );
 
-      tl.to(
-        modeIcon.value.getElementsByClassName("center"),
-        {
-          backgroundColor: "#171717",
-          ease: "power4.easeIn",
-          scale: 1.2,
-          duration: 0.3,
-        },
-        1.2
-      );
+      // tl.to(
+      //   modeIcon.value.getElementsByClassName("center"),
+      //   {
+      //     backgroundColor: "#171717",
+      //     ease: "power4.easeIn",
+      //     scale: 1.2,
+      //     duration: 0.3,
+      //   },
+      //   1.2
+      // );
 
 
 
@@ -286,7 +286,7 @@ watch(
 </script>
 <template lang="">
   <div
-    class="w-10 h-10 relative rounded-full p-1 transition-all ease-in-out duration-500 bg-white border border-neutral-200 dark:border-neutral-700"
+    class="modeIcon w-10 h-10 relative rounded-full p-1 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-all ease-in-out duration-500"
     ref="modeIcon"
   >
     <div class="icon sun" ref="modeIcon">
@@ -307,11 +307,19 @@ watch(
 .sun {
   position: relative;
 }
+.modeIcon {
+  &:hover {
+    .center{
+      @apply bg-neutral-200;
+    }
+  }
+}
 
 .icon {
   position: relative;
   width: 100%;
   height: 100%;
+
 
   .center {
     @apply bg-neutral-800 rounded-full absolute;
@@ -321,19 +329,23 @@ watch(
   }
 
   .off-center {
+    @apply  rounded-full dark:bg-neutral-800 bg-white;
     position: absolute;
     top: 0;
     right: 0;
     z-index: 120;
-    @apply bg-white rounded-full;
     width: 100%;
     height: 100%;
     transform: translate(25%, -25%);
   }
 
   &.sun {
+    .center, .off-center{
+      @apply transition-colors ease-in-out duration-700;
+    }
+
     .center {
-      background: white;
+      @apply bg-neutral-900 dark:bg-white;
       top: 50%;
       right: 50%;
       width: 1rem;
@@ -342,9 +354,9 @@ watch(
     }
 
     .off-center {
+      @apply bg-white dark:bg-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-800;
       top: 50%;
       right: 50%;
-      background-color: black;
       width: 0.825rem;
       height: 0.825rem;
       transform: translate(50%, -50%);
@@ -358,6 +370,7 @@ watch(
     }
 
     .beam {
+      @apply bg-neutral-900 dark:bg-neutral-100;
       opacity: 1;
       z-index: 80;
     }

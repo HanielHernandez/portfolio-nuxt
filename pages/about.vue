@@ -2,6 +2,8 @@
 import { ref } from 'vue'
 import animations from '~~/animations';
 
+
+
 definePageMeta({
     pageTransition: {
       name: 'custom-transition',

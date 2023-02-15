@@ -1,10 +1,10 @@
 <!-- eslint-disable vue/no-v-html -->
 <script lang="ts" setup>
 import animations from '~~/animations';
+const route = useRoute()
 
 
 const { locale } = useI18n();
-
 
 
 definePageMeta({

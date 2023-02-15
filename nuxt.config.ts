@@ -36,6 +36,7 @@ export default defineNuxtConfig({
     strategy: 'prefix',
     langDir: '/lang',
     defaultLocale: 'en',
+    skipSettingLocaleOnNavigate: true
   },
   vite: {
     css: {
@@ -52,5 +53,15 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: 'page', mode: 'out-in' }
   },
+  colorMode: {
+    preference: 'system', // default value of $colorMode.preference
+    fallback: 'light', // fallback value if not system preference found
+    hid: 'nuxt-color-mode-script',
+    globalName: '__NUXT_COLOR_MODE__',
+    componentName: 'ColorScheme',
+    classPrefix: '',
+    classSuffix: '',
+    storageKey: 'nuxt-color-mode'
+  }
 })
 
