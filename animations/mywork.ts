@@ -9,7 +9,7 @@ export default {
       "#my_projects_title",
       {
         opacity: 0,
-        duration: 0.5,
+        duration: 0.3,
         ease: 'power3.easeInOut'
       },
       0
@@ -23,20 +23,20 @@ export default {
         stagger: 0.1,
         ease: 'back.inOut(1.7)'
       },
-      0.1
+      0
     )
     tl.from(
-      "#title",
+      "#work_experience_title",
       {
         opacity: 0,
         duration: 0.5,
         ease: 'power3.easeInOut'
       },
-      0
+      0.3
     )
 
     tl.from(
-      el.getElementsByClassName('experience-row'),
+      '#my_profesional_experience .expanding-card',
       {
         opacity: 0,
         x: 30,
@@ -44,7 +44,7 @@ export default {
         stagger: 0.1,
         ease: 'back.inOut(1.7)'
       },
-      0.2
+      0.5
     )
 
 
@@ -55,7 +55,7 @@ export default {
       onComplete: done
     })
     tl.to(
-      '#title',
+      '#my_projects_title',
       {
         opacity: 0,
         duration: 0.5,
@@ -76,7 +76,7 @@ export default {
     )
 
     tl.to(
-      '#my_projects_title',
+      '#work_experience_title',
       {
         opacity: 0,
         duration: 0.5,
@@ -84,8 +84,9 @@ export default {
       },
       0.2
     )
+    
     tl.to(
-      el.getElementsByClassName('experience-row'),
+      '#my_profesional_experience .expanding-card',
       {
         opacity: 0,
         x: 300,
@@ -94,10 +95,6 @@ export default {
       },
       0.3
     )
-
-
-    tl.play()
-
     tl.play()
   }
 }

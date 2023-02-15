@@ -9,7 +9,7 @@ const switchLocalePath = useSwitchLocalePath()
             <div v-for="{code} in locales" :key="locale.code">
                 <NuxtLink :to="switchLocalePath(code)" >
                 {{ code }}
-                <NuxtLink/ >
+                </NuxtLink> 
 
             </div>
         </div>

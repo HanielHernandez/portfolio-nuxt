@@ -80,7 +80,7 @@ const projects = [
   }
 
   &-content {
-    @apply p-4 absolute bottom-0 left-0 bg-neutral-100  rounded-b-sm border-t border-neutral-100   bg-opacity-50 dark:bg-neutral-800 w-full transition-all;
+    @apply p-4 absolute bottom-0 left-0 bg-neutral-100  rounded-b-sm border-t border-neutral-100  dark:border-neutral-800 bg-opacity-50 dark:bg-neutral-900/90 w-full transition-all;
     height: 84px;
   }
 
@@ -98,7 +98,7 @@ const projects = [
   &:hover {
     .card {
       &-content {
-        @apply bg-neutral-200/75;
+        @apply bg-neutral-200/75 dark:bg-neutral-900/75;
         height: 100%;
         border-top-color: rgba(#000000, 0);
 

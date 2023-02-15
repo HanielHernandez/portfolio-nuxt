@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import gsap from 'gsap';
 
-const title = ref<HTMLElement|null>(null)
-const content = ref<HTMLElement|null>(null)
-const titleHeight = ref(60)
+const CONTENT_PADDING = 32;
+// const title = ref<HTMLElement|null>(null)
+// const content = ref<HTMLElement|null>(null)
+// const titleHeight = ref(60)
 const contentHeight = ref(0)
 const props = defineProps({
   expanded: {
@@ -25,12 +27,6 @@ const emit = defineEmits(['onExpand'])
 
 
 
-const cardStyle = computed(()=>{
-  return {
-       height: `${ props.expanded ?  titleHeight.value + contentHeight.value : titleHeight.value}px`
-  }
-}) 
-
 const onExpanButtonClick = ()=>{
   emit('onExpand', !props.expanded)
 }
@@ -46,17 +42,46 @@ watch(()=>props.expanded,async (newval)=>{
 
 const checkDimensions = async ()=>{
   await nextTick()
-  titleHeight.value = title.value?.offsetHeight || 60
-  contentHeight.value = content.value?.offsetHeight || 0
+  contentHeight.value = content.value && content.value.scrollHeight + CONTENT_PADDING || 0
 }
-window.addEventListener("resize", checkDimensions);
+// window.addEventListener("resize", checkDimensions);
 
+
+// onBeforeUnmount(()=> {
+//   window.removeEventListener("resize", checkDimensions);
+// })
+
+const onEnter = (el:HTMLElement, done: ()=>any)=>{
+  done()
+  console.log("showing content")
+  gsap.from(
+    el,
+    {
+      height: '0px',
+      paddingTop: 0,
+      paddingBottom: 0,
+      duration: 0.3,
+      onComplete: ()=>done(),
+      ease: "power4.easeInOut"
+    })
+}
+const onLeave = (el:HTMLElement, done: ()=>any)=>{
+  gsap.to(
+    el,
+    {
+      height: '0px',
+      duration: 0.3,
+      paddingTop: 0,
+      paddingBottom: 0,
+      onComplete: ()=>done(),
+      ease: "power4.easeInOut"
+    })
+
+}
 
 </script>
 <template lang="">
-  <div class="expanding-card relative  border hover:bg-neutral-100 border-neutral-100 dark:border-neutral-700  w-full mb-4 "
-    :class="{expanded}"
-    :style="cardStyle"
+  <div class="expanding-card relative border hover:bg-neutral-100 dark:hover:bg-neutral-900 border-neutral-100 dark:border-neutral-800  w-full mb-4 "
   >
     <div class="expanding-card-title flex p-4 pr-14 cursor-pointer" @click="onExpanButtonClick()" ref="title">
       <slot name="title" />
@@ -64,33 +89,30 @@ window.addEventListener("resize", checkDimensions);
         <Icon name="mdi:chevron-down" class="mb-2"/>
       </button>
     </div>
-    <div class="expanding-card-content" ref="content">
-      <slot />
-    </div>
+    <Transition mode="in-out"  @enter="onEnter" @leave="onLeave" >
+      <div v-if="expanded" class="expanding-card-content" ref="content"  >
+        <slot />
+      </div>
+    </Transition>
+    
   </div>
 </template>
 <style lang="scss">
 .expanding-card {
-  @apply transition-all ease-in-out duration-300;
-  overflow: hidden;
+  max-width: 700px;
 
   .icon {
-    @apply transition-all ease-in-out duration-300;
+    @apply ease-in-out duration-300;
   }
 
   &-button {
     @apply w-16 h-16 absolute right-0 top-0  p-4;
-    transition: all ease-in-out 0.3s;
     background-image: url();
   }
 
   &-content {
-    @apply  px-4 pb-4  transition-all ease-in-out duration-500;
+    @apply  px-4 pb-4;
     overflow: hidden;
-  }
-
-  &-title {
-    min-height: 60px;
   }
 
   &.expanded {

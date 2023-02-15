@@ -26,5 +26,9 @@ const localePath = useLocalePath()
     @apply opacity-100;
     @apply text-blue-600;
   }
+
+  &:hover{
+    transform: scale(1.5);
+  }
 }
 </style>

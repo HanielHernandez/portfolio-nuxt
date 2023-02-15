@@ -47,7 +47,7 @@ const setCurrentExpanded = (index: number | string) => {
 };
 </script>
 <template lang="">
-  <div class="flex flex-col items-center px-4 md:px-0">
+  <div class="flex flex-col items-center px-4 md:px-0" id="my_profesional_experience">
       <ExpandingCard  
       v-for="(experience, index) in experiences" :key="`${index}-experience`"
       class="flex-shrink-0"

@@ -27,7 +27,7 @@ definePageMeta({
       {{ $t('myWork.projects.title') }}
     </h4>
     <MyProjects />
-    <h4 class="px-4 my-16 text-center">
+    <h4 class="px-4 my-16 text-center" id="work_experience_title">
       {{$t("myWork.professionalExperience.title")}}
     </h4>
     <MyWorkPlaces/>

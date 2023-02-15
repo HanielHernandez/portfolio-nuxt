@@ -42,7 +42,7 @@
       >
         {{ $t('home.paragraph') }}
       </p>
-      <div class="flex items-center justify-center md:justify-start">
+      <div class="cta-buttons flex items-center justify-center md:justify-start">
         <NuxtLink
           :to="toLocalePath('/my-work')"
           class="bg-blue-600 md:text-lg lg:text-xl font-bold transition-all ease-in-out btn shadow-md duration-300 hover:bg-blue-800 mr-4 border-ra text-white px-4 py-3 md:px-5 md:py-4 lg:px-5 lg:py-3 rounded-sm"
@@ -62,4 +62,10 @@
     </div>
   </div>
 </template>
-<style lang="scss"></style>
+<style lang="scss">
+  .cta-buttons{
+    a:hover {
+      transform: translateY(-0.5rem);
+    }
+  }
+</style>

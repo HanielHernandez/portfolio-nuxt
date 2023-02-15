@@ -73,3 +73,7 @@ select, input{
 ::-webkit-scrollbar-thumb:hover {
   background: #CECECE; 
 }
+
+* {
+  box-sizing: border-box;
+}
