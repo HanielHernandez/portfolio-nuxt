@@ -1,13 +1,309 @@
-<script setup></script>
+<script setup lang="ts">
+import gsap from "gsap";
+
+const modeIcon = ref<HTMLElement | null>(null);
+
+const props = defineProps({
+  isDark: {
+    type: Boolean,
+    default: () => false,
+  },
+});
+
+const animateIcon = async () => {
+  await nextTick();
+  const beams = modeIcon.value?.getElementsByClassName("beam");
+  const tl = gsap.timeline();
+
+  if (props.isDark) {
+    const beams = modeIcon.value?.getElementsByClassName("beam");
+    const center = modeIcon.value?.getElementsByClassName("center");
+    const offCenter = modeIcon.value?.getElementsByClassName("off-center");
+
+    if (beams) {
+      if (modeIcon.value) {
+        tl.to(
+          modeIcon.value,
+          {
+            backgroundColor: "#171717",
+            ease: "power4.easeIn",
+            duration: 0.3,
+          },
+          0
+        );
+
+        tl.to(
+        modeIcon.value.getElementsByClassName("off-center"),
+        {
+          backgroundColor: "171717",
+          ease: "power4.easeIn",
+          transform: "translate(50% , -50%)",
+          scale: 1,
+          duration: 0.3,
+        },
+        0.6
+      );
+
+      tl.to(
+        modeIcon.value.getElementsByClassName("center"),
+        {
+          backgroundColor: "#white",
+          ease: "power4.easeIn",
+          scale: 1,
+          duration: 0.3,
+        },
+        0.6
+      );
+      }
+      
+
+
+      if (beams) {
+        tl.fromTo(
+          beams,
+          {
+            opacity: 0,
+            scale: 0,
+            duration: 0.2,
+            stagger: {
+              each: 0.1,
+              from: "start",
+              ease: "power4.easeIn",
+            },
+          },
+          {
+            opacity: 1,
+            scale: 1,
+            duration: 0.2,
+            stagger: {
+              each: 0.1,
+              from: "start",
+              ease: "power4.easeIn",
+            },
+          }
+        );
+      }
+    }
+  } else {
+
+    if (beams) {
+      tl.fromTo(
+        beams,
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 0.2,
+          stagger: {
+            each: 0.1,
+            from: "start",
+            ease: "power4.easeIn",
+          },
+        },
+        {
+          opacity: 0,
+          scale: 0,
+          duration: 0.2,
+          stagger: {
+            each: 0.1,
+            from: "end",
+            ease: "power4.easeIn",
+          },
+        },
+        0.3
+      );
+    }
+    if (modeIcon.value) {
+      tl.to(
+        modeIcon.value,
+        {
+          backgroundColor: "white",
+          ease: "power4.easeIn",
+          duration: 0.3,
+        },
+        1.2
+      );
+
+      tl.to(
+        modeIcon.value.getElementsByClassName("off-center"),
+        {
+          backgroundColor: "white",
+          ease: "power4.easeIn",
+          transform: "translate(75%, -75%)",
+          scale: 1.2,
+          duration: 0.3,
+        },
+        1.2
+      );
+
+      tl.to(
+        modeIcon.value.getElementsByClassName("center"),
+        {
+          backgroundColor: "#171717",
+          ease: "power4.easeIn",
+          scale: 1.2,
+          duration: 0.3,
+        },
+        1.2
+      );
+
+
+
+    }
+  }
+  tl.play();
+};
+
+onMounted(async () => {
+  animateIcon();
+});
+
+const timeLine = ref();
+watch(
+  () => props.isDark,
+  async (newval) => {
+    animateIcon();
+  }
+);
+
+// const onSunEnter = (el: HTMLElement, done: () => void) => {
+//   const tl = gsap.timeline({
+//     onComplete: done
+//   })
+//   console.log(props.isDark)
+
+//   if (props.isDark == true) {
+//     const beams = el.getElementsByClassName('beam')
+
+//     tl.to(modeIcon.value, {
+//       backgroundColor: '#000'
+//     })
+
+//     tl.from(
+//       el,
+//       {
+//         scale: 0,
+//         duration: 0.3
+//       },
+//       0
+//     )
+
+//     tl.from(beams, {
+//       opacity: 0,
+//       scale: 0,
+//       duration: 0.2,
+//       stagger: {
+//         each: 0.1,
+//         from: 'start',
+//         ease: 'power4.easeIn'
+//       }
+//     })
+
+//   } else {
+//     tl.from(
+//       el,
+//       {
+//         scale: 0,
+//         duration: 0.3
+//       },
+//       0
+//     )
+//     tl.to(
+//       modeIcon.value,
+//       {
+//         backgroundColor: '#fff'
+//       },
+//       0
+//     )
+//     const centerOff = el.getElementsByClassName('off-center')
+
+//     tl.from(
+//       centerOff,
+//       {
+//         width: '100%',
+//         height: '100%',
+//         top: '50%',
+//         left: '50%',
+//         x: '-50%',
+//         y: '-50%',
+//         duration: 0.3
+//       },
+//       0.6
+//     )
+//   }
+//   tl.play()
+// }
+
+// const onSunLeave = (el: HTMLElement, done: () => void) => {
+//   const beams = el.getElementsByClassName('beam')
+//   console.log(props.isDark)
+
+//   const tl = gsap.timeline({
+//     onComplete: done
+//   })
+
+//   if (props.isDark == true) {
+//     const centerOff = el.getElementsByClassName('off-center')
+//     console.log(centerOff)
+//     tl.to(centerOff, {
+//       width: '100%',
+//       height: '100%',
+//       top: '50%',
+//       left: '50%',
+//       x: '-50%',
+//       y: '-50%',
+//       duration: 0.3
+//     })
+
+//     tl.to(el, {
+//       scale: 0,
+//       opacity: 0
+//     })
+//     tl.to(modeIcon.value, {
+//       backgroundColor: 'rgb(25,25,25)'
+//     })
+//   } else {
+//     tl.to(
+//       beams,
+//       {
+//         opacity: 0,
+//         scale: 0,
+//         duration: 0.2,
+//         stagger: {
+//           each: 0.1,
+//           from: 'end',
+//           ease: 'power4.easeIn'
+//         }
+//       },
+//       0
+//     )
+//     tl.to(el, {
+//       scale: 0,
+//       duration: 0.3
+//     })
+//   }
+//   tl.play()
+// }
+</script>
 <template lang="">
-  <div class="w-10 h-10  rounded-full bg-white border border-neutral-200">
-  
+  <div
+    class="w-10 h-10 relative rounded-full p-1 transition-all ease-in-out duration-500 bg-white border border-neutral-200 dark:border-neutral-700"
+    ref="modeIcon"
+  >
+    <div class="icon sun" ref="modeIcon">
+      <div ref="modIconCenter" class="center"></div>
+      <div ref="modIconCenterOff" class="off-center"></div>
+      <div class="beam bteam-top"></div>
+      <div class="beam beam-top-right"></div>
+      <div class="beam beam-center-right"></div>
+      <div class="beam beam-bottom-right"></div>
+      <div class="beam beam-bottom"></div>
+      <div class="beam beam-bottom-left"></div>
+      <div class="beam beam-center-left"></div>
+      <div class="beam beam-top-left"></div>
+    </div>
   </div>
 </template>
-<style lang="scss">
-
-
-
+<style lang="scss" scoped>
 .sun {
   position: relative;
 }
@@ -38,12 +334,10 @@
   &.sun {
     .center {
       background: white;
-      // width: calc(100% - 12px);
-      // height: calc(100% - 12px);
       top: 50%;
       right: 50%;
-      width: 1.5rem;
-      height: 1.5rem;
+      width: 1rem;
+      height: 1rem;
       transform: translate(50%, -50%);
     }
 
@@ -51,14 +345,14 @@
       top: 50%;
       right: 50%;
       background-color: black;
-      // width: calc(100% - 16px);
-      // height: calc(100% - 16px);
-      width: 1.375rem;
-      height: 1.375rem;
+      width: 0.825rem;
+      height: 0.825rem;
       transform: translate(50%, -50%);
     }
 
-    .center,
+    .center {
+      z-index: 99;
+    }
     .off-center {
       z-index: 100;
     }
@@ -74,9 +368,9 @@
     opacity: 0;
     right: 50%;
     transform: translateX(50%);
-    width: 3px;
+    width: 2px;
     border-radius: 300px;
-    height: 6px;
+    height: 4px;
     background: #fff;
 
     &-top-left,
@@ -131,4 +425,5 @@
       transform: translateY(-50%) rotate(90deg);
     }
   }
-}</style>
+}
+</style>

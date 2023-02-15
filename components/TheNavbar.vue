@@ -241,7 +241,8 @@ watch(isDark, (newval) => {
               class="hidden md:inline-block mx-3 dark:text-white/20 text-neutral-300"
               >|</span
             >
-            <Toggle v-model="isDark" class="hidden md:inline-block" />
+            <ThemeSwitcher :is-dark="isDark"  @click="isDark = !isDark"/>
+            <!-- <Toggle v-model="isDark" class="hidden md:inline-block" /> -->
             <!-- 
             <button class="hidden md:inline-block w-4 text-center"   @click="changeTheme">
               <span v-if = "colorMode.preference == 'light'">☾</span>
