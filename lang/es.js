@@ -55,7 +55,9 @@ export default {
     },
     projects: {
       title: 'Proyectos',
-      view: 'Ver',
+      view: 'Ver más',
+      made_with: "Creada con",
+
       customizableCss: {
         description:
           'Un mini framework de css inspirado en Tailwind y Bulma, la documentación fué creada con Nuxtjs'

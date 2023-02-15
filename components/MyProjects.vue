@@ -20,14 +20,7 @@ const projects = [
 ]
 </script>
 <template>
-  <div class="w-full block mb-8">
-    <div class="block p-4  lg:p-0">
-      <SectionTitle id="my_projects_title">
-        {{ $t('myWork.projects.title') }}
-      </SectionTitle>
-    </div>
-
-    <div class="flex flex-wrap cards-container">
+    <div class="flex flex-wrap cards-container justify-center">
       <duv
         v-for="project in projects"
         :key="`project-${project.id}`"
@@ -35,38 +28,44 @@ const projects = [
       >
         <div class="card">
           <div class="card-media">
-            <img :src="project.imageUrL" alt="" />
+            <img :src="project.imageUrL"  alt="" />
           </div>
           <div class="card-content">
-            <p class="card-title">
+            <h5 class="card-title mb-4">
               {{ project.name }}
-            </p>
+            </h5>
             <div class="card-description">
-              {{ $t('myWork.projects.' + project.id + '.description') }} <br />
-              <a
+              <p>
+                {{ $t('myWork.projects.' + project.id + '.description') }}
+                <a
                 target="_blank"
                 :href="project.link"
-                class="opacity-75 hover:opacity-100 font-bold text-blue-600"
+                class="opacity-90 text-md hover:opacity-100 mt-4 font-medium text-blue-600"
                 >{{ $t('myWork.projects.view') }}</a
               >
+     
+              </p>
+             
+
+              <h6 class="mt-4 text-neutral-600">{{ $t('myWork.projects.made_with') }} </h6>
+            
               <div class="mt-4">
-                <div v-for="tag in project.tags" :key="tag" class="pill">
+                <Chip v-for="tag in project.tags" :key="tag" class="mr-2" >
                   {{ tag }}
-                </div>
+                </Chip>
               </div>
             </div>
           </div>
         </div>
       </duv>
     </div>
-  </div>
 </template>
 
 <style lang="scss" scoped>
 .card {
-  @apply cursor-default  relative border rounded-sm overflow-hidden shadow-sm border-neutral-200  dark:border-neutral-700;
+  @apply cursor-default  relative border  overflow-hidden border-neutral-100  dark:border-neutral-700;
   &-title {
-    @apply font-medium text-neutral-800 dark:text-neutral-100 mb-2;
+    @apply font-bold text-neutral-800 dark:text-neutral-100 mb-2;
     &:hover {
       @apply text-blue-600;
     }
@@ -79,13 +78,14 @@ const projects = [
       height: 250px;
     }
   }
+
   &-content {
-    @apply p-4 absolute bottom-0 left-0  rounded-b-sm  bg-white bg-opacity-75 dark:bg-neutral-800 w-full transition-all;
+    @apply p-4 absolute bottom-0 left-0 bg-neutral-100  rounded-b-sm border-t border-neutral-100   bg-opacity-50 dark:bg-neutral-800 w-full transition-all;
     height: 84px;
   }
 
   &-description {
-    @apply text-sm text-neutral-600  dark:text-neutral-300;
+    @apply text-sm text-neutral-600  dark:text-neutral-300 ;
     height: 20px;
     white-space: normal;
     overflow: hidden;
@@ -98,14 +98,15 @@ const projects = [
   &:hover {
     .card {
       &-content {
-        @apply bg-opacity-95;
+        @apply bg-neutral-200/75;
         height: 100%;
+        border-top-color: rgba(#000000, 0);
+
       }
       &-description {
         transition: all;
         height: 100%;
         white-space: normal;
-        overflow-y: auto;
         text-overflow: inherit;
         display: inline-block;
         -webkit-line-clamp: inherit;
