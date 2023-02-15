@@ -189,7 +189,7 @@ watch(isDark, (newval) => {
 <template>
   <div>
     <div
-      class="nav fixed z-50 top-0 left-0 p-3 lg:p-6 flex w-full dark:bg-neutral-900/90 transition-colors ease-in-out duration-300 bg-white"
+      class="nav fixed z-40 top-0 left-0 p-3 lg:p-6 flex w-full dark:bg-neutral-900/90 transition-colors ease-in-out duration-300 bg-white"
     >
       <div class="mx-auto w-full" style="max-width: 1024px">
         <div class="flex w-full md:flex-row justify-between items-center">

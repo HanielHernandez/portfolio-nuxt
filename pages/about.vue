@@ -31,6 +31,8 @@ definePageMeta({
 
         <ContentDoc :path="`${locale}/aboutme`"/>
 
+        <Btn outlined id="contact_me_btn" class="text-xl px-5 py-3 mt-4" >{{ $t('contactMe') }}</Btn>
+
       </div>
       <div
         class="flex flex-col items-center w-full p-4 md:p-0   md:w-1/3 "

@@ -32,12 +32,12 @@
         {{ $t('home.firstLine') }}
       </h2>
       <h1
-        class="text-center md:text-left leading font-black text-3xl ling md:text-3xl lg:text-5xl mb-8 text-gray-800 md:mb-12 dark:text-white"
+        class="text-center md:text-left leading font-black text-3xl ling md:text-3xl lg:text-5xl mb-8 text-neutral-800 md:mb-12 dark:text-white"
       >
         {{ $t('home.secondLine') }}
       </h1>
       <p
-        class="text-center md:text-left text-gray-600 dark:text-gray-400 mb-8"
+        class="text-center md:text-left text-neutral-600 dark:text-neutral-400 mb-8"
         style="max-width: 650px"
       >
         {{ $t('home.paragraph') }}

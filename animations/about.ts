@@ -18,7 +18,7 @@ export default {
       0
     )
     tl.from(
-      '#a-bit-about-me , #skills_title p',
+      '#skills_title h2 , #skills_title p, #contact_me_btn',
       {
         opacity: 0,
         x: 30,
@@ -69,8 +69,7 @@ export default {
       0
     )
     tl.to(
-      '#a-bit-about-me, #skills_title p',
-
+      '#skills_title h2 , #skills_title p, #contact_me_btn',
       {
         opacity: 0,
         x: 30,
