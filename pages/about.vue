@@ -2,9 +2,13 @@
 import { ref } from 'vue'
 import animations from '~~/animations';
 
+useHead({
+  title: 'Hanie Hernandez - About Me'
+})
 
 
 definePageMeta({
+    title: "About me",
     pageTransition: {
       name: 'custom-transition',
       mode: 'out-in',
@@ -27,6 +31,9 @@ const { locale } = useI18n();
 </script>
 <template>
   <div class="md:py-8 px-0 md:px-8">
+    <Head>
+      <Title>Hanie Hernandez - About Me</Title>
+    </Head>
     <div class="flex flex-col-reverse md:flex-row md:gap-16">
       <div id="skills_title" class="p-4 lg:p-0 col-span-3 lg:col-span-2  w-full md:w-2/3">
         <ContentDoc :path="`${locale}/aboutme`"/>

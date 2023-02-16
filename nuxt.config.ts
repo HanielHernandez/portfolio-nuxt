@@ -51,7 +51,20 @@ export default defineNuxtConfig({
     transpile: ['gsap'],
   },
   app: {
-    pageTransition: { name: 'page', mode: 'out-in' }
+    pageTransition: { name: 'page', mode: 'out-in' },
+    head: {
+      title: 'Haniel Hernandez - Frontend Developer',
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Personal website/portfolio of Haniel Hernandez'
+        }
+      ],
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    }
   },
   colorMode: {
     preference: 'system', // default value of $colorMode.preference
@@ -62,6 +75,7 @@ export default defineNuxtConfig({
     classPrefix: '',
     classSuffix: '',
     storageKey: 'nuxt-color-mode'
-  }
+  },
+ 
 })
 

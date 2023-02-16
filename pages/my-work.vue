@@ -3,7 +3,9 @@
 import animations from '~~/animations';
 const route = useRoute()
 
-
+useHead({
+  title: 'Haniel Henandez - My Work'
+})
 const { locale } = useI18n();
 
 

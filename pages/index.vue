@@ -3,8 +3,11 @@
   const toLocalePath = useLocalePath()
   const route = useRoute()
 
-
+  useHead({
+  title: 'Haniel Henandez - Home'
+})
   definePageMeta({
+   
     pageTransition: {
       name: 'custom-transition',
       mode: 'out-in',
@@ -62,14 +65,14 @@
         <a  href="https://www.linkedin.com/in/hanielhernandez/" 
             alt="my linkedin profile"
             target="_blank"
-            class="social-link mr-2 text-neutral-900 hover:text-blue-600 transition-colors ease-in-out duration-200">
+            class="social-link mr-2 text-neutral-900 hover:text-blue-600 dark:text-neutral-200 transition-colors ease-in-out duration-200">
             <Icon name="mdi:linkedin"/>
           
         </a>
         <a  href="https://github.com/HanielHernandez/" 
             target="_blank"
             alt="my github profile"
-            class="social-link mr-2 text-neutral-900 hover:text-blue-600 transition-colors ease-in-out duration-200">
+            class="social-link mr-2 text-neutral-900 hover:text-blue-600  dark:text-neutral-200 transition-colors ease-in-out duration-200">
             <Icon name="mdi:github"/>
         </a>
 
