@@ -25,11 +25,11 @@ definePageMeta({
 </script>
 <template>
   <div class="h-full flex flex-col ">
-    <h4 id="my_projects_title" class="px-4 text-center">
+    <h4 id="my_projects_title" class="px-4  mb-4 text-left md:text-center">
       {{ $t('myWork.projects.title') }}
     </h4>
     <MyProjects />
-    <h4 class="px-4 my-16 text-center" id="work_experience_title">
+    <h4 class="px-4 mt-4 mb-8 lg:my-16 md:text-center" id="work_experience_title">
       {{$t("myWork.professionalExperience.title")}}
     </h4>
     <MyWorkPlaces/>

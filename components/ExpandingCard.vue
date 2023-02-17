@@ -99,7 +99,6 @@ const onLeave = (el:HTMLElement, done: ()=>any)=>{
 </template>
 <style lang="scss">
 .expanding-card {
-  max-width: 700px;
 
   .icon {
     @apply ease-in-out duration-300;
@@ -116,12 +115,9 @@ const onLeave = (el:HTMLElement, done: ()=>any)=>{
   }
 
   &.expanded {
-      .icon {
-        transform: rotate(180deg);
-      }
+    .icon {
+      transform: rotate(180deg);
     }
-
-
- 
+  }
 }
 </style>

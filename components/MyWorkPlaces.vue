@@ -9,7 +9,8 @@ const experiences = ref([
     id: "curotec",
     companyLogo: "curotec.png",
     imgBgColor: "neutral-700",
-    location: 'Wayne, Pennsylvania.'
+    location: 'Wayne, Pennsylvania.',
+    tags: ['Vue','Less']
   },
   {
     companyName: "FullStacklabs",
@@ -21,6 +22,7 @@ const experiences = ref([
     companyLogo: "fullstacklabs.svg",
     location: 'Granite Bay, California',
     imgBgColor: "neutral-800",
+    tags: ['React','NextJs','Prisma','Typescript','GrapQL','NodeJS']
   },
   {
     companyName: "AIM services",
@@ -30,6 +32,7 @@ const experiences = ref([
     location: 'Ticuantepe, Nicaragua.',
     companyLogo: "aimservices.jfif",
     imgBgColor: "white",
+    tags: ['Vue','Angular','Bootstrap','Tailwind','Laravel','Firebase','Pusher','Java','Android','Ionic','Typescript','Javascript','GSAP','SASS']
   },
   {
     companyName: "Discovery Real State ",
@@ -39,6 +42,8 @@ const experiences = ref([
     imgBgColor: "neutral-300",
     location: 'Managua, Nicaragua.',
     companyLogo: "discover.png",
+    tags: ['JQuery','PHP','CSS','Bootstrap','Javascript']
+
   },
 ]);
 const currentExpanded = ref<string | number | null>(null);
@@ -47,7 +52,7 @@ const setCurrentExpanded = (index: number | string) => {
 };
 </script>
 <template lang="">
-  <div class="flex flex-col items-center px-4 md:px-0" id="my_profesional_experience">
+  <div class="flex flex-col justify-centeritems-center px-4 lg:px-0 lg:max-w-2xl w-full mx-auto" id="my_profesional_experience">
       <ExpandingCard  
       v-for="(experience, index) in experiences" :key="`${index}-experience`"
       class="flex-shrink-0"
@@ -69,13 +74,18 @@ const setCurrentExpanded = (index: number | string) => {
 
         <div class="flex flex-col-reverse md:flex-row items-center md:items-start md:justify-between w-full" >
           <div class="md:pr-8 h-full ">
-            <span class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-4">
-              <Icon name="ic:baseline-place" class="h-5"/>  {{ experience.location }}  
-            </span>
-            <span class=" md:hidden">{{ experience.from }} - {{ experience.to }}</span> 
+            <p class="text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-4">
+              <Icon name="ic:baseline-place" class="h-5"/>  {{ experience.location }}    , 
+              <span class="inline-block md:hidden text-blue-600">
+              {{ experience.from }} - {{ experience.to }}
+              </span>
+            </p>
+           
             <p class="text-neutral-600 text-justify text-clip" v-html="
               $t(`myWork.professionalExperience.${ experience.id }.description`)
             "></p>
+            <chip v-for="tag in experience.tags" class="mr-4 mb-2">
+            {{tag}}</chip>
            
           </div>
           <div class="flex-shrink-0  dark:bg-neutral-700 bg-neutral-300 rounded-md p-4 w-32 h-32 mb-4 md:mb-0">

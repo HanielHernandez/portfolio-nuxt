@@ -3,10 +3,15 @@ import gsap from "gsap";
 
 const route = useRoute();
 const { locale: localLang, locales, setLocale } = useI18n();
-const toLocalePath = useLocalePath()
+const toLocalePath = useLocalePath();
 
-const routes = computed(() => config.navbarRoutes); 
-const currentRoute = computed(() => routes.value.find(x=> toLocalePath(x.path) == route.path ) || { path: '/'} );
+const routes = computed(() => config.navbarRoutes);
+const currentRoute = computed(
+  () =>
+    routes.value.find((x) => toLocalePath(x.path) == route.path) || {
+      path: "/",
+    }
+);
 const switchLocalePath = useSwitchLocalePath();
 const links = ref<any[]>([]);
 const menuOpen = ref(false);
@@ -20,11 +25,11 @@ const isDark = ref(colorMode.preference == "dark");
 const currentLang = ref(localLang);
 
 onMounted(() => {
-  gsap.from('.nav', {
+  gsap.from(".nav", {
     y: -30,
     opacity: 0,
-    duration: 1
-  })
+    duration: 1,
+  });
 
   isDark.value = colorMode.preference == "dark";
 });
@@ -193,17 +198,17 @@ watch(isDark, (newval) => {
     >
       <div class="mx-auto w-full" style="max-width: 1024px">
         <div class="flex w-full md:flex-row justify-between items-center">
-          <a
-            href=""
+          <NuxtLink
+            :to="toLocalePath('/')"
             class="icon md:text-xl uppercase font-black logo text-blue-600"
           >
             Haniel FED
-          </a>
+          </NuxtLink>
 
           <div>
             <ul
               id="navMenu"
-              class="hidden transitions md:shadow-none md:py-0 w-100 md:flex dark:text-white"
+              class="hidden transitions md:shadow-none md:py-0 w-100 lg:flex dark:text-white"
             >
               <li
                 v-for="(route, index) in routes"
@@ -211,60 +216,37 @@ watch(isDark, (newval) => {
                 :ref="(el) => (links[index] = el)"
                 class="nav-link-container text-center"
               >
+             
                 <navbar-link
                   :to="route.path"
                   :active="route.path == currentRoute.path"
                 >
+                <span class="font-black text-blue-600"> {{ `0${index+1}.` }}</span>
                   {{ $t(route.text) }}
                 </navbar-link>
               </li>
             </ul>
           </div>
-          <div class="flex items-center">
-            <!-- <select
-              id="lang-select"
-              v-model="currentLang"
-              class="hidden md:inline-block transition-all duration-300 ease-in-out bg-gray-100 dark:bg-gray-600 rounded-sm p-1 font-bold dark:text-white"
-              name="language"
-              @change="setLang()"
-            >
-              <option
-                v-for="{ name, code } in locales"
-                :key="`locale-${code}`"
-                :value="code"
-              >
-                {{ code.toUpperCase() }}
-              </option>
-            </select> -->
-            <LangSwitcher/>
-
+          <div class="items-center flex z-50 ">
+            <LangSwitcher />
             <span
-              class="hidden md:inline-block mx-3 dark:text-white/20 text-neutral-300"
+              class="inline-block mx-1 md:mx-2 lg:mx-3 dark:text-white/20 text-neutral-300"
               >|</span
             >
-            <ThemeSwitcher :is-dark="isDark"  @click="isDark = !isDark"/>
-            <!-- <Toggle v-model="isDark" class="hidden md:inline-block" /> -->
-            <!-- 
-            <button class="hidden md:inline-block w-4 text-center"   @click="changeTheme">
-              <span v-if = "colorMode.preference == 'light'">☾</span>
-              <span class="text-white" v-else>🌣</span>
-            </button> -->
+            <ThemeSwitcher :is-dark="isDark" @click="isDark = !isDark" />
             <span
-              class="hidden md:inline-block mx-3 dark:text-white/20 text-neutral-300"
+              class="inline-block mx-1 md:mx-2 lg:mx-3 dark:text-white/20 text-neutral-300"
               >|</span
             >
-
             <btn
               link
               href="mailto:haniel1121@outlook.com "
-              class="hidden md:inline-block hover:drop-shadow-lg hover:shadow-md transition-shadow ease-in-out duration-500"
+              class="hidden lg:inline-block hover:drop-shadow-lg hover:shadow-md transition-shadow ease-in-out duration-500"
             >
               {{ $t("navbar.contactMe") }}
             </btn>
-          </div>
-
-          <button
-            class="p-2 rounded-full w-12 h-12 md:hidden z-50 menu-button"
+            <button
+            class="p-2 rounded-full w-12 h-12 lg:hidden z-50 menu-button"
             @click="openMenu()"
             :class="{ menuOpen }"
           >
@@ -281,6 +263,9 @@ watch(isDark, (newval) => {
               class="border mx-auto rounded-xl dark:border-white border-black w-6"
             />
           </button>
+          </div>
+
+
         </div>
       </div>
       <transition :css="false" mode="out-in" @enter="onEnter" @leave="onLeave">
@@ -293,17 +278,21 @@ watch(isDark, (newval) => {
               v-for="(route, index) in routes"
               :key="`route-${index}`"
               :ref="(el) => (links[index] = el)"
-              class="nav-link-container text-center px-8 py-4"
+              class="nav-link-container text-3xl text-center px-8 py-4"
             >
               <navbar-link
                 :active="route.path == currentRoute"
                 :to="route.path"
                 @click="menuOpen = false"
+                class="text-3xl"
               >
+              <span class="font-black text-blue-600"> {{ `0${index+1}.` }}</span>
                 {{ $t(route.text) }}
               </navbar-link>
             </li>
-            <li class="nav-link-container text-center py-4">
+
+
+            <!-- <li class="nav-link-container text-center py-4">
               <select
                 id="lang-select"
                 class="transition-all text-xl duration-300 ease-in-out bg-gray-100 dark:bg-gray-600 rounded-sm p-1 font-bold dark:text-white"
@@ -319,10 +308,7 @@ watch(isDark, (newval) => {
                   {{ name.toUpperCase() }}
                 </option>
               </select>
-            </li>
-            <li class="nav-link-container text-center">
-              <Toggle v-model="isDark"  />
-            </li>
+            </li> -->
           </ul>
         </div>
       </transition>
