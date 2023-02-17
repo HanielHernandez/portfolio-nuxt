@@ -3,39 +3,18 @@ const { locale, locales } = useI18n();
 const switchLocalePath = useSwitchLocalePath();
 const showLocales = ref(false);
 
-const nonActiveLocale = computed(() => {
+const otherLocale = computed(() => {
   return locales.value.find((x) => x.code != locale.value);
 });
 </script>
 <template>
-  <div
-    class="lang"
-    @mouseenter="showLocales = true"
-    @mouseleave="showLocales = false"
-  >
-    <span
-      type="text"
-      readonly
+  <div class="lang">
+    <NuxtLink
       class="py-2 px-4 uppercase font-bold inline-block dark:text-white"
-      >{{ locale }}</span
+      :to="switchLocalePath(otherLocale.code)"
     >
-    <transition name="show-options" mode="out-in">
-      <div
-        v-if="showLocales"
-        class="options absolute bottom border border-neutral-200 dark:border-neutral-700 w-full"
-      >
-        <div
-          v-for="{ code } in locales"
-          :key="locale.code"
-          class="option"
-          :class="{ active: locale == code }"
-        >
-          <NuxtLink :to="switchLocalePath(code)">
-            {{ code }}
-          </NuxtLink>
-        </div>
-      </div>
-    </transition>
+      {{ otherLocale.code }}
+    </NuxtLink>
   </div>
 </template>
 <style lang="scss" scoped>
