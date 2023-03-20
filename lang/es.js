@@ -5,7 +5,7 @@ export default {
     firstLine: 'Hola Bienvenido, Yo soy',
     secondLine: 'Haniel Hernández, Desarrolador Web',
     paragraph:
-      'Soy un Desarrollador Front End que te ayudara a construir tu sitio web con la ayuda de los princios de UI/UX '
+      'Soy un Desarrollador Front End que te ayudará a construir tu sitio web con la ayuda de los princios de UI/UX'
   },
   navbar: {
     aboutMe: 'Acerca de mí',
