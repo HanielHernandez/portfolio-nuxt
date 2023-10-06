@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import AtImage from './atoms/AtImage.vue';
+import AtImage from '../atoms/at-image/AtImage.vue';
 import RichTextRenderer from 'contentful-rich-text-vue-renderer';
-import { AtImageProps } from '~~/types/atImageProps';
 
+type AtImageProps = InstanceType<typeof AtImage>["$props"];
 const toLocalePath = useLocalePath()
 
 const props = defineProps<{
@@ -11,14 +11,13 @@ const props = defineProps<{
   description: any,
   image: AtImageProps
 }>()
-
 </script>
 <template>
   <div class="flex flex-col-reverse lg:flex-row md:py-16 justify-center flex-nowrap md:justify-start"
-    style="height: 100%">
+    style="height: calc(100vh - 112px)">
     <div id="rightSide"
       class="flex justify-center flex-col w-full lg:w-1/2 md:h-full px-4 py-10 lg:px-0 text-center lg:text-left">
-      <h2 class="text-xl font-bold lg:text-4xl text-blue-600 mb-8 lg:mb-12 dark:text-blue-300">
+      <h2 class="section-title text-xl font-bold lg:text-4xl text-blue-600 mb-8 lg:mb-12 dark:text-blue-300">
         {{ subTitle }}
       </h2>
       <h1
@@ -37,23 +36,18 @@ const props = defineProps<{
             $t('contactMe') }}</a>
       </div>
       <div id="social_links" class="text-3xl text-center lg:text-left ">
-
         <a href="https://www.linkedin.com/in/hanielhernandez/" alt="my linkedin profile" target="_blank"
           class="social-link mr-2 text-neutral-900 hover:text-blue-600 dark:text-neutral-200 transition-colors ease-in-out duration-200">
           <Icon name="mdi:linkedin" />
-
         </a>
         <a href="https://github.com/HanielHernandez/" target="_blank" alt="my github profile"
           class="social-link mr-2 text-neutral-900 hover:text-blue-600  dark:text-neutral-200 transition-colors ease-in-out duration-200">
           <Icon name="mdi:github" />
         </a>
-
       </div>
     </div>
     <div class="flex justify-center items-center w-full lg:w-1/2 lg:h-full px-4 lg:px-0">
-      <!-- <img src="/img/home_graph.svg" class="graph max-w-16 h-auto mx-auto" /> -->
-
-      <AtImage v-bind="image" />
+      <AtImage v-bind="image" class="graph" />
     </div>
   </div>
 </template>

@@ -1,49 +1,60 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, useAttrs } from 'vue'
 
 type AtButtonSize = 'sm' | 'md' | 'lg' | 'xl' | '2xl'
-type AtButtonColors = 'primary' | 'default'
+type AtButtonColor = 'primary' | 'default'
 
 interface AtButtonProps {
   size?: AtButtonSize
   label?: string,
-  color?: string,
+  color?: AtButtonColor,
   outlined?: boolean
+  element?: string
 }
 
 const attButtonClasssPerSize: Partial<Record<AtButtonSize, String>> = {
-  "sm": "px-3 py-2 ",
-  "md": "px-4 py-3"
+  "sm": "px-3 py-2 text-sm",
+  "md": "px-4 py-2 text-base",
+  "lg": "px-5 py-3 text-xl"
 }
 
+const backgroundClassPerColor: Partial<Record<AtButtonColor, String>> = {
+  "primary": "text-white bg-blue-600 border border-blue-600",
+  "default": "px-4 py-2"
+}
+const outlineClassPerColor: Partial<Record<AtButtonColor, String>> = {
+  "primary": "border-1 border-blue-600 text-blue-600 hover:text-white hover:bg-blue-600",
+  "default": "px-4 py-2"
+}
 
 const props = withDefaults(defineProps<AtButtonProps>(), {
   size: "md",
   outlined: false,
-  color: "primary"
+  color: "primary",
+  element: "button"
 })
 
-
+const attrs = useAttrs();
 
 const buttonClasses = computed(() => {
   const buttonSizeClass = attButtonClasssPerSize[props.size]
+  const colorClass = backgroundClassPerColor[props.color]
+  const outlinedClass = outlineClassPerColor[props.color]
   return [
-    "inline-block border-none font-bold	text-base",
-    buttonSizeClass
+    attrs["class"],
+    "inline-block border font-bold	 hover:shadow-md transition-all ease-in-out duration-200 ",
+    buttonSizeClass,
+    props.outlined ? outlinedClass : colorClass
   ]
 })
-
-
-
 </script>
 <template lang="">
-  <button class="font-bold px-4 py-3">
+  <component v-bind="attrs" :is="element" :class="buttonClasses" >
 
       <span v-if="label">
         {{label}}
       </span>
       <slot v-else />
 
-  </button>
+  </component>
 </template>
-<style lang="scss"></style>

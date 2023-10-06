@@ -7,9 +7,10 @@ const props = defineProps<{
     url: string;
   };
 }>()
+const attrs = useAttrs()
 
 </script>
 <template lang="">
-  <img :src="file.url" v-bind="$attr" title="title"/>
+  <img :src="file.url" v-bind="attrs" :alt="file.title"/>
 </template>
 <style lang="scss"></style>

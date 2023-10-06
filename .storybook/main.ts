@@ -6,19 +6,13 @@ const config: StorybookConfig = {
     {
       name: '@storybook/addon-styling',
       options: {
-        // Check out https://github.com/storybookjs/addon-styling/blob/main/docs/api.md
-        // For more details on this addon's options.
-        cssLoaderOptions: {
-          importLoaders: 1
-        },
-        postCss: {
-          implementation: require('postcss')
-        }
+        postCss: true
       }
     },
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions'
+    //'storybook-addon-nuxt'
   ],
   framework: {
     name: '@storybook/vue3-vite',
@@ -26,6 +20,7 @@ const config: StorybookConfig = {
   },
   docs: {
     autodocs: 'tag'
-  }
+  },
+  core: {}
 }
 export default config

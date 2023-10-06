@@ -81,10 +81,13 @@ export default defineNuxtConfig({
     storageKey: 'nuxt-color-mode'
   },
   tailwindcss: {
-    cssPath: '~/assets/css/tailwind.css'
-  }
-  // storybook: {
-  //   url: 'http://localhost:6006',
-  //   port: 6006
-  // }
+    cssPath: '~/assets/css/tailwind.css',
+    injectPosition: 'last'
+  },
+  components: [
+    { path: '~/components/atoms', pathPrefix: false },
+    { path: '~/components/organisms', pathPrefix: false },
+    { path: '~/components/molecules', pathPrefix: false },
+    '~/components'
+  ]
 })

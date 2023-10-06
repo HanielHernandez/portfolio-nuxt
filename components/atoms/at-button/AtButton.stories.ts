@@ -10,13 +10,15 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     size: { control: 'select', options: ['sm', 'md', 'lg'], default: 'md' },
-    label: { control: 'text' }
+    label: { control: 'text' },
+    color: { control: 'select', options: ['primary', 'secondary'], default: 'primary' },
+    outlined: { control: 'boolean' }
   },
-  render: () => ({
+  render: (args, { argTypes }) => ({
     components: { AtButton },
+    props: Object.keys(argTypes),
     template: `<AtButton v-bind="$props"> My Button </AtButton>`
-  }),
-  args: { primary: false } // default value
+  })
 } satisfies Meta<typeof AtButton>
 
 export default meta
