@@ -10,7 +10,7 @@ const props = defineProps({
   },
 });
 
-const animateIcon = async () => {
+const animateIcon = async (inmediate: Boolean = false) => {
   await nextTick();
   const beams = modeIcon.value?.getElementsByClassName("beam");
   const tl = gsap.timeline();
@@ -33,9 +33,6 @@ const animateIcon = async () => {
           0.6
         );
       }
-
-
-
       if (beams) {
         tl.fromTo(
           beams,
@@ -63,7 +60,6 @@ const animateIcon = async () => {
       }
     }
   } else {
-
     if (beams) {
       tl.fromTo(
         beams,
@@ -103,7 +99,7 @@ const animateIcon = async () => {
       );
     }
   }
-  tl.play();
+  tl.play(0.4);
 };
 
 onMounted(async () => {

@@ -3,7 +3,6 @@ import type { Component } from 'vue'
 import { PageProps } from "~~/types/pageProps"
 import { ComponentTypes, ComponentType } from "../components/components"
 import animations from "~/animations";
-import { ContentType } from 'contentful';
 const { $contentfulClient } = useNuxtApp()
 const route = useRoute()
 const router = useRouter()
@@ -88,6 +87,9 @@ const getBlock = (blockType: ComponentType): Component => {
           <template v-for="block in data.blocks" :key="block.CONTENTFUL_ID">
             <component :is="getBlock(block.CONTENT_TYPE)" v-bind="block" />
           </template>
+        </div>
+        <div v-else>
+          <p>Looks like this page has no content yet.</p>
         </div>
       </div>
     </transition>

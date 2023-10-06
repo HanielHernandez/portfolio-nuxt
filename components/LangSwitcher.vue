@@ -1,18 +1,15 @@
 <script setup>
-const { locale, locales } = useI18n();
-const switchLocalePath = useSwitchLocalePath();
-const showLocales = ref(false);
+const { locale, locales } = useI18n()
+const switchLocalePath = useSwitchLocalePath()
+const showLocales = ref(false)
 
 const otherLocale = computed(() => {
-  return locales.value.find((x) => x.code != locale.value);
-});
+  return locales.value.find((x) => x.code != locale.value)
+})
 </script>
 <template>
   <div class="lang">
-    <NuxtLink
-      class="py-2 px-4 uppercase font-bold inline-block dark:text-white"
-      :to="switchLocalePath(otherLocale.code)"
-    >
+    <NuxtLink class="py-2 px-4 uppercase font-bold inline-block dark:text-white" :to="switchLocalePath(otherLocale.code)">
       {{ otherLocale.code }}
     </NuxtLink>
   </div>
@@ -29,6 +26,7 @@ const otherLocale = computed(() => {
   .options {
     @apply bg-white dark:bg-neutral-800;
     opacity: 0;
+
     .option {
       @apply px-2 py-1 dark:text-white;
 
@@ -37,6 +35,7 @@ const otherLocale = computed(() => {
       }
     }
   }
+
   &:hover {
     .options {
       opacity: 1;

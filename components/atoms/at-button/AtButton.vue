@@ -42,7 +42,7 @@ const buttonClasses = computed(() => {
   const outlinedClass = outlineClassPerColor[props.color]
   return [
     attrs["class"],
-    "inline-block border font-bold	 hover:shadow-md transition-all ease-in-out duration-200 ",
+    "inline-block border font-bold hover:shadow-md transition-colors transition-shadow ease-in-out duration-200 ",
     buttonSizeClass,
     props.outlined ? outlinedClass : colorClass
   ]
