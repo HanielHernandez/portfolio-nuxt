@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import type { Component } from 'vue'
 import { PageProps } from "~~/types/pageProps"
-import { ComponentTypes } from "../components/components"
+import { ComponentTypes, ComponentType } from "../components/components"
 import animations from "~/animations";
-
+import { ContentType } from 'contentful';
 const { $contentfulClient } = useNuxtApp()
 const route = useRoute()
 const router = useRouter()
@@ -13,7 +14,7 @@ const contentFullLocal: Record<string, string> = {
   ["es"]: "es"
 }
 
-const blockComponents = computed(() => ComponentTypes)
+
 const slug = computed(() => route.params.slug === '' ? "/" : route.params.slug)
 const { data } = useAsyncData(async () => {
   try {
@@ -72,6 +73,9 @@ definePageMeta({
   }
 })
 
+const getBlock = (blockType: ComponentType): Component => {
+  return ComponentTypes[blockType]
+}
 
 </script>
 <template>
@@ -82,7 +86,7 @@ definePageMeta({
         <MlNavbar v-if="data.header" id="navbar" :links="data.header.links" />
         <div v-if="data && data.blocks">
           <template v-for="block in data.blocks" :key="block.CONTENTFUL_ID">
-            <component :is="blockComponents[block.CONTENT_TYPE]" v-bind="block" />
+            <component :is="getBlock(block.CONTENT_TYPE)" v-bind="block" />
           </template>
         </div>
       </div>

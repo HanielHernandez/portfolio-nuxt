@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import AtImage from '../atoms/at-image/AtImage.vue';
-import RichTextRenderer from 'contentful-rich-text-vue-renderer';
+import { Document } from '@contentful/rich-text-types';
 
 type AtImageProps = InstanceType<typeof AtImage>["$props"];
 const toLocalePath = useLocalePath()
@@ -8,7 +8,7 @@ const toLocalePath = useLocalePath()
 const props = defineProps<{
   title: String,
   subTitle: String,
-  description: any,
+  description: Document,
   image: AtImageProps
 }>()
 </script>
@@ -25,7 +25,7 @@ const props = defineProps<{
         {{ title }}
       </h1>
       <div class=" text-neutral-600 mx-auto dark:text-neutral-400 mb-8" style="max-width:650px">
-        <RichTextRenderer :document="description" />
+        <AtRichText :document="description" />
       </div>
       <div class="cta-buttons flex items-center justify-center lg:justify-start mb-8">
         <NuxtLink :to="toLocalePath('/my-work')"

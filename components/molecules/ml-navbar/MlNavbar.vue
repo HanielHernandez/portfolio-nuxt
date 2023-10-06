@@ -35,7 +35,7 @@ onMounted(() => {
 
 const currentRoute = computed(
   () =>
-    props.links.find((x) => toLocalePath(x.path) == route.path) || {
+    props.links.find((x) => toLocalePath(x.url) == route.path) || {
       path: "/",
     }
 );

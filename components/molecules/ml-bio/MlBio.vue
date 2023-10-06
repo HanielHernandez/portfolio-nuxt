@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { MlBioProps } from './MlBio.types'
-import RichTextRenderer from 'contentful-rich-text-vue-renderer';
 
 const props = defineProps<MlBioProps>()
 
@@ -12,10 +11,7 @@ const props = defineProps<MlBioProps>()
          <h2  class="text-3xl font-bold">
             {{title}}
          </h2>
-         <div>
-
-         </div>
-         <RichTextRenderer :document="biography" />
+         <AtRichText :document="biography" />
          <AtButton outlined size="lg" v-if="actionLink" element="a" :label="actionLink.text" :href="actionLink.url" />
       </div>
       <div
