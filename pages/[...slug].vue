@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Component } from 'vue'
+import gsap from "gsap";
 import { PageProps } from "~~/types/pageProps"
 import { ComponentTypes, ComponentType } from "../components/components"
 import animations from "~/animations";
@@ -15,7 +16,7 @@ const contentFullLocal: Record<string, string> = {
 
 
 const slug = computed(() => route.params.slug === '' ? "/" : route.params.slug)
-const { data } = useAsyncData(async () => {
+const { data, pending } = useAsyncData(async () => {
   try {
     const collection = await $contentfulClient.getEntries({
       content_type: "page",
@@ -37,13 +38,27 @@ const { data } = useAsyncData(async () => {
 }, { watch: [locale] })
 
 const onEnter = (el: Element, done: () => void) => {
-  console.log("enter")
-  const pageSlug = typeof slug.value === 'object' ? slug.value.join() : slug.value
-  animations[pageSlug].onEnter(el, done)
+  const tl = gsap.timeline({
+    onComplete: () => done()
+  })
+  tl.from(".nav", {
+    opacity: 0,
+    duration: 0.3,
+    onComplete: () => { done() }
+  });
+  tl.play()
 }
 
 const onLeave = (el: Element, done: () => void) => {
-  animations['home'].onLeave(el, done)
+  const tl = gsap.timeline({
+    onComplete: () => done()
+  })
+  tl.to(".nav", {
+    opacity: 0,
+    duration: 0.3,
+    onComplete: () => { done() }
+  });
+  tl.play()
 }
 
 definePageMeta({
@@ -82,7 +97,7 @@ const getBlock = (blockType: ComponentType): Component => {
     style="max-width: 1024px; ">
     <transition :css="false" mode="out-in" @enter="onEnter" @leave="onLeave">
       <div v-if="data">
-        <MlNavbar v-if="data.header" id="navbar" :links="data.header.links" />
+        <!-- <MlNavbar v-if="data.header && !pending" id="navbar" :links="data.header.links || []" /> -->
         <div v-if="data && data.blocks">
           <template v-for="block in data.blocks" :key="block.CONTENTFUL_ID">
             <component :is="getBlock(block.CONTENT_TYPE)" v-bind="block" />

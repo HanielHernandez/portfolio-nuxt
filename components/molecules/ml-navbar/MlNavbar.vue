@@ -22,15 +22,6 @@ const currentLang = ref(localLang);
 
 const props = defineProps<MlNavbarProps>()
 
-onMounted(() => {
-  // gsap.from(".nav", {
-  //   y: -30,
-  //   opacity: 0,
-  //   duration: 1,
-  // });
-
-  isDark.value = colorMode.preference == "dark";
-});
 
 
 const currentRoute = computed(

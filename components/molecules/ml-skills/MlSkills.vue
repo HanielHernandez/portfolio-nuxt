@@ -6,6 +6,8 @@ const props = defineProps<MlSkillsProps>()
 </script>
 <template>
   <div class="py-16 flex flex-wrap justify-between">
+
+
     <div class="w-full px-4 lg:px-0 section-title">
       <SectionTitle>
         {{ props.title }}

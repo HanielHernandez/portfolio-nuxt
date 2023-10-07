@@ -4,11 +4,11 @@ const props = defineProps<MlProjectsProps>()
 
 </script>
 <template>
-  <div class="flex flex-col md:gap-4 lg:gap-16">
-    <h2 class="text-3xl font-bold m-0">
+  <div class="flex flex-col ">
+    <h2 id="projects_title" class="text-3xl text-center font-bold px-4 my-5 md:m-0 md:px-0">
       {{ props.title }}
     </h2>
-    <div class="flex flex-wrap cards-container justify-center">
+    <div class="flex flex-wrap cards-container justify-center py-8">
       <div v-for="project in props.projects" :key="`project-${project.id}`" class="p-4 w-full md:w-1/2 lg:w-1/3">
         <MlProjectCard v-bind="project" />
       </div>
