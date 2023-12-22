@@ -5,7 +5,7 @@ export default {
     firstLine: "Hi, Welcome, I am",
     secondLine: "Haniel Hernández, Web Dev",
     paragraph:
-      "I'am a front end developer who will help you build your website with the help of UI/UX and good patterns",
+      "I am a front end developer who will help you build your website with the help of UI/UX and good patterns",
   },
   "navbar.home": "Home",
   navbar: {
