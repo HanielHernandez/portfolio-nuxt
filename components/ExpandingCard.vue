@@ -2,56 +2,35 @@
 import gsap from 'gsap';
 
 const CONTENT_PADDING = 32;
-// const title = ref<HTMLElement|null>(null)
-// const content = ref<HTMLElement|null>(null)
-// const titleHeight = ref(60)
 const contentHeight = ref(0)
+
 const props = defineProps({
   expanded: {
     type: Boolean,
-    default: ()=>false
+    default: () => false
   }
 })
 const emit = defineEmits(['onExpand'])
 
-
-
-
-// const titleHeight = computed(()=>{
-//   return title.value ? title.value.offsetHeight : 0
-// }) 
-// const contentHeight = computed(()=>{
-//   return content.value ? content.value.offsetHeight : 0
-// }) 
-
-
-
-
-const onExpanButtonClick = ()=>{
+const onExpanButtonClick = () => {
   emit('onExpand', !props.expanded)
 }
 
-onMounted(async ()=>{
+onMounted(async () => {
   await checkDimensions()
 })
 
-watch(()=>props.expanded,async (newval)=>{
- await checkDimensions()
+watch(() => props.expanded, async (newval) => {
+  await checkDimensions()
 })
 
 
-const checkDimensions = async ()=>{
+const checkDimensions = async () => {
   await nextTick()
   contentHeight.value = content.value && content.value.scrollHeight + CONTENT_PADDING || 0
 }
-// window.addEventListener("resize", checkDimensions);
 
-
-// onBeforeUnmount(()=> {
-//   window.removeEventListener("resize", checkDimensions);
-// })
-
-const onEnter = (el:HTMLElement, done: ()=>any)=>{
+const onEnter = (el: HTMLElement, done: () => any) => {
   done()
   console.log("showing content")
   gsap.from(
@@ -61,11 +40,11 @@ const onEnter = (el:HTMLElement, done: ()=>any)=>{
       paddingTop: 0,
       paddingBottom: 0,
       duration: 0.3,
-      onComplete: ()=>done(),
+      onComplete: () => done(),
       ease: "power4.easeInOut"
     })
 }
-const onLeave = (el:HTMLElement, done: ()=>any)=>{
+const onLeave = (el: HTMLElement, done: () => any) => {
   gsap.to(
     el,
     {
@@ -73,7 +52,7 @@ const onLeave = (el:HTMLElement, done: ()=>any)=>{
       duration: 0.3,
       paddingTop: 0,
       paddingBottom: 0,
-      onComplete: ()=>done(),
+      onComplete: () => done(),
       ease: "power4.easeInOut"
     })
 
@@ -105,12 +84,12 @@ const onLeave = (el:HTMLElement, done: ()=>any)=>{
   }
 
   &-button {
-    @apply w-16 h-16 absolute right-0 top-0  p-4;
+    @apply w-16 h-16 absolute right-0 top-0 p-4;
     background-image: url();
   }
 
   &-content {
-    @apply  px-4 pb-4;
+    @apply px-4 pb-4;
     overflow: hidden;
   }
 

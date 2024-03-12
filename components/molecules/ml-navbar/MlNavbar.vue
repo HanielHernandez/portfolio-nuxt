@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import gsap from "gsap";
-import { AtLinkProps } from "./atoms/at-link/AtLink.types";
 import { MlNavbarProps } from "./MlNavbar.types";
 
 const route = useRoute();
@@ -16,13 +15,9 @@ const colorMode = useColorMode();
 const openMenu = () => {
   menuOpen.value = !menuOpen.value;
 };
-
 const isDark = ref(colorMode.preference == "dark");
 const currentLang = ref(localLang);
-
 const props = defineProps<MlNavbarProps>()
-
-
 
 const currentRoute = computed(
   () =>
@@ -236,7 +231,7 @@ watch(isDark, (newval) => {
           </div>
         </div>
       </div>
-      <transition :css="false" mode="out-in" @enter="onEnter" @leave="onLeave">
+      <transition :css="false" mode="out-in" @enter="(onEnter)" @leave="(onLeave)">
         <div v-if="menuOpen"
           class="menu z-40 ease-out bg-white dark:bg-black/80 w-screen h-screen bg-opacity-90 fixed top-0 left-0">
           <ul class="flex h-full flex-col justify-center items-center">

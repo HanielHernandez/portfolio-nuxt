@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { MlNavbarProps } from '~/components/molecules/ml-navbar/MlNavbar.types';
-
 const { $contentfulClient } = useNuxtApp()
 const { locale } = useI18n()
 
@@ -9,7 +8,7 @@ const contentFullLocal: Record<string, string> = {
   ["es"]: "es"
 }
 
-const { data: navbar, pending } = useAsyncData(async () => {
+const { data: navbar, pending, refresh } = useAsyncData(async () => {
   try {
     const collection = await $contentfulClient.getEntries({
       content_type: "mlNavbar",
@@ -23,13 +22,18 @@ const { data: navbar, pending } = useAsyncData(async () => {
   }
 })
 
+watch(locale, function (newLang, oldLang) {
+  console.log(newLang, oldLang)
+  if (newLang != oldLang) {
+    refresh()
+  }
+})
 
 </script>
 <template>
   <div class="transition-all pt-20 lg:pt-28 ease-in-out duration-300 w-full h-screen overflow-y-auto dark:bg-neutral-900"
     style="overflow: overlay;">
     <MlNavbar v-if="!pending" id="navbar" :links="navbar.links || []" />
-
     <slot />
     <!-- <Footer/> -->
   </div>
