@@ -7,8 +7,8 @@ interface TransitionHandlers {
   onLeave: (el: HTMLElement | Element, done: () => void) => void
 }
 const animations: { [key: string]: TransitionHandlers } = {
-  mywork,
-  home,
-  about
+  'my-work': mywork,
+  '/': home,
+  'about-me': about
 }
 export default animations

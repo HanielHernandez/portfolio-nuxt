@@ -10,7 +10,7 @@ const props = defineProps({
   },
 });
 
-const animateIcon = async () => {
+const animateIcon = async (inmediate: Boolean = false) => {
   await nextTick();
   const beams = modeIcon.value?.getElementsByClassName("beam");
   const tl = gsap.timeline();
@@ -22,42 +22,17 @@ const animateIcon = async () => {
 
     if (beams) {
       if (modeIcon.value) {
-        // tl.to(
-        //   modeIcon.value,
-        //   {
-        //     backgroundColor: "#171717",
-        //     ease: "power4.easeIn",
-        //     duration: 0.3,
-        //   },
-        //   0
-        // );
-
         tl.to(
-        modeIcon.value.getElementsByClassName("off-center"),
-        {
-          // backgroundColor: "171717",
-          ease: "power4.easeIn",
-          transform: "translate(50% , -50%)",
-          scale: 1,
-          duration: 0.3,
-        },
-        0.6
-      );
-
-      // tl.to(
-      //   modeIcon.value.getElementsByClassName("center"),
-      //   {
-      //     backgroundColor: "#white",
-      //     ease: "power4.easeIn",
-      //     scale: 1,
-      //     duration: 0.3,
-      //   },
-      //   0.6
-      // );
+          modeIcon.value.getElementsByClassName("off-center"),
+          {
+            ease: "power4.easeIn",
+            transform: "translate(50% , -50%)",
+            scale: 1,
+            duration: 0.3,
+          },
+          0.6
+        );
       }
-      
-
-
       if (beams) {
         tl.fromTo(
           beams,
@@ -85,7 +60,6 @@ const animateIcon = async () => {
       }
     }
   } else {
-
     if (beams) {
       tl.fromTo(
         beams,
@@ -113,20 +87,9 @@ const animateIcon = async () => {
       );
     }
     if (modeIcon.value) {
-      // tl.to(
-      //   modeIcon.value,
-      //   {
-      //     backgroundColor: "white",
-      //     ease: "power4.easeIn",
-      //     duration: 0.3,
-      //   },
-      //   1.2
-      // );
-
       tl.to(
         modeIcon.value.getElementsByClassName("off-center"),
         {
-          // backgroundColor: "white",
           ease: "power4.easeIn",
           transform: "translate(75%, -75%)",
           scale: 1.2,
@@ -134,23 +97,9 @@ const animateIcon = async () => {
         },
         1.2
       );
-
-      // tl.to(
-      //   modeIcon.value.getElementsByClassName("center"),
-      //   {
-      //     backgroundColor: "#171717",
-      //     ease: "power4.easeIn",
-      //     scale: 1.2,
-      //     duration: 0.3,
-      //   },
-      //   1.2
-      // );
-
-
-
     }
   }
-  tl.play();
+  tl.play(0.4);
 };
 
 onMounted(async () => {
@@ -160,129 +109,13 @@ onMounted(async () => {
 const timeLine = ref();
 watch(
   () => props.isDark,
-  async (newval) => {
-    animateIcon();
+  async (newval, oldVal) => {
+    if (newval !== oldVal) {
+      animateIcon();
+
+    }
   }
 );
-
-// const onSunEnter = (el: HTMLElement, done: () => void) => {
-//   const tl = gsap.timeline({
-//     onComplete: done
-//   })
-//   console.log(props.isDark)
-
-//   if (props.isDark == true) {
-//     const beams = el.getElementsByClassName('beam')
-
-//     tl.to(modeIcon.value, {
-//       backgroundColor: '#000'
-//     })
-
-//     tl.from(
-//       el,
-//       {
-//         scale: 0,
-//         duration: 0.3
-//       },
-//       0
-//     )
-
-//     tl.from(beams, {
-//       opacity: 0,
-//       scale: 0,
-//       duration: 0.2,
-//       stagger: {
-//         each: 0.1,
-//         from: 'start',
-//         ease: 'power4.easeIn'
-//       }
-//     })
-
-//   } else {
-//     tl.from(
-//       el,
-//       {
-//         scale: 0,
-//         duration: 0.3
-//       },
-//       0
-//     )
-//     tl.to(
-//       modeIcon.value,
-//       {
-//         backgroundColor: '#fff'
-//       },
-//       0
-//     )
-//     const centerOff = el.getElementsByClassName('off-center')
-
-//     tl.from(
-//       centerOff,
-//       {
-//         width: '100%',
-//         height: '100%',
-//         top: '50%',
-//         left: '50%',
-//         x: '-50%',
-//         y: '-50%',
-//         duration: 0.3
-//       },
-//       0.6
-//     )
-//   }
-//   tl.play()
-// }
-
-// const onSunLeave = (el: HTMLElement, done: () => void) => {
-//   const beams = el.getElementsByClassName('beam')
-//   console.log(props.isDark)
-
-//   const tl = gsap.timeline({
-//     onComplete: done
-//   })
-
-//   if (props.isDark == true) {
-//     const centerOff = el.getElementsByClassName('off-center')
-//     console.log(centerOff)
-//     tl.to(centerOff, {
-//       width: '100%',
-//       height: '100%',
-//       top: '50%',
-//       left: '50%',
-//       x: '-50%',
-//       y: '-50%',
-//       duration: 0.3
-//     })
-
-//     tl.to(el, {
-//       scale: 0,
-//       opacity: 0
-//     })
-//     tl.to(modeIcon.value, {
-//       backgroundColor: 'rgb(25,25,25)'
-//     })
-//   } else {
-//     tl.to(
-//       beams,
-//       {
-//         opacity: 0,
-//         scale: 0,
-//         duration: 0.2,
-//         stagger: {
-//           each: 0.1,
-//           from: 'end',
-//           ease: 'power4.easeIn'
-//         }
-//       },
-//       0
-//     )
-//     tl.to(el, {
-//       scale: 0,
-//       duration: 0.3
-//     })
-//   }
-//   tl.play()
-// }
 </script>
 <template lang="">
   <div
@@ -307,9 +140,10 @@ watch(
 .sun {
   position: relative;
 }
+
 .modeIcon {
   &:hover {
-    .center{
+    .center {
       @apply bg-neutral-200;
     }
   }
@@ -329,7 +163,7 @@ watch(
   }
 
   .off-center {
-    @apply  rounded-full dark:bg-neutral-800 bg-white;
+    @apply rounded-full dark:bg-neutral-800 bg-white;
     position: absolute;
     top: 0;
     right: 0;
@@ -340,7 +174,9 @@ watch(
   }
 
   &.sun {
-    .center, .off-center{
+
+    .center,
+    .off-center {
       @apply transition-colors ease-in-out duration-700;
     }
 
@@ -365,6 +201,7 @@ watch(
     .center {
       z-index: 99;
     }
+
     .off-center {
       z-index: 100;
     }
