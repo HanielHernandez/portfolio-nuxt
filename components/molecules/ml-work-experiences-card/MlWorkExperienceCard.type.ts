@@ -1,5 +1,5 @@
-import { Document } from '@contentful/rich-text-types'
-import { AtImageProps } from '~/components/atoms/at-image/AtImage.types'
+import type { Document } from '@contentful/rich-text-types'
+import type { AtImageProps } from '~/components/atoms/at-image/AtImage.types'
 
 export interface Experience {
     endDate: string

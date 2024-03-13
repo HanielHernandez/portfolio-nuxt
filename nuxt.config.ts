@@ -10,17 +10,27 @@ export default defineNuxtConfig({
             accessToken: process.env.NUXT_CTF_CDA_ACCESS_TOKEN
         }
     },
+    // Defaults options
+    tailwindcss: {
+        cssPath: '~/assets/css/tailwind.css',
+        configPath: 'tailwind.config.js',
+        exposeConfig: false,
+        exposeLevel: 2,
+        config: {},
+        injectPosition: 'last',
+        viewer: true
+    },
     i18n: {
         locales: [
             {
                 code: 'en',
                 name: 'English',
-                file: 'en-US.js'
+                file: { path: 'en-US.js', cache: false }
             },
             {
                 code: 'es',
                 name: 'Español',
-                file: 'es.js'
+                file: { path: 'es.js', cache: false }
             }
         ],
         // lazy: true,
@@ -31,7 +41,7 @@ export default defineNuxtConfig({
         },
         baseUrl: '',
         strategy: 'prefix',
-        langDir: '/lang',
+        langDir: 'lang',
         defaultLocale: 'en',
         skipSettingLocaleOnNavigate: true
     },
@@ -73,10 +83,7 @@ export default defineNuxtConfig({
         classSuffix: '',
         storageKey: 'nuxt-color-mode'
     },
-    tailwindcss: {
-        cssPath: '~/assets/css/tailwind.css',
-        injectPosition: 'last'
-    },
+
     components: [
         { path: '~/components/atoms', pathPrefix: false },
         { path: '~/components/organisms', pathPrefix: false },
@@ -85,7 +92,7 @@ export default defineNuxtConfig({
     ],
     dayjs: {
         locales: ['en', 'es'],
-        plugins: ['relativeTime', 'utc', 'timezone', 'updateLocale'],
+        plugins: ['relativeTime', 'utc', 'timezone'],
         defaultLocale: 'es',
         defaultTimezone: 'America/New_York'
     }

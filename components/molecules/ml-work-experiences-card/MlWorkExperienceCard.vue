@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MlWorkExperienceCardProps, MlWorkExperienceCardEmits } from './MlWorkExperienceCard.type'
+import { type MlWorkExperienceCardEmits, type MlWorkExperienceCardProps, } from './MlWorkExperienceCard.type'
 const props = withDefaults(defineProps<MlWorkExperienceCardProps>(),
   {
     expanded: false
@@ -16,9 +16,9 @@ const { locale } = useI18n()
 
 const fromToFormated = computed(() => {
   const { experience: { startDate: from, endDate: to } } = props
-
-  const fromFormated = useDayjs(from).locale(locale.value).format("MMM YYYY")
-  const toFormated = useDayjs(to).locale(locale.value).format("MMM YYYY")
+  const dayjs = useDayjs()
+  const fromFormated = dayjs(from).locale(locale.value).format("MMM YYYY")
+  const toFormated = dayjs(to).locale(locale.value).format("MMM YYYY")
 
   console.log(`${fromFormated} - ${toFormated}`)
   return `${fromFormated} - ${toFormated}`
