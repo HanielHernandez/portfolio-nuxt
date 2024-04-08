@@ -10,14 +10,12 @@ export default defineNuxtConfig({
             accessToken: process.env.NUXT_CTF_CDA_ACCESS_TOKEN
         }
     },
+    css: ['~/assets/css/tailwind.css'],
     // Defaults options
     tailwindcss: {
-        cssPath: '~/assets/css/tailwind.css',
         configPath: 'tailwind.config.js',
-        exposeConfig: false,
-        exposeLevel: 2,
+        exposeConfig: { level: 2 },
         config: {},
-        injectPosition: 'last',
         viewer: true
     },
     i18n: {
@@ -44,6 +42,12 @@ export default defineNuxtConfig({
         langDir: 'lang',
         defaultLocale: 'en',
         skipSettingLocaleOnNavigate: true
+    },
+    postcss: {
+        plugins: {
+            tailwindcss: {},
+            autoprefixer: {}
+        }
     },
     vite: {
         css: {

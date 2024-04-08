@@ -1,6 +1,6 @@
-import { Experience } from '../ml-work-experiences-card/MlWorkExperienceCard.type'
+import type Experience from '../ml-work-experiences-card/MlWorkExperienceCard.type'
 
-export interface MlWorkExperiencesProps {
+export default interface MlWorkExperiencesProps {
     title: string
     experiences: Experience[]
 }

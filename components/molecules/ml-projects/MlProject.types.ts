@@ -1,6 +1,6 @@
-import { MlProjectCardProps } from '../ml-project-card/MlProjectCard.types'
+import type MlProjectCardProps from '../ml-project-card/MlProjectCard.types'
 
-export interface MlProjectsProps {
+export default interface MlProjectsProps {
     title: string
     projects: MlProjectCardProps
 }

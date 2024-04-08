@@ -7,13 +7,14 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 const nuxtApp = useNuxtApp();
 const loading = ref(true);
 const colorMode = useColorMode()
-const { finalizePendingLocaleChange } = useI18n()
+
 const onBeforeEnter = async () => {
-  await finalizePendingLocaleChange()
+  //await finalizePendingLocaleChange()
+  console.log("entering")
 }
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-const changeTheme = ()=>{
-  colorMode.preference = colorMode.preference == 'dark' ? 'light': 'dark'
+const changeTheme = () => {
+  colorMode.preference = colorMode.preference == 'dark' ? 'light' : 'dark'
 }
 
 
@@ -29,24 +30,24 @@ nuxtApp.hook("app:rendered", () => {
 //   },1500)
 // })
 
-const onEnter = (el,done)=>{
+const onEnter = (el: Element, done: () => void) => {
 
   const tl = gsap.timeline({
-    onComplete:()=> done()
+    onComplete: () => done()
   })
 
   const loadingIndicator = el.querySelector('.loading-indicator')
 
   tl.from(loadingIndicator,
     {
-      scale:0,
+      scale: 0,
       opacity: 0,
       duration: 0.3,
       ease: 'power4.easeInOut'
     },
     0.3)
 
-    tl.to(el,
+  tl.to(el,
     {
       opacity: 1,
       height: '100%',
@@ -55,31 +56,31 @@ const onEnter = (el,done)=>{
     },
     0)
 
-   
+
 
   tl.play()
 
 }
 
-const onLeave = (el:HTMLElement, done: ()=>void)=>{
+const onLeave = (el: HTMLElement, done: () => void) => {
 
 
   const tl = gsap.timeline({
-    onComplete:()=> done()
+    onComplete: () => done()
   })
 
   const loadingIndicator = el.querySelector('.loading-indicator')
 
   tl.to(loadingIndicator,
     {
-      scale:0,
+      scale: 0,
       opacity: 0,
       duration: 0.3,
       ease: 'power4.easeInOut'
     },
     0)
 
-    tl.to(el,
+  tl.to(el,
     {
       opacity: 0,
       height: 0,
@@ -94,41 +95,41 @@ const onLeave = (el:HTMLElement, done: ()=>void)=>{
 </script>
 
 <template>
-  <body :class="{dark: $colorMode.preference == 'dark'}">
+
+  <body :class="{ dark: $colorMode.preference == 'dark' }">
     <div class="h-screen">
-   
-    <NuxtLayout>
-      <NuxtPage :transition="{
-      name: 'my',
-      mode: 'out-in',
-      onBeforeEnter
-    }"  />
-    </NuxtLayout>
-  </div>
+
+      <NuxtLayout>
+        <NuxtPage :transition="{
+    name: 'my',
+    mode: 'out-in',
+    onEnter
+  }" />
+      </NuxtLayout>
+    </div>
   </body>
-    
+
 </template>
 
 <style lang="scss">
+@keyframes smoth-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
 
-  @keyframes smoth-rotate {
-    0% {
-      transform: rotate(0deg);
-    }
-
-    /* 50% {
+  /* 50% {
       transform: rotate(180deg);
     } */
-    100% {
-      transform: rotate(360deg);
-    }
+  100% {
+    transform: rotate(360deg);
   }
+}
 
 
-  .loading-indicator { 
-    line-height: 1 ;
-    // animation: smoth-rotate 2s cubic-bezier(0.245, 0.000, 0.935, 0.080) infinite;
-    // animation: smoth-rotate 2s cubic-bezier(0.245, 0.000, 0.935, 0.080) infinite;
+.loading-indicator {
+  line-height: 1;
+  // animation: smoth-rotate 2s cubic-bezier(0.245, 0.000, 0.935, 0.080) infinite;
+  // animation: smoth-rotate 2s cubic-bezier(0.245, 0.000, 0.935, 0.080) infinite;
 
-  }
+}
 </style>

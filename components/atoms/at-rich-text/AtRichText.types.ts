@@ -1,6 +1,6 @@
-import { Document } from '@contentful/rich-text-types'
+import type { Document } from '@contentful/rich-text-types'
 
 export interface AtRichTextProps {
-  document: Document
-  element?: string
+    document: Document
+    element?: string
 }

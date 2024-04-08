@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { MlProjectCardProps } from './MlProjectCard.types';
+import type MlProjectCardProps from './MlProjectCard.types';
+
+
 
 const props = defineProps<MlProjectCardProps>()
 

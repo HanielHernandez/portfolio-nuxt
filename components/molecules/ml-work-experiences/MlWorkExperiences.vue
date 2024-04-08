@@ -1,7 +1,5 @@
-
-
 <script setup lang="ts">
-import { MlWorkExperiencesProps } from "./MlWorkExperiences.types"
+import type MlWorkExperiencesProps from "./MlWorkExperiences.types"
 const props = defineProps<MlWorkExperiencesProps>()
 const currentExpanded = ref<string | number | null>(null);
 const setCurrentExpanded = (index: number | string) => {

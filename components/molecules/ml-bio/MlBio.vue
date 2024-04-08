@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { MlBioProps } from './MlBio.types'
+import type { MlBioProps } from './MlBio.types.ts';
+
 
 const props = defineProps<MlBioProps>()
 

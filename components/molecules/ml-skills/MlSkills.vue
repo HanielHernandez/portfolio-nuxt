@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MlSkillsProps } from './MlSkills.types'
+import type MlSkillsProps from './MlSkills.types'
 
 const props = defineProps<MlSkillsProps>()
 

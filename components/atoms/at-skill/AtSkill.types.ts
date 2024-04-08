@@ -1,6 +1,6 @@
-import { AtImageProps } from '../at-image/AtImage.types'
+import type AtImageProps from '../at-image/AtImage.types'
 
-export interface AtSkillProps {
-  name: string
-  image: AtImageProps
+export default interface AtSkillProps {
+    name: string
+    image: AtImageProps
 }

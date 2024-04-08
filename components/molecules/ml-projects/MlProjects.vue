@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { MlProjectsProps } from './MlProject.types'
+import type MlProjectsProps from './MlProject.types'
+
 const props = defineProps<MlProjectsProps>()
 
 </script>
 <template>
   <div class="flex flex-col ">
-    <h2 id="projects_title" class="text-3xl text-center font-bold px-4 my-5 md:m-0 md:px-0">
+    <h2 id="projects_title" v-if="props" class="text-3xl text-center font-bold px-4 my-5 md:m-0 md:px-0">
       {{ props.title }}
     </h2>
     <div class="flex flex-wrap cards-container justify-center py-8">

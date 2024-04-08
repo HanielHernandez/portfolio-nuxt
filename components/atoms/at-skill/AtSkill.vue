@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { AtSkillProps } from "./AtSkill.types"
+import type AtSkillProps from './AtSkill.types';
+
 
 const props = defineProps<AtSkillProps>()
 </script>
