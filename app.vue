@@ -7,10 +7,11 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 const nuxtApp = useNuxtApp();
 const loading = ref(true);
 const colorMode = useColorMode()
+const { finalizePendingLocaleChange } = useI18n()
 
 const onBeforeEnter = async () => {
-  //await finalizePendingLocaleChange()
-  console.log("entering")
+  await finalizePendingLocaleChange()
+
 }
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 const changeTheme = () => {
@@ -39,7 +40,11 @@ nuxtApp.hook("app:rendered", () => {
     <div class="h-screen">
 
       <NuxtLayout>
-        <NuxtPage />
+        <NuxtPage :transition="{
+          name: 'my',
+          mode: 'out-in',
+          onBeforeEnter
+        }" />
       </NuxtLayout>
     </div>
   </body>

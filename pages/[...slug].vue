@@ -16,8 +16,13 @@ const contentFullLocal: Record<string, string> = {
 }
 
 
+watch(locale, (newval, oldval) => {
+  console.log(newval, oldval)
+})
+
 const slug = computed(() => route.params.slug === '' ? "/" : route.params.slug)
 const { data, pending } = useAsyncData(async () => {
+  console.log(locale.value)
   try {
     const collection = await $contentfulClient.getEntries({
       content_type: "page",

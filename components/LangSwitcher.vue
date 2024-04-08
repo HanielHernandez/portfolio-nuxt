@@ -9,7 +9,8 @@ const otherLocale = computed(() => {
 </script>
 <template>
   <div class="lang">
-    <NuxtLink class="py-2 px-4 uppercase font-bold inline-block dark:text-white" :to="switchLocalePath(otherLocale.code)">
+    <NuxtLink class="py-2 px-4 uppercase font-bold inline-block dark:text-white"
+      :to="switchLocalePath(otherLocale.code)">
       {{ otherLocale.code }}
     </NuxtLink>
   </div>
