@@ -30,67 +30,6 @@ nuxtApp.hook("app:rendered", () => {
 //   },1500)
 // })
 
-const onEnter = (el: Element, done: () => void) => {
-
-  const tl = gsap.timeline({
-    onComplete: () => done()
-  })
-
-  const loadingIndicator = el.querySelector('.loading-indicator')
-
-  tl.from(loadingIndicator,
-    {
-      scale: 0,
-      opacity: 0,
-      duration: 0.3,
-      ease: 'power4.easeInOut'
-    },
-    0.3)
-
-  tl.to(el,
-    {
-      opacity: 1,
-      height: '100%',
-      duration: 0.3,
-      ease: 'power4.easeInOut'
-    },
-    0)
-
-
-
-  tl.play()
-
-}
-
-const onLeave = (el: HTMLElement, done: () => void) => {
-
-
-  const tl = gsap.timeline({
-    onComplete: () => done()
-  })
-
-  const loadingIndicator = el.querySelector('.loading-indicator')
-
-  tl.to(loadingIndicator,
-    {
-      scale: 0,
-      opacity: 0,
-      duration: 0.3,
-      ease: 'power4.easeInOut'
-    },
-    0)
-
-  tl.to(el,
-    {
-      opacity: 0,
-      height: 0,
-      ease: 'power4.easeInOut'
-    },
-    0.3)
-
-  tl.play()
-
-}
 
 </script>
 
@@ -100,11 +39,7 @@ const onLeave = (el: HTMLElement, done: () => void) => {
     <div class="h-screen">
 
       <NuxtLayout>
-        <NuxtPage :transition="{
-    name: 'my',
-    mode: 'out-in',
-    onEnter
-  }" />
+        <NuxtPage />
       </NuxtLayout>
     </div>
   </body>

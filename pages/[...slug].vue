@@ -39,6 +39,7 @@ const { data, pending } = useAsyncData(async () => {
 }, { watch: [locale] })
 
 const onEnter = (el: Element, done: () => void) => {
+
   const tl = gsap.timeline({
     onComplete: () => done()
   })
@@ -98,7 +99,6 @@ const getBlock = (blockType: ComponentType): Component => {
     style="max-width: 1024px; ">
     <transition :css="false" mode="out-in" @enter="onEnter" @leave="onLeave">
       <div v-if="data">
-        <!-- <MlNavbar v-if="data.header && !pending" id="navbar" :links="data.header.links || []" /> -->
         <div v-if="data && data.blocks">
           <template v-for="block in data.blocks" :key="block.CONTENTFUL_ID">
             <component :is="getBlock(block.CONTENT_TYPE)" v-bind="block" />
