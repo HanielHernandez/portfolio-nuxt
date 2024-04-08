@@ -7,10 +7,12 @@ import MlBio from './molecules/ml-bio/MlBio.vue'
 
 export type ComponentType = 'heroSection' | 'mlBio' | 'mlSkills' | 'mlProjects' | 'mlWorkExperiences'
 
-export const ComponentTypes: Record<ComponentType, Component> = {
+const ComponentTypes: Record<ComponentType, Component> = {
     heroSection: OrHeroSection,
     mlBio: MlBio,
     mlSkills: MlSkills,
     mlProjects: MlProjects,
     mlWorkExperiences: MlWorkExperiences
 }
+
+export default ComponentTypes

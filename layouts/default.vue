@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MlNavbarProps } from '~/components/molecules/ml-navbar/MlNavbar.types';
+import type MlNavbarProps from '~/components/molecules/ml-navbar/MlNavbar.types';
 const { $contentfulClient } = useNuxtApp()
 const { locale } = useI18n()
 
@@ -31,7 +31,8 @@ watch(locale, function (newLang, oldLang) {
 
 </script>
 <template>
-  <div class="transition-all pt-20 lg:pt-28 ease-in-out duration-300 w-full h-screen overflow-y-auto dark:bg-neutral-900"
+  <div
+    class="transition-all pt-20 lg:pt-28 ease-in-out duration-300 w-full h-screen overflow-y-auto dark:bg-neutral-900"
     style="overflow: overlay;">
     <MlNavbar v-if="!pending" id="navbar" :links="navbar.links || []" />
     <slot />

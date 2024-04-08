@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import gsap from "gsap";
-import { MlNavbarProps } from "./MlNavbar.types";
+import type MlNavbarProps from "./MlNavbar.types";
 
 const route = useRoute();
 const { locale: localLang, locales, setLocale } = useI18n();
@@ -235,7 +235,7 @@ watch(isDark, (newval) => {
         <div v-if="menuOpen"
           class="menu z-40 ease-out bg-white dark:bg-black/80 w-screen h-screen bg-opacity-90 fixed top-0 left-0">
           <ul class="flex h-full flex-col justify-center items-center">
-            <li v-for="(link, index) in   props.links" :key="`route-${index}`"
+            <li v-for="(link, index) in props.links" :key="`route-${index}`"
               class="nav-link-container text-3xl text-center px-8 py-4">
               <navbar-link :to="link.url" :active="toLocalePath(link.url) == currentPath">
                 <span class="font-black text-blue-600"> {{ `0${index + 1}.` }}</span>
@@ -273,5 +273,4 @@ ul {
 //       transform: translate(0,-6px) rotate(-45deg);
 //     }
 //   }
-// }
-</style>
+// }</style>

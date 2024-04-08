@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import type { Component } from 'vue'
 import gsap from "gsap";
-import { PageProps } from "~~/types/pageProps"
-import { ComponentTypes, ComponentType } from "../components/components"
+import type PageProps from "~~/types/pageProps"
 import animations from "~/animations";
+import type { ComponentType } from '~/components/components';
+import ComponentTypes from '~/components/components';
 const { $contentfulClient } = useNuxtApp()
 const route = useRoute()
 const router = useRouter()

@@ -50,6 +50,9 @@ export default defineNuxtConfig({
         }
     },
     vite: {
+        optimizeDeps: {
+            exclude: ['class-validator']
+        },
         css: {
             preprocessorOptions: {
                 scss: {
@@ -59,7 +62,7 @@ export default defineNuxtConfig({
         }
     },
     build: {
-        transpile: ['gsap']
+        transpile: ['gsap', 'class-validator']
     },
     app: {
         pageTransition: { name: 'page', mode: 'out-in' },

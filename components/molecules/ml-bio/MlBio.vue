@@ -12,7 +12,7 @@ const props = defineProps<MlBioProps>()
          <h2  class="text-3xl font-bold">
             {{title}}
          </h2>
-         <AtRichText :document="biography" />
+         <AtRichText :document="biography" class="mb-4" />
          <AtButton  outlined size="lg" v-if="actionLink" element="a" :label="actionLink.text" :href="actionLink.url" />
       </div>
       <div

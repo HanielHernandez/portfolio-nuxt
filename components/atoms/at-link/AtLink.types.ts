@@ -1,4 +1,4 @@
-export interface AtLinkProps {
+export default interface AtLinkProps {
     url: string
     text: string
 }
