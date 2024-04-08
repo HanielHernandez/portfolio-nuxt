@@ -11,26 +11,14 @@ const { finalizePendingLocaleChange } = useI18n()
 
 const onBeforeEnter = async () => {
   await finalizePendingLocaleChange()
-
 }
+
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-const changeTheme = () => {
-  colorMode.preference = colorMode.preference == 'dark' ? 'light' : 'dark'
-}
-
-
 
 nuxtApp.hook("app:rendered", () => {
   console.log('page finished loading')
   loading.value = false;
 });
-
-// onMounted(()=>{
-//   setTimeout(()=>{
-//     loading.value = false
-//   },1500)
-// })
-
 
 </script>
 
