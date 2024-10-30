@@ -2,8 +2,6 @@ import gsap from 'gsap'
 
 export default {
     onEnter: (el: HTMLElement | Element, done: () => void) => {
-        console.log('entering about page')
-
         const tl = gsap.timeline({
             onComplete: done
         })

@@ -32,7 +32,6 @@ const checkDimensions = async () => {
 
 const onEnter = (el: HTMLElement, done: () => any) => {
   done()
-  console.log("showing content")
   gsap.from(
     el,
     {

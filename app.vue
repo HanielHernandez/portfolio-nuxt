@@ -16,7 +16,6 @@ const onBeforeEnter = async () => {
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 nuxtApp.hook("app:rendered", () => {
-  console.log('page finished loading')
   loading.value = false;
 });
 

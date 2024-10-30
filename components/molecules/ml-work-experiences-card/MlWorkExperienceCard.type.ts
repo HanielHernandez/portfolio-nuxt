@@ -13,7 +13,7 @@ export default interface Experience {
 }
 
 export interface MlWorkExperienceCardProps {
-    expanded: Boolean
+    expanded: boolean
     experience: Experience
 }
 

@@ -4,23 +4,17 @@ const props = withDefaults(defineProps<MlWorkExperienceCardProps>(),
   {
     expanded: false
   })
-
 const emit = defineEmits<MlWorkExperienceCardEmits>()
-
-const handleOnExpand = (expanded: Boolean) => {
+const handleOnExpand = (expanded: boolean) => {
   emit("onExpand", expanded)
 }
-
 const { locale } = useI18n()
-
-
 const fromToFormated = computed(() => {
   const { experience: { startDate: from, endDate: to } } = props
   const dayjs = useDayjs()
   const fromFormated = dayjs(from).locale(locale.value).format("MMM YYYY")
   const toFormated = dayjs(to).locale(locale.value).format("MMM YYYY")
 
-  console.log(`${fromFormated} - ${toFormated}`)
   return `${fromFormated} - ${toFormated}`
 })
 </script>

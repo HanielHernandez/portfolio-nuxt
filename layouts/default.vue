@@ -23,12 +23,10 @@ const { data: navbar, pending, refresh } = useAsyncData(async () => {
 })
 
 watch(locale, function (newLang, oldLang) {
-  console.log(newLang, oldLang)
   if (newLang != oldLang) {
     refresh()
   }
 })
-
 </script>
 <template>
   <div

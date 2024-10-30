@@ -118,7 +118,6 @@ const onEnter = (el: HTMLElement, done: () => void) => {
   tl.play();
 };
 const onLeave = (el: HTMLElement, done: () => void) => {
-  console.log("leaving")
   const tl = gsap.timeline({
     onComplete: done,
   });
@@ -182,14 +181,12 @@ const onLeave = (el: HTMLElement, done: () => void) => {
 };
 
 function setLang() {
-  console.log(currentLang.value);
   setLocale(currentLang.value);
   const path = switchLocalePath(currentLang.value);
   navigateTo(path);
 }
 
 watch(isDark, (newval) => {
-  console.log(newval);
   colorMode.preference = newval ? "dark" : "light";
 });
 </script>

@@ -10,18 +10,17 @@ const { locale } = useI18n();
 
 
 definePageMeta({
-    pageTransition: {
-      name: 'custom-transition',
-      mode: 'out-in',
-      onEnter: (el, done) => {
-        console.log('onenter',el)
-        animations['mywork'].onEnter(el,done)
-      },
-      onLeave: (el,done) => {
-        animations['mywork'].onLeave(el,done)
-      }
+  pageTransition: {
+    name: 'custom-transition',
+    mode: 'out-in',
+    onEnter: (el, done) => {
+      animations['mywork'].onEnter(el, done)
+    },
+    onLeave: (el, done) => {
+      animations['mywork'].onLeave(el, done)
     }
-  })
+  }
+})
 </script>
 <template>
   <div class="h-full flex flex-col ">
@@ -30,9 +29,9 @@ definePageMeta({
     </h4>
     <MyProjects />
     <h4 class="px-4 mt-4 mb-8 lg:my-16 md:text-center" id="work_experience_title">
-      {{$t("myWork.professionalExperience.title")}}
+      {{ $t("myWork.professionalExperience.title") }}
     </h4>
-    <MyWorkPlaces/>
+    <MyWorkPlaces />
   </div>
 </template>
 
