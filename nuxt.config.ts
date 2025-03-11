@@ -24,8 +24,8 @@ export default defineNuxtConfig({
         space: process.env.NUXT_CTF_SPACE_ID,
         accessToken: process.env.NUXT_CTF_CDA_ACCESS_TOKEN,
         public: {
-            space: process.env.NUXT_CTF_SPACE_ID,
-            accessToken: process.env.NUXT_CTF_CDA_ACCESS_TOKEN
+            contentfulSpaceId: process.env.NUXT_CTF_SPACE_ID as string,
+            contentfulAccessToken: process.env.NUXT_CTF_CDA_ACCESS_TOKEN as string
         }
     },
 
@@ -130,10 +130,5 @@ export default defineNuxtConfig({
         defaultLocale: 'es',
         defaultTimezone: 'America/New_York'
     },
-
-    compatibilityDate: '2024-07-05',
-
-    devtools: {
-        enabled: true
-    }
+    compatibilityDate: '2024-07-05'
 })
