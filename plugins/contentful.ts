@@ -1,5 +1,4 @@
-import contentfull from 'contentful'
-const { createClient } = contentfull
+import { createClient } from 'contentful'
 
 export default defineNuxtPlugin(() => {
     const config = useRuntimeConfig()

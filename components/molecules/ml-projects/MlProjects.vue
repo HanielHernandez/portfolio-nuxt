@@ -11,7 +11,7 @@ const props = defineProps<MlProjectsProps>()
     </h2>
     <div class="flex flex-wrap cards-container justify-center py-8">
       <div v-for="project in props.projects" :key="`project-${project.id}`" class="p-4 w-full md:w-1/2 lg:w-1/3">
-        <MlProjectCard v-bind="project" />
+        <MlProjectCard v-bind="project" :id="project" />
       </div>
     </div>
   </div>

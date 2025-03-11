@@ -7,5 +7,5 @@ export default interface MlProjectCardProps {
     image: AtImageProps
     madeWith: string[]
     url: string
-    id: string
+    CONTENTFUL_ID: string
 }

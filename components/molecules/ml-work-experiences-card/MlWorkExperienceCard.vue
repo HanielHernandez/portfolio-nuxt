@@ -37,7 +37,7 @@ const fromToFormated = computed(() => {
           <Icon name="ic:baseline-place" class="h-5" />
           {{ experience.location }}
         </p>
-        <AtRichText :document="experience.description" class="text-neutral-600 text-justify text-clip" />
+        <AtRichText :document="experience.description" class="text-neutral-600 text-justify text-clip mb-4" />
         <chip v-for="tag in experience.tags" class="mr-4 mb-2">
           {{ tag }}
         </chip>

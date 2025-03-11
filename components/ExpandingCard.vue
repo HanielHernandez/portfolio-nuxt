@@ -11,6 +11,7 @@ const props = defineProps({
   }
 })
 const emit = defineEmits(['onExpand'])
+const content = ref<HTMLElement | null>(null)
 
 const onExpanButtonClick = () => {
   emit('onExpand', !props.expanded)

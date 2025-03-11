@@ -5,11 +5,20 @@ export default defineNuxtConfig({
         '@nuxtjs/tailwindcss',
         '@nuxtjs/i18n',
         '@nuxtjs/color-mode',
+        '@nuxtjs/algolia',
         '@nuxt/content',
         'nuxt-icon',
         'dayjs-nuxt',
         '@nuxt/image'
     ],
+    devtools: { enabled: true },
+    algolia: {
+        apiKey: process.env.ALGOLIA_SEARCH_API_KEY,
+        applicationId: process.env.ALGOLIA_APPLICATION_ID,
+        instantSearch: {
+            theme: 'algolia'
+        }
+    },
 
     runtimeConfig: {
         space: process.env.NUXT_CTF_SPACE_ID,
