@@ -65,7 +65,7 @@ const setCurrentExpanded = (index: number | string) => {
           <div class="flex justify-between w-full items-center">
             <h4 class="text-lg font-bold mb-0">
               {{ $t(`myWork.professionalExperience.${experience.id }.title`) }}
-              <span class="font-normal text-neutral-600">@ </span>
+              <span class="font-normal text-neutral-600 dark:text-neutral-200">@ </span>
               <span>{{ experience.companyName }}</span>
             </h4>
             <span class="hidden sm:block text-sm font-medium text-blue-600 ">

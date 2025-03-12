@@ -29,7 +29,7 @@ const props = defineProps<MlProjectCardProps>()
 </template>
 <style lang="scss" scoped>
 .card {
-  @apply cursor-default relative border overflow-hidden border-neutral-100 dark:border-neutral-700;
+  @apply cursor-default relative border overflow-hidden border-neutral-100 dark:border-neutral-700 rounded-b-sm overflow-hidden;
 
   &-title {
     @apply font-bold text-neutral-800 dark:text-neutral-100 mb-2;
@@ -41,7 +41,7 @@ const props = defineProps<MlProjectCardProps>()
 
   &-media {
     img {
-      @apply rounded-t-sm;
+      @apply rounded-sm;
       object-fit: cover;
       height: 250px;
     }

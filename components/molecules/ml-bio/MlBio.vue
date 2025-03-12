@@ -8,11 +8,11 @@ const props = defineProps<MlBioProps>()
 </script>
 <template lang="">
    <div class="flex flex-col-reverse md:flex-row md:gap-4 lg:gap-16">
-      <div id="bio" class="p-4  text-center md:text-left  lg:p-0 col-span-3 lg:col-span-2  w-full md:w-3/5">
-         <h2  class="text-3xl xl:text-4xl font-bold md mb-4 xl:mb-8 ">
+      <div id="bio" class="p-4  text-center md:text-left   lg:p-0 col-span-3 lg:col-span-2  w-full md:w-3/5">
+         <h2  class="text-3xl xl:text-4xl font-bold md mb-4 xl:mb-8 dark:text-neutral-200 ">
             {{title}}
          </h2>
-         <AtRichText :document="biography" class="mb-4 xl:mb-6 text-justify" />
+         <AtRichText :document="biography" class="mb-4 xl:mb-6 dark:text-neutral-400 text-justify" />
          <AtButton  outlined size="lg" v-if="actionLink" element="a" :label="actionLink.text" :href="actionLink.url" />
       </div>
       <div

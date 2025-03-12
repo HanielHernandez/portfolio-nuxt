@@ -22,7 +22,7 @@ const fromToFormated = computed(() => {
   <ExpandingCard class="flex-shrink-0" :expanded="(expanded as boolean)" @onExpand="handleOnExpand(!expanded)">
     <template v-slot:title>
       <div class="flex justify-between w-full items-center">
-        <h4 class="text-lg font-bold mb-0">
+        <h4 class="text-lg font-bold mb-0 text-neutral-800 dark:text-neutral-400">
           {{ experience.name }}
         </h4>
         <span class="hidden sm:block text-sm font-medium text-blue-600 ">
@@ -37,7 +37,8 @@ const fromToFormated = computed(() => {
           <Icon name="ic:baseline-place" class="h-5" />
           {{ experience.location }}
         </p>
-        <AtRichText :document="experience.description" class="text-neutral-600 text-justify text-clip mb-4" />
+        <AtRichText :document="experience.description"
+          class="text-neutral-600 dark:text-neutral-300 text-justify text-clip mb-4" />
         <chip v-for="tag in experience.tags" class="mr-4 mb-2">
           {{ tag }}
         </chip>

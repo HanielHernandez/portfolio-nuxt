@@ -6,7 +6,8 @@ const props = defineProps<MlProjectsProps>()
 </script>
 <template>
   <div class="flex flex-col ">
-    <h2 id="projects_title" v-if="props" class="text-3xl text-center font-bold px-4 my-5 md:m-0 md:px-0">
+    <h2 id="projects_title" v-if="props"
+      class="text-3xl text-center text-neutral-600 dark:text-neutral-200 font-bold px-4 my-5 md:m-0 md:px-0">
       {{ props.title }}
     </h2>
     <div class="flex flex-wrap cards-container justify-center py-8">
