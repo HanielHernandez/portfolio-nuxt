@@ -24,7 +24,10 @@ const { data } = useAsyncData(async () => {
       include: 10,
       locale: contentFullLocal[locale.value]
     })
+
+
     const page = collection?.items?.length ? collection.items[0] : null
+    console.log(page)
 
     if (page === null) {
       router.push("/page-not-found")

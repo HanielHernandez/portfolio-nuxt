@@ -9,6 +9,6 @@ export const RICH_TEXT_OPTIONS: Partial<Options> = {
             `<ul class="list-disc mb-4 pl-4">${next(node.content)}</ul>`,
         [BLOCKS.LIST_ITEM]: (node: any, next: (nodes: any) => string) => `<li>${next(node.content)}</li>`,
         [INLINES.HYPERLINK]: (node: any, next: (nodes: any) => string) =>
-            `<a class="text-blue-600 hover:opacity-75 font-medium cursor-pointer">${next(node.content)}</a>`
+            `<a class="text-blue-600 hover:opacity-75 font-medium cursor-pointer" target="_blank" href="${node.data.uri}">  ${next(node.content)}</a>`
     }
 }
