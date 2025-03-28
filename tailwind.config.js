@@ -6,7 +6,8 @@ module.exports = {
         './layouts/**/*.vue',
         './pages/**/*.vue',
         './plugins/**/*.{js,ts}',
-        './app.vue'
+        './app.vue',
+        './.storybook/**/*.{js,ts,vue}'
     ],
     darkMode: 'class',
     plugins: [require('@tailwindcss/typography')],

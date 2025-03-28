@@ -48,13 +48,13 @@ const buttonClasses = computed(() => {
   ]
 })
 </script>
-<template lang="">
-  <component v-bind="attrs" :is="element" :class="buttonClasses" >
+<template>
+  <component v-bind="attrs" :is="element" :class="buttonClasses">
 
-      <span v-if="label">
-        {{label}}
-      </span>
-      <slot v-else />
+    <span v-if="label">
+      {{ label }}
+    </span>
+    <slot v-else />
 
   </component>
 </template>

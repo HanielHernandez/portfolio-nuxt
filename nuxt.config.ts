@@ -2,14 +2,15 @@
 
 export default defineNuxtConfig({
     modules: [
-        '@nuxtjs/tailwindcss',
-        '@nuxtjs/i18n',
-        '@nuxtjs/color-mode',
-        '@nuxtjs/algolia',
-        '@nuxt/content',
-        'nuxt-icon',
-        'dayjs-nuxt',
-        '@nuxt/image'
+      '@nuxtjs/tailwindcss',
+      '@nuxtjs/i18n',
+      '@nuxtjs/color-mode',
+      '@nuxtjs/algolia',
+      '@nuxt/content',
+      'nuxt-icon',
+      'dayjs-nuxt',
+      '@nuxt/image',
+      '@nuxtjs/storybook'
     ],
     devtools: { enabled: true },
     algolia: {

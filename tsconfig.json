@@ -1,5 +1,6 @@
 {
     // https://nuxt.com/docs/guide/concepts/typescript
     "extends": "./.nuxt/tsconfig.json",
-    "compilerOptions": { "target": "ES6" }
+    "compilerOptions": { "target": "ES6" },
+    "include": ["nuxt.config.ts", ".storybook/**/*.ts", "components/**/*.ts"]
 }
