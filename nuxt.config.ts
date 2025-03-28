@@ -2,24 +2,24 @@
 
 export default defineNuxtConfig({
     modules: [
-      '@nuxtjs/tailwindcss',
-      '@nuxtjs/i18n',
-      '@nuxtjs/color-mode',
-      '@nuxtjs/algolia',
-      '@nuxt/content',
-      'nuxt-icon',
-      'dayjs-nuxt',
-      '@nuxt/image',
-      '@nuxtjs/storybook'
+        '@nuxtjs/tailwindcss',
+        '@nuxtjs/i18n',
+        '@nuxtjs/color-mode',
+        //   '@nuxtjs/algolia',
+        '@nuxt/content',
+        'nuxt-icon',
+        'dayjs-nuxt',
+        '@nuxt/image',
+        '@nuxtjs/storybook'
     ],
     devtools: { enabled: true },
-    algolia: {
+    /*algolia: {
         apiKey: process.env.ALGOLIA_SEARCH_API_KEY,
         applicationId: process.env.ALGOLIA_APPLICATION_ID,
         instantSearch: {
             theme: 'algolia'
         }
-    },
+    },*/
 
     runtimeConfig: {
         space: process.env.NUXT_CTF_SPACE_ID,
@@ -131,5 +131,10 @@ export default defineNuxtConfig({
         defaultLocale: 'es',
         defaultTimezone: 'America/New_York'
     },
-    compatibilityDate: '2024-07-05'
+    compatibilityDate: '2024-07-05',
+    storybook: {
+        url: 'http://localhost:6006',
+        storybookRoute: '/__storybook__',
+        port: 6006
+    }
 })

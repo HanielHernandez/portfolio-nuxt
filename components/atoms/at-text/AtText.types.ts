@@ -10,20 +10,20 @@ export const textSizes: Record<AtTextVariant, string> = {
     h6: 'text-base',
     paragraph: 'text-base',
     label: 'text-base',
-    link: 'text-base',
+    link: 'text-base cursor-pointer',
     ['list-title']: 'text-base'
 }
 
 export const fontWeights: Record<AtTextVariant, string> = {
-    h1: 'font-extrabold',
-    h2: 'font-bold',
-    h3: 'font-medium',
-    h4: 'font-semibold',
+    h1: 'font-black',
+    h2: 'font-black',
+    h3: 'font-black',
+    h4: 'font-black',
     h5: 'font-medium',
     h6: 'font-medium',
-    paragraph: '',
-    label: 'font-medium',
-    link: 'font-medium',
+    paragraph: 'font-base',
+    label: 'font-bold',
+    link: 'font-bold',
     ['list-title']: 'font-bold'
 }
 
@@ -37,6 +37,19 @@ export const leadingClasses: Record<AtTextVariant, string> = {
     paragraph: 'leading-relaxed',
     label: '',
     link: '',
+    ['list-title']: 'leading-6'
+}
+
+export const colorClasses: Record<AtTextVariant, string> = {
+    h1: 'text-neutral-800',
+    h2: 'text-neutral-800',
+    h3: 'text-neutral-800',
+    h4: 'text-neutral-800',
+    h5: 'text-neutral-800',
+    h6: 'text-neutral-800',
+    paragraph: 'text-neutral-600',
+    label: 'text-neutral-800',
+    link: 'text-blue-600',
     ['list-title']: 'leading-6'
 }
 
@@ -56,6 +69,6 @@ export const atTextTagMap: Record<AtTextVariant, AtTextTag> = {
 export interface AtTextProps {
     As?: AtTextTag
     variant?: AtTextVariant
-    className?: string
+    class?: string
     href?: string
 }

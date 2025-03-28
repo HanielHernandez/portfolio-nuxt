@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
+import type { AtTextProps } from './AtText.types'
 import AtText from './AtText.vue'
 
 const meta = {
@@ -15,12 +16,12 @@ const meta = {
         }
     },
 
-    render: (args) => ({
+    render: (args: AtTextProps) => ({
         components: { AtText },
         setup() {
-            return args
+            return { args }
         },
-        template: `<AtText v-bind="args"> My text </AtText>`
+        template: '<AtText v-bind="args"> Lorem impsum </AtText>'
     })
 } satisfies Meta<typeof AtText>
 
