@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import gsap from "gsap";
 import type MlNavbarProps from "./MlNavbar.types";
+import { navigateTo, useRoute, useRouter } from "nuxt/app";
+import { config } from "chai";
+import { computed, ref, watch } from "vue";
 
 const route = useRoute();
 const { locale: localLang, locales, setLocale } = useI18n();
