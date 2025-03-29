@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import AtImage from '../atoms/at-image/AtImage.vue';
-import { Document } from '@contentful/rich-text-types';
+import AtText from '../atoms/at-text/AtText.vue';
 
 type AtImageProps = InstanceType<typeof AtImage>["$props"];
 const toLocalePath = useLocalePath()
@@ -16,18 +16,17 @@ const props = defineProps<{
   <div class="flex flex-col-reverse lg:flex-row md:py-16 justify-center flex-nowrap md:justify-start"
     style="height: calc(100vh - 112px)">
     <div id="rightSide"
-      class="flex justify-center flex-col w-full lg:w-1/2 md:h-full px-4 py-10 lg:px-0 text-center lg:text-left">
-      <h2 class="section-title text-xl font-bold lg:text-4xl text-blue-600 mb-8 lg:mb-12 dark:text-blue-300">
+      class="flex justify-center flex-col w-full lg:w-1/2 md:h-full px-4 py-10 lg:px-0 text-center lg:text-left gap-6">
+      <AtText variant="h2" class="section-title  !text-blue-600  dark:text-blue-300">
         {{ subTitle }}
-      </h2>
-      <h1
-        class=" leading font-black text-3xl ling md:text-3xl lg:text-5xl mb-8 text-neutral-800 lg:mb-12 dark:text-white">
+      </AtText>
+      <AtText variant="h1" class=" dark:text-white">
         {{ title }}
-      </h1>
-      <div class=" text-neutral-600 mx-auto dark:text-neutral-400 mb-8" style="max-width:650px">
+      </AtText>
+      <AtText variant="paragraph" style="max-width:650px">
         <AtRichText :document="description" />
-      </div>
-      <div class="cta-buttons flex items-center justify-center lg:justify-start mb-8">
+      </AtText>
+      <div class="cta-buttons flex items-center justify-center lg:justify-start ">
         <NuxtLink :to="toLocalePath('/my-work')"
           class="bg-blue-600 md:text-lg lg:text-xl font-bold transition-all ease-in-out btn shadow-md duration-300 hover:bg-blue-800 mr-4 border-ra text-white px-4 py-3 md:px-5 md:py-4 lg:px-5 lg:py-3 rounded-sm">
           {{ $t('home.myWorkBtn') }}</NuxtLink>

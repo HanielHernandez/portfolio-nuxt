@@ -12,6 +12,9 @@ export default defineNuxtConfig({
         '@nuxt/image',
         '@nuxtjs/storybook'
     ],
+    imports: {
+        autoimport: true
+    },
     devtools: { enabled: true },
     /*algolia: {
         apiKey: process.env.ALGOLIA_SEARCH_API_KEY,

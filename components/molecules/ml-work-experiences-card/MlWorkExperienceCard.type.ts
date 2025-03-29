@@ -9,6 +9,7 @@ export default interface Experience {
     location: string
     description: Document
     tags: string[]
+    companyName: string
     image: AtImageProps
 }
 

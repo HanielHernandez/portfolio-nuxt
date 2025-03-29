@@ -215,10 +215,10 @@ watch(isDark, (newval) => {
             <span class="inline-block mx-1 md:mx-2 lg:mx-3 dark:text-white/20 text-neutral-300">|</span>
             <ThemeSwitcher :is-dark="isDark" @click="isDark = !isDark" />
             <span class="inline-block mx-1 md:mx-2 lg:mx-3 dark:text-white/20 text-neutral-300">|</span>
-            <btn link href="mailto:haniel1121@outlook.com "
+            <AtButton element="a" link href="mailto:haniel1121@outlook.com "
               class="hidden lg:inline-block hover:drop-shadow-lg hover:shadow-md transition-shadow ease-in-out duration-500">
               {{ $t("navbar.contactMe") }}
-            </btn>
+            </AtButton>
             <button class="p-2 rounded-full w-12 h-12 lg:hidden z-50 menu-button" @click="openMenu()"
               :class="{ menuOpen }">
               <div id="line-1" class="border mb-1 mx-auto rounded-xl dark:border-white border-black w-6" />

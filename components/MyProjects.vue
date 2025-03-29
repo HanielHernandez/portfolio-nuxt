@@ -34,12 +34,11 @@ const projects = [
             <p>
               {{ $t('myWork.projects.' + project.id + '.description') }}
               <a target="_blank" :href="project.link"
-                class="opacity-90 text-md hover:opacity-100 mt-4 font-medium text-blue-600">{{ $t('myWork.projects.view')
+                class="opacity-90 text-md hover:opacity-100 mt-4 font-medium text-blue-600">{{
+                  $t('myWork.projects.view')
                 }}</a>
 
             </p>
-
-
             <h6 class="mt-4 text-neutral-600">{{ $t('myWork.projects.made_with') }} </h6>
 
             <div class="mt-4">

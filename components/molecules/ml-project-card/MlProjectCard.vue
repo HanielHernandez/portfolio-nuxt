@@ -6,82 +6,25 @@ import type MlProjectCardProps from './MlProjectCard.types';
 const props = defineProps<MlProjectCardProps>()
 
 </script>
-<template lang="">
-    <div class="card">
-          <div class="card-media">
-            <AtImage v-bind="image"/>
-          </div>
-          <div class="card-content">
-            <h5 class="card-title mb-4">
-              {{ name }}
-            </h5>
-            <div class="card-description">
-              <AtRichText :document="description" />
-              <h6 class="mt-4 text-neutral-600">{{ $t('myWork.projects.made_with') }} </h6>
-              <div class="mt-4">
-                <Chip v-for="tag in madeWith" :key="tag" class="mr-2" >
-                  {{ tag }}
-                </Chip>
-              </div>
-            </div>
-          </div>
+<template>
+  <NuxtLink :to="props.url" target="_blank"
+    class="card flex flex-col items-start justify-start gap-4 cursor-pointer border dark:border-neutral-600 dark:hover:bg-neutral-700   border-neutral-200  hover:bg-neutral-100 transition-colors ease-in-out duration-300 rounded-md p-4">
+    <AtImage v-bind="image" class="w-full  ft-contain rounded-sm" />
+    <div class="flex flex-col gap-4 h-full">
+      <AtText variant="h4" class="card-title">
+        {{ name }}
+      </AtText>
+      <div class="flex gap-4 flex-col">
+        <AtText>
+          <AtRichText class="" :document="description" />
+        </AtText>
+        <div class="">
+          <Chip v-for="tag in madeWith" :key="tag" class="mr-2">
+            {{ tag }}
+          </Chip>
         </div>
+      </div>
+    </div>
+  </NuxtLink>
 </template>
-<style lang="scss" scoped>
-.card {
-  @apply cursor-default relative border overflow-hidden border-neutral-100 dark:border-neutral-700 rounded-b-sm overflow-hidden;
-
-  &-title {
-    @apply font-bold text-neutral-800 dark:text-neutral-100 mb-2;
-
-    &:hover {
-      @apply text-blue-600;
-    }
-  }
-
-  &-media {
-    img {
-      @apply rounded-sm;
-      object-fit: cover;
-      height: 250px;
-    }
-  }
-
-  &-content {
-    @apply p-4 absolute bottom-0 left-0 bg-neutral-100 rounded-b-sm border-t border-neutral-100 dark:border-neutral-800 bg-opacity-50 dark:bg-neutral-900/90 w-full transition-all;
-    height: 84px;
-  }
-
-  &-description {
-    @apply text-sm text-neutral-600 dark:text-neutral-300;
-    height: 20px;
-    white-space: normal;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-  }
-
-  &:hover {
-    .card {
-      &-content {
-        @apply bg-neutral-200/75 dark:bg-neutral-900/75;
-        height: 100%;
-        border-top-color: rgba(#000000, 0);
-
-      }
-
-      &-description {
-        transition: all;
-        height: 100%;
-        white-space: normal;
-        text-overflow: inherit;
-        display: inline-block;
-        -webkit-line-clamp: inherit;
-        -webkit-box-orient: inherit;
-      }
-    }
-  }
-}
-</style>
+<style lang="scss" scoped></style>

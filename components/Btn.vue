@@ -1,35 +1,32 @@
 <script setup lang="ts">
 const props = defineProps({
-    outlined: {
-      type: Boolean,
-      default: ()=>false
-    },
-    color: {
-      type:String,
-      default: ()=>'blue-600'
-    },
-    link: {
-      type: Boolean,
-      default: () => false
-    },
-  })
+  outlined: {
+    type: Boolean,
+    default: () => false
+  },
+  color: {
+    type: String,
+    default: () => 'blue-600'
+  },
+  link: {
+    type: Boolean,
+    default: () => false
+  },
+})
 
-  const classes = computed(()=>{
+const classes = computed(() => {
 
-    const bgClass =   props.outlined ?   `bg-transparent hover:bg-${props.color} hover:text-white` : `bg-${props.color}`
-    const borderClass =   props.outlined ?    `border border-${props.color}`: `` 
-    const textClass =   props.outlined ?   `text-${props.color}` : `text-white`
+  const bgClass = props.outlined ? `bg-transparent hover:bg-${props.color} hover:text-white` : `bg-${props.color}`
+  const borderClass = props.outlined ? `border border-${props.color}` : ``
+  const textClass = props.outlined ? `text-${props.color}` : `text-white`
 
-    return [bgClass,borderClass,textClass]
+  return [bgClass, borderClass, textClass]
 
-  })
+})
 </script>
 <template>
-  <component
-    :is="link ? 'a' : 'button'"
-    class="px-4 py-2 font-medium transitionates inline-block transition-colors ease-in-out duration-200"
-    :class="classes"
-  >
+  <component :is="link ? 'a' : 'button'"
+    class="px-4 py-2 font-bold inline-block transition-colors ease-in-out duration-200" :class="classes">
     <slot />
   </component>
 </template>

@@ -58,45 +58,47 @@ const skills = ref([
 ])
 </script>
 <template>
-  <div class="py-16 flex flex-wrap justify-between">
+  <div class="py-12 flex flex-wrap justify-between px-4">
     <div class="w-full px-4 lg:px-0 section-title">
       <SectionTitle>
         {{ $t('aboutMe.skills.title') }}
       </SectionTitle>
     </div>
-
-    <div v-for="(skill, index) in skills" :key="`skill-${index}`" class="flex w-1/5 md:w-2/12 lg:w-2/12">
-      <div class="skill-card relative">
-        <img
-          :src="skill.icon"
-          class="skill-card-icon object-contain w-12 h-12"
-          :alt="`${skill.text} icon`"
-        />
-        <div
-          class="skill-card-text text-white font-bold bg-black/50 dark:bg-neutral-600/95"
-        >
-          {{ skill.text }}
+    <div class="grid grid-cols-3 md:grid-cols-6 xl:grid-cols-8 ">
+      <div v-for="(skill, index) in skills" :key="`skill-${index}`" class="flex">
+        <div class="skill-card relative">
+          <img :src="skill.icon" class="skill-card-icon object-contain w-12 h-12" :alt="`${skill.text} icon`" />
+          <div class="skill-card-text text-white font-bold bg-black/50 dark:bg-neutral-600/95">
+            {{ skill.text }}
+          </div>
         </div>
       </div>
     </div>
+
+
   </div>
 </template>
 <style lang="scss">
 .skill-card {
   @apply p-4 mb-4 rounded-md;
+
   &:hover {
     @apply dark:bg-neutral-700/50;
+
     .skill-card {
       &-icon {
         transform: scale(1.25);
       }
+
       &-text {
         opacity: 1;
       }
     }
+
     background-color: rgba($color: #000000, $alpha: 0.1);
     transition: all ease-in-out 0.3s;
   }
+
   &-text {
     opacity: 0;
     @apply p-2 rounded-md text-sm;

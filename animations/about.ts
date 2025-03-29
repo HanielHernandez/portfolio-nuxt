@@ -57,7 +57,6 @@ export default {
             '.skill-card',
             {
                 opacity: 0,
-                height: 0,
                 duration: 1,
                 stagger: 0.075,
                 ease: 'power4.easeInOut'
@@ -108,7 +107,6 @@ export default {
             '.skill-card',
             {
                 opacity: 0,
-                height: 0,
                 duration: 0.3,
                 stagger: 0.05,
                 ease: 'linear'

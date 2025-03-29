@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { type MlWorkExperienceCardEmits, type MlWorkExperienceCardProps, } from './MlWorkExperienceCard.type'
+import AtRichText from '../../atoms/at-rich-text/AtRichText.vue';
 const props = withDefaults(defineProps<MlWorkExperienceCardProps>(),
   {
     expanded: false
@@ -19,34 +20,37 @@ const fromToFormated = computed(() => {
 })
 </script>
 <template>
-  <ExpandingCard class="flex-shrink-0" :expanded="(expanded as boolean)" @onExpand="handleOnExpand(!expanded)">
-    <template v-slot:title>
-      <div class="flex justify-between w-full items-center">
-        <h4 class="text-lg font-bold mb-0 text-neutral-800 dark:text-neutral-400">
-          {{ experience.name }}
-        </h4>
-        <span class="hidden sm:block text-sm font-medium text-blue-600 ">
-          <!-- {{ experience.from }} - {{ experience.to }} -->
-          {{ fromToFormated }}
-        </span>
+  <div
+    class="expanding-card flex flex-row border border-neutral-200 dark:border-neutral-800 dark:hover:bg-neutral-800 hover:bg-neutral-100 transition-colors ease-in-out duration-300 p-4 mb-4 rounded-md cursor-pointer">
+
+    <div class="flex flex-col gap-4  w-full">
+      <div class="">
+        <div class="flex flex-row justify-between">
+          <AtText variant="h5" class="">
+            {{ experience.name }}
+          </AtText>
+          <AtText variant="label" class="  !text-blue-600 text-sm !font-semibold ">
+            {{ fromToFormated }}
+          </AtText>
+        </div>
+        <AtText as="span" variant="paragraph" class=" !font-medium text-sm text-neutral-300">
+          {{ experience.companyName }}
+        </AtText>
       </div>
-    </template>
-    <div class="flex flex-col-reverse md:flex-row items-center md:items-start md:justify-between w-full">
-      <div class="md:pr-8 h-full ">
-        <p class="text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-4">
-          <Icon name="ic:baseline-place" class="h-5" />
-          {{ experience.location }}
-        </p>
-        <AtRichText :document="experience.description"
-          class="text-neutral-600 dark:text-neutral-300 text-justify text-clip mb-4" />
-        <chip v-for="tag in experience.tags" class="mr-4 mb-2">
+
+
+
+
+      <AtText>
+        <AtRichText :document="experience.description" class=" dark:text-neutral-300 text-clip " />
+      </AtText>
+      <div>
+        <chip v-for="tag in experience.tags" class="mr-2 mb-2">
           {{ tag }}
         </chip>
       </div>
-      <div class="flex-shrink-0  dark:bg-neutral-700 bg-neutral-300 rounded-md p-4 w-32 h-32 mb-4 md:mb-0">
-        <AtImage v-bind="experience.image" class="flex-0 rounded-md mx-auto my-0  w-24 h-24 object-contain" />
-      </div>
+
     </div>
-  </ExpandingCard>
+  </div>
 </template>
 <style lang="scss"></style>

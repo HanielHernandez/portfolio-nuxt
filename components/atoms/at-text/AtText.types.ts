@@ -3,7 +3,7 @@ export type AtTextVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'paragraph
 
 export const textSizes: Record<AtTextVariant, string> = {
     h1: 'text-5xl',
-    h2: 'text-3xl',
+    h2: 'text-3xl md:text-4xl',
     h3: 'text-2xl',
     h4: 'text-xl',
     h5: 'text-lg',
@@ -19,8 +19,8 @@ export const fontWeights: Record<AtTextVariant, string> = {
     h2: 'font-black',
     h3: 'font-black',
     h4: 'font-black',
-    h5: 'font-medium',
-    h6: 'font-medium',
+    h5: 'font-bold',
+    h6: 'font-bold',
     paragraph: 'font-base',
     label: 'font-bold',
     link: 'font-bold',
@@ -30,26 +30,26 @@ export const fontWeights: Record<AtTextVariant, string> = {
 export const leadingClasses: Record<AtTextVariant, string> = {
     h1: 'leading-tight',
     h2: 'leading-tight',
-    h3: 'leading-snug',
-    h4: 'leading-snug',
+    h3: 'leading-tight',
+    h4: 'leading-tight',
     h5: 'leading-normal',
     h6: 'leading-normal',
-    paragraph: 'leading-relaxed',
+    paragraph: 'leading-normal',
     label: '',
     link: '',
     ['list-title']: 'leading-6'
 }
 
 export const colorClasses: Record<AtTextVariant, string> = {
-    h1: 'text-neutral-800',
-    h2: 'text-neutral-800',
-    h3: 'text-neutral-800',
-    h4: 'text-neutral-800',
-    h5: 'text-neutral-800',
-    h6: 'text-neutral-800',
-    paragraph: 'text-neutral-600',
-    label: 'text-neutral-800',
-    link: 'text-blue-600',
+    h1: 'text-neutral-800 dark:text-neutral-200',
+    h2: 'text-neutral-800 dark:text-neutral-200',
+    h3: 'text-neutral-800 dark:text-neutral-200',
+    h4: 'text-neutral-800 dark:text-neutral-200',
+    h5: 'text-neutral-800 dark:text-neutral-200',
+    h6: 'text-neutral-800 dark:text-neutral-200',
+    paragraph: 'text-gray-600 dark:text-gray-400',
+    label: 'text-neutral-800 dark:text-neutral-200',
+    link: 'text-blue-600 ',
     ['list-title']: 'leading-6'
 }
 
@@ -67,7 +67,7 @@ export const atTextTagMap: Record<AtTextVariant, AtTextTag> = {
 }
 
 export interface AtTextProps {
-    As?: AtTextTag
+    as?: AtTextTag
     variant?: AtTextVariant
     class?: string
     href?: string

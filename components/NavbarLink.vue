@@ -1,6 +1,6 @@
 <template>
   <NuxtLink :to="localePath(to)"
-    class="px-6 py-4 text-3xl md:px-4 md:py-0 text-center nav-link lg:text-base hover:opacity-90 dark:opacity-80 font-medium dark:text-white dark:hover:text-gray-100 hover:text-gray-600 text-gray-900 transition-all ease-in-out duration-300"
+    class="px-6 py-4 text-2xl font-bold md:px-4 md:py-0 text-center nav-link lg:text-base hover:opacity-90 dark:opacity-80  dark:text-white dark:hover:text-gray-100 hover:text-gray-600 text-neutral-900 transition-all ease-in-out duration-300"
     :class="{ active: active }">
     <slot></slot>
   </NuxtLink>
@@ -27,7 +27,7 @@ const localePath = useLocalePath()
     @apply text-blue-600;
   }
 
-  &:hover{
+  &:hover {
     transform: scale(1.5);
   }
 }

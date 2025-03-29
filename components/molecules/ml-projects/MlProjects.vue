@@ -5,15 +5,17 @@ const props = defineProps<MlProjectsProps>()
 
 </script>
 <template>
-  <div class="flex flex-col ">
-    <h2 id="projects_title" v-if="props"
-      class="text-3xl text-center text-neutral-600 dark:text-neutral-200 font-bold px-4 my-5 md:m-0 md:px-0">
+  <div class="flex flex-col mx-auto items-center justify-center px-4 ">
+    <!-- <h2 id="projects_title" v-if="props"
+      class="text-3xl text-center text-neutral-600 dark:text-neutral-200 font-bold ">
       {{ props.title }}
-    </h2>
-    <div class="flex flex-wrap cards-container justify-center py-8">
-      <div v-for="project in props.projects" :key="`project-${project.id}`" class="p-4 w-full md:w-1/2 lg:w-1/3">
-        <MlProjectCard v-bind="project" :id="project" />
-      </div>
+    </h2> -->
+
+    <AtText id="projects_title" variant="h2" class="px-4 my-5 md:m-0 md:px-0 text-center">
+      {{ props.title }}
+    </AtText>
+    <div class="grid grid-cols-1 md:grid-cols-2  gap-8 py-8 max-w-3xl max-auto">
+      <MlProjectCard v-for="project in props.projects" v-bind="project" :id="project" key="`project-${project.id}`" />
     </div>
   </div>
 </template>

@@ -60,7 +60,7 @@ const onLeave = (el: HTMLElement, done: () => any) => {
 
 </script>
 <template lang="">
-  <div class="expanding-card relative border hover:bg-neutral-100 dark:hover:bg-neutral-900 border-neutral-100 dark:border-neutral-800  w-full mb-4 "
+  <div class="expanding-card relative rounded-sm hover:bg-neutral-100 dark:hover:bg-neutral-900 border-neutral-100 dark:border-neutral-800  w-full mb-4 "
   >
     <div class="expanding-card-title flex p-4 pr-14 cursor-pointer" @click="onExpanButtonClick()" ref="title">
       <slot name="title" />
