@@ -33,7 +33,7 @@ const fromToFormated = computed(() => {
             {{ fromToFormated }}
           </AtText>
         </div>
-        <AtText as="span" variant="paragraph" class=" !font-medium text-sm text-neutral-300">
+        <AtText as="span" variant="paragraph" class=" !font-medium text-sm text-neutral-600 dark:text-neutral-400">
           {{ experience.companyName }}
         </AtText>
       </div>
