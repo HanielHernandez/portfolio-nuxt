@@ -30,7 +30,7 @@ watch(locale, function (newLang, oldLang) {
 })
 
 onMounted(() => {
-  window.postMessage('carrouselLoad', '*')
+  window.parent.postMessage('carrouselLoad', '*')
 })
 </script>
 <template>
@@ -43,3 +43,4 @@ onMounted(() => {
   </div>
 </template>
 <style lang="scss"></style>
+{}
