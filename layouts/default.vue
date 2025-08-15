@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { onMounted } from 'vue';
 import type MlNavbarProps from '~/components/molecules/ml-navbar/MlNavbar.types';
 const { $contentfulClient } = useNuxtApp()
 const { locale } = useI18n()
@@ -26,6 +27,10 @@ watch(locale, function (newLang, oldLang) {
   if (newLang != oldLang) {
     refresh()
   }
+})
+
+onMounted(() => {
+  window.postMessage('carrouselLoad', '*')
 })
 </script>
 <template>
