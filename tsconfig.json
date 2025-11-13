@@ -4,13 +4,29 @@
     "compilerOptions": {
         "strict": true,
         "target": "ESNext",
-        "types": ["vue", "@nuxt/types"],
-        "jsx": "preserve",
         "module": "ESNext",
+        "moduleResolution": "Node",
+        "jsx": "preserve",
         "allowJs": true,
         "checkJs": true,
-        "moduleResolution": "Node",
-        "skipLibCheck": true
+        "skipLibCheck": true,
+        "types": ["vue", "nuxt"], // quitamos @nuxt/types (Nuxt 2),
+        "paths": {
+            "~/*": ["./*"],
+            "@/*": ["./*"]
+        }
     },
-    "include": ["nuxt.config.ts", ".storybook/**/*.ts", "components/**/*.ts", "constants/**/*.ts"]
+    "include": [
+        "nuxt.config.ts",
+        "app.vue",
+        "components/**/*.ts",
+        "components/**/*.vue",
+        "pages/**/*.vue",
+        "layouts/**/*.vue",
+        "plugins/**/*.ts",
+        "types/**/*.ts",
+        "constants/**/*.ts",
+        "utils/**/*.ts",
+        ".storybook/**/*.ts"
+    ]
 }

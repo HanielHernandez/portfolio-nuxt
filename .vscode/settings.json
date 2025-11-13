@@ -1,7 +1,24 @@
 {
-    "editor.formatOnSave": true,
+    // Use Volar en modo Takeover
     "typescript.tsdk": "node_modules/typescript/lib",
-    "[vue]": {
-        "editor.defaultFormatter": "Vue.volar"
-    }
+    "typescript.enablePromptUseWorkspaceTsdk": true,
+
+    // Volar settings
+    "volar.takeOverMode.enabled": true,
+    "volar.useWorkspaceTsdk": true,
+
+    // Formateo y lint
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit"
+    },
+
+    // Reconocer automáticamente .ts/.vue
+    "files.associations": {
+        "*.vue": "vue",
+        "*.ts": "typescript"
+    },
+
+    // Mejor autocompletado en Nuxt
+    "vetur.ignoreProjectWarning": true
 }

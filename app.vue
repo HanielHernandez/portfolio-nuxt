@@ -9,10 +9,6 @@ const loading = ref(true);
 const colorMode = useColorMode()
 const { finalizePendingLocaleChange } = useI18n()
 
-const onBeforeEnter = async () => {
-  await finalizePendingLocaleChange()
-}
-
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 nuxtApp.hook("app:rendered", () => {
@@ -27,11 +23,7 @@ nuxtApp.hook("app:rendered", () => {
     <div class="h-screen">
 
       <NuxtLayout>
-        <NuxtPage :transition="{
-          name: 'my',
-          mode: 'out-in',
-          onBeforeEnter
-        }" />
+        <NuxtPage />
       </NuxtLayout>
     </div>
   </body>

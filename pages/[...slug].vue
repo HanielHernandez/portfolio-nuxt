@@ -1,11 +1,15 @@
 <script setup lang="ts">
-import type { Component } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch, watchEffect, type Component } from 'vue'
+import { useI18n } from 'vue-i18n'
 import gsap from "gsap";
-import type PageProps from "~~/types/pageProps"
+import type PageProps from "~/types/pageProps"
+import { cleanContentfulEntry } from '~/utils/contentfull'
 import animations from "~/animations";
 import type { ComponentType } from '~/components/components';
 import ComponentTypes from '~/components/components';
-const { $contentfulClient } = useNuxtApp()
+import { useAsyncData, useNuxtApp, useRoute, useRouter } from 'nuxt/app';
+// Tipamos el client de manera laxa para evitar error 'unknown'.
+const { $contentfulClient } = useNuxtApp() as unknown as { $contentfulClient: any }
 const route = useRoute()
 const router = useRouter()
 const { locale } = useI18n()
@@ -14,13 +18,38 @@ const contentFullLocal: Record<string, string> = {
   ["en"]: "en-US",
   ["es"]: "es"
 }
+const pageRef = ref<HTMLElement | null>(null)
+// Normalizamos el slug para cubrir casos: undefined, string vacía, array (catch‑all) => string
+const normalizeSlug = (slug: string | string[]) => {
+  const raw = slug
+  if (!raw) return '/' // undefined o null
+  if (Array.isArray(raw)) {
+    if (raw.length === 0) return '/'
+    return '/' + raw.filter(Boolean).join('/')
+  }
+  if (raw === '') return '/'
+  // Aseguramos que empieza con '/'
+  return raw.startsWith('/') ? raw : '/' + raw
+}
 
-const slug = computed(() => route.params.slug === '' ? "/" : route.params.slug)
-const { data } = useAsyncData(async () => {
+const loading = ref(false)
+
+const slug = computed(() => route.params.slug)
+
+
+const { data, pending, status } = await useAsyncData(`fetchPage-${route.params.slug}`, async () => {
+  if (slug.value == undefined) {
+    router.push("/page-not-found")
+    return
+  }
+
+  const cleanSlug = normalizeSlug(slug.value)
+
   try {
     const collection = await $contentfulClient.getEntries({
       content_type: "page",
-      'fields.slug': slug.value,
+      // Dependiendo de cómo guardes el slug en Contentful puede que necesites quitar el leading '/'
+      'fields.slug': cleanSlug === '/' ? '/' : cleanSlug.replace(/^\//, ''),
       include: 10,
       locale: contentFullLocal[locale.value]
     })
@@ -32,85 +61,51 @@ const { data } = useAsyncData(async () => {
       router.push("/page-not-found")
     }
 
-    return page ? cleanContentfulEntry<PageProps>(page) : null
+    return cleanContentfulEntry<PageProps>(page)
   } catch (e) {
     console.error(e)
     router.push("/page-not-found")
   }
-}, { watch: [locale] })
-
-const onEnter = (el: Element, done: () => void) => {
-
-  const tl = gsap.timeline({
-    onComplete: () => done()
-  })
-  tl.from(".nav", {
-    opacity: 0,
-    duration: 0.3,
-    onComplete: () => { done() }
-  });
-  tl.play()
-}
-
-const onLeave = (el: Element, done: () => void) => {
-  const tl = gsap.timeline({
-    onComplete: () => done()
-  })
-  tl.to(".nav", {
-    opacity: 0,
-    duration: 0.3,
-    onComplete: () => { done() }
-  });
-  tl.play()
-}
-
-definePageMeta({
-  pageTransition: {
-    name: 'custom-transition',
-    mode: 'out-in',
-    css: false
-  },
-  middleware(to, from) {
-    const { slug: slugTo } = to.params
-    const { slug: slugFrom } = from.params
-
-    const pageToSlug = typeof slugTo === 'object' ? slugTo.join() : slugTo || "/"
-    const pageFromSlug = typeof slugFrom === 'object' ? slugFrom.join() : slugFrom || "/"
-
-    const animationsTo = animations[pageToSlug]
-    const animationsFrom = animations[pageFromSlug]
-
-    if (animationsTo && to.meta.pageTransition && typeof to.meta.pageTransition != 'boolean') {
-      to.meta.pageTransition.onEnter = (el: Element, done: () => void) => { animationsTo.onEnter(el, done) }
-    }
-
-    if (animationsFrom && from.meta.pageTransition && typeof from.meta.pageTransition != 'boolean') {
-      from.meta.pageTransition.onLeave = (el: Element, done: () => void) => { animationsFrom.onLeave(el, done) }
-    }
-  }
+}, {
+  deep: true,
+  lazy: false
 })
+
 
 const getBlock = (blockType: ComponentType): Component => {
   return ComponentTypes[blockType]
 }
 
+router.beforeEach(() => (loading.value = true))
+router.afterEach(() => (loading.value = false))
+
+
+
 </script>
 <template>
   <div class="md:h-full mx-auto dar bgtransparent  transition-colors ease-in-out duration-300 "
     style="max-width: 1024px; ">
-    <transition :css="false" mode="out-in" @enter="onEnter" @leave="onLeave">
-      <div v-if="data">
-        <div v-if="data && data.blocks">
-          <template v-for="block in data.blocks" :key="block.CONTENTFUL_ID">
-            <component :is="getBlock(block.CONTENT_TYPE)" v-bind="block" />
-          </template>
-        </div>
-        <div v-else>
-          <p>Looks like this page has no content yet.</p>
+    {{ status }}
+
+    <div v-if="loading" class="fixed h-screen w-screen bg-neutral-50/30 z-2 top-0 left-0 bottom-0 right-0 ">
+      <div class="w-full h-full flex flex-col items-center justify-center">
+        <div class="size-12 border-4 border-blue-600 rounded-full border-r-neutral-100">
+
         </div>
       </div>
-    </transition>
+    </div>
 
+
+    <div v-if="data">
+      <div v-if="data.blocks">
+        <template v-for="block in data.blocks" :key="block.CONTENTFUL_ID">
+          <component :is="getBlock(block.CONTENT_TYPE)" v-bind="block" />
+        </template>
+      </div>
+      <div v-else>
+        <p>Looks like this page has no content yet.</p>
+      </div>
+    </div>
   </div>
 </template>
 <style lang="scss"></style>
