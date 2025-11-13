@@ -1,19 +1,20 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import tailwindcss from '@tailwindcss/vite'
 
 export default defineNuxtConfig({
+    srcDir: '.',
     modules: [
-        '@nuxtjs/tailwindcss',
         '@nuxtjs/i18n',
-        '@nuxtjs/color-mode',
-        //   '@nuxtjs/algolia',
+        '@nuxtjs/color-mode', //   '@nuxtjs/algolia',
         '@nuxt/content',
         'nuxt-icon',
         'dayjs-nuxt',
         '@nuxt/image',
-        '@nuxtjs/storybook'
+        '@nuxtjs/storybook',
+        '@nuxt/icon'
     ],
     imports: {
-        autoimport: true
+        autoImport: true
     },
     devtools: { enabled: true },
     /*algolia: {
@@ -34,14 +35,6 @@ export default defineNuxtConfig({
     },
 
     css: ['~/assets/css/tailwind.css'],
-
-    // Defaults options
-    tailwindcss: {
-        configPath: 'tailwind.config.js',
-        exposeConfig: { level: 2 },
-        config: {},
-        viewer: true
-    },
 
     i18n: {
         locales: [
@@ -69,14 +62,8 @@ export default defineNuxtConfig({
         skipSettingLocaleOnNavigate: true
     },
 
-    postcss: {
-        plugins: {
-            tailwindcss: {},
-            autoprefixer: {}
-        }
-    },
-
     vite: {
+        plugins: [tailwindcss()],
         optimizeDeps: {
             exclude: ['class-validator']
         }
@@ -101,7 +88,7 @@ export default defineNuxtConfig({
                 { charset: 'utf-8' },
                 { name: 'viewport', content: 'width=device-width, initial-scale=1' },
                 {
-                    hid: 'description',
+                    id: 'description',
                     name: 'description',
                     content: 'Personal website/portfolio of Haniel Hernandez'
                 }

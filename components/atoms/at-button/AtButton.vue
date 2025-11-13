@@ -13,7 +13,7 @@ interface AtButtonProps {
 }
 
 const attButtonClasssPerSize: Partial<Record<AtButtonSize, String>> = {
-  "sm": "px-3 py-2 text-sm",
+  "sm": "px-3 py-2 text-base",
   "md": "px-4 py-2 text-base",
   "lg": "px-5 py-3 text-xl"
 }
@@ -42,7 +42,7 @@ const buttonClasses = computed(() => {
   const outlinedClass = outlineClassPerColor[props.color]
   return [
     attrs["class"],
-    "inline-block border rounded-sm font-bold hover:shadow-md transition-colors ease-in-out duration-200 ",
+    "inline-block uppercase border rounded-sm font-bold hover:shadow-md transition-colors ease-in-out duration-200 ",
     buttonSizeClass,
     props.outlined ? outlinedClass : colorClass
   ]
