@@ -85,7 +85,6 @@ router.afterEach(() => (loading.value = false))
 <template>
   <div class="md:h-full mx-auto dar bgtransparent  transition-colors ease-in-out duration-300 "
     style="max-width: 1024px; ">
-    {{ status }}
 
     <div v-if="loading" class="fixed h-screen w-screen bg-neutral-50/30 z-2 top-0 left-0 bottom-0 right-0 ">
       <div class="w-full h-full flex flex-col items-center justify-center">
