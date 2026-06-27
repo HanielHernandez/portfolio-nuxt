@@ -118,12 +118,12 @@ watch(
 </script>
 <template lang="">
     <div
-        class="modeIcon w-10 h-10 relative rounded-full p-1 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-all ease-in-out duration-500"
         ref="modeIcon"
+        class="modeIcon w-10 h-10 relative rounded-full p-1 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-all ease-in-out duration-500"
     >
         <div
-            class="icon sun"
             ref="modeIcon"
+            class="icon sun"
         >
             <div
                 ref="modIconCenter"
@@ -152,7 +152,7 @@ watch(
 .modeIcon {
     &:hover {
         .center {
-            @apply bg-neutral-200;
+            background-color: #e5e5e5; // neutral-200
         }
     }
 }
@@ -163,14 +163,17 @@ watch(
     height: 100%;
 
     .center {
-        @apply bg-neutral-800 rounded-full absolute;
+        border-radius: 100%;
+        background-color: #000;
+        position: absolute;
         width: 100%;
         height: 100%;
         z-index: 100;
     }
 
     .off-center {
-        @apply rounded-full dark:bg-neutral-800 bg-white;
+        border-radius: 9999px;
+        background-color: #fff; // light
         position: absolute;
         top: 0;
         right: 0;
@@ -178,30 +181,53 @@ watch(
         width: 100%;
         height: 100%;
         transform: translate(25%, -25%);
+
+        :global(.dark) & {
+            background-color: #262626; // neutral-800
+        }
     }
 
     &.sun {
         .center,
         .off-center {
-            @apply transition-colors ease-in-out duration-700;
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 700ms;
         }
 
         .center {
-            @apply bg-neutral-900 dark:bg-white;
+            background-color: #171717; // neutral-900
             top: 50%;
             right: 50%;
             width: 1rem;
             height: 1rem;
+            display: block;
             transform: translate(50%, -50%);
+
+            :global(.dark) & {
+                background-color: #fff;
+            }
         }
 
         .off-center {
-            @apply bg-white dark:bg-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-800;
+            background-color: #fff; // light
             top: 50%;
             right: 50%;
             width: 0.825rem;
             height: 0.825rem;
             transform: translate(50%, -50%);
+
+            &:hover {
+                background-color: #e5e5e5; // neutral-200
+            }
+
+            :global(.dark) & {
+                background-color: #171717; // neutral-900
+            }
+
+            :global(.dark) &:hover {
+                background-color: #262626; // neutral-800
+            }
         }
 
         .center {
@@ -213,9 +239,13 @@ watch(
         }
 
         .beam {
-            @apply bg-neutral-900 dark:bg-neutral-100;
+            background-color: #f5f5f5; // neutral-900
             opacity: 1;
             z-index: 80;
+
+            :global(.dark) & {
+                background-color: #f5f5f5; // neutral-100
+            }
         }
     }
 

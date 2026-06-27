@@ -13,13 +13,23 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 nuxtApp.hook('app:rendered', () => {
     loading.value = false
 })
+
+// With i18n `skipSettingLocaleOnNavigate: true`, switching language only records a
+// *pending* locale change; it must be finalized manually, otherwise `locale.value`
+// never updates and the language switcher only works once. We finalize on the page
+// transition's onBeforeEnter (after the leave animation, before the new page enters)
+// so the language flips in sync with the transition. This hook is merged (via defu)
+// into every page's transition without overriding the pages' own name/onEnter/onLeave.
+const onBeforeEnter = async () => {
+    await finalizePendingLocaleChange()
+}
 </script>
 
 <template>
     <body :class="{ dark: $colorMode.preference == 'dark' }">
         <div class="h-screen">
             <NuxtLayout>
-                <NuxtPage />
+                <NuxtPage :transition="{ onBeforeEnter }" />
             </NuxtLayout>
         </div>
     </body>

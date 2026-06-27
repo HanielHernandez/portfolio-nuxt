@@ -1,1 +1,6 @@
 @import 'tailwindcss';
+
+/* Tailwind v4 defaults the `dark:` variant to the OS `prefers-color-scheme`.
+   @nuxtjs/color-mode (and app.vue) toggle a `.dark` class instead, so we opt into
+   class/selector-based dark mode here, otherwise the theme switcher does nothing. */
+@custom-variant dark (&:where(.dark, .dark *));
