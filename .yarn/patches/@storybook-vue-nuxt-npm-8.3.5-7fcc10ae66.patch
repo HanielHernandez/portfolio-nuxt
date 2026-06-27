@@ -1,3 +1,27 @@
+diff --git a/dist/preset.cjs b/dist/preset.cjs
+index 1ebd3d6d6618027197190d7dae50e0ed49d31978..5f0ecb045dba0c5a214b0e275f1494e4652e4cdc 100644
+--- a/dist/preset.cjs
++++ b/dist/preset.cjs
+@@ -3113,8 +3113,8 @@ function extendComponents(nuxt) {
+     if (!nuxtLink) {
+       throw new Error("NuxtLink component not found");
+     }
+-    nuxtLink.filePath = path.join(runtimeDir, "components/nuxt-link");
+-    nuxtLink.shortPath = path.join(runtimeDir, "components/nuxt-link");
++    nuxtLink.filePath = pathe.join(runtimeDir, "components/nuxt-link");
++    nuxtLink.shortPath = pathe.join(runtimeDir, "components/nuxt-link");
+     nuxt.options.build.transpile.push(nuxtLink.filePath);
+   });
+ }
+@@ -3123,7 +3123,7 @@ async function extendComposables(nuxt) {
+   nuxt.options.build.transpile.push(composablesDir);
+   addImportsSources({
+     imports: ["useRouter"],
+-    from: path.join(composablesDir, "router")
++    from: pathe.join(composablesDir, "router")
+   });
+ }
+ async function loadNuxtViteConfig(root) {
 diff --git a/preset.js b/preset.js
 index a1c51f23f35549671e5cfab640ae26b016d12e33..9aea7deb942b86580f0a96e60c9228d882d8bcbb 100644
 --- a/preset.js

@@ -113,7 +113,7 @@ export default {
             },
             0
         )
-
+        console.log('playing leave animation of about page')
         tl.play()
     }
 }

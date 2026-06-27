@@ -70,6 +70,18 @@ export default defineNuxtConfig({
     vite: {
         plugins: [tailwindcss()],
         optimizeDeps: {
+            // dayjs (used via dayjs-nuxt / useDayjs) is a CommonJS/UMD module consumed as a
+            // default ESM import. Pre-bundling it ensures the default-export interop works,
+            // notably in the Storybook preview Vite, which otherwise serves it as raw CJS and
+            // breaks with "does not provide an export named 'default'".
+            include: [
+                'dayjs',
+                'dayjs/locale/en',
+                'dayjs/locale/es',
+                'dayjs/plugin/relativeTime',
+                'dayjs/plugin/utc',
+                'dayjs/plugin/timezone'
+            ],
             exclude: ['class-validator']
         }
         // css: {

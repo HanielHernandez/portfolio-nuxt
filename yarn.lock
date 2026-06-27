@@ -4633,7 +4633,7 @@ __metadata:
 
 "@storybook-vue/nuxt@patch:@storybook-vue/nuxt@npm%3A8.3.5#~/.yarn/patches/@storybook-vue-nuxt-npm-8.3.5-7fcc10ae66.patch":
   version: 8.3.5
-  resolution: "@storybook-vue/nuxt@patch:@storybook-vue/nuxt@npm%3A8.3.5#~/.yarn/patches/@storybook-vue-nuxt-npm-8.3.5-7fcc10ae66.patch::version=8.3.5&hash=ea5ede"
+  resolution: "@storybook-vue/nuxt@patch:@storybook-vue/nuxt@npm%3A8.3.5#~/.yarn/patches/@storybook-vue-nuxt-npm-8.3.5-7fcc10ae66.patch::version=8.3.5&hash=0ef97c"
   dependencies:
     "@nuxt/kit": "npm:^3.13.0"
     "@nuxt/schema": "npm:^3.13.0"
@@ -4652,7 +4652,7 @@ __metadata:
     nuxt: ^3.13.0
     vite: ^5.2.0 || ^6.0.0
     vue: ^3.4.0
-  checksum: 10c0/7311b0649ee0bc88db99903047e1c3342a42b91d1ab90e89da00332cf28d766c7d90f7325662eb863fad2aae973465b2fb163a8dff966439d2f9a7a30ae0fac8
+  checksum: 10c0/4332b7ec2c5f3bddab3ecbb4f9c98cb1d7e39b9ce86635e5dbf54166574cb773df966c3ffb2da2e76ef1a472b6288fcb1a7de09b76fc8d33aee0946ef410b14a
   languageName: node
   linkType: hard
 

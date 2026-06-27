@@ -21,22 +21,13 @@ const props = defineProps<{
             id="rightSide"
             class="flex justify-center flex-col w-full lg:w-1/2 md:h-full px-4 py-10 lg:px-0 text-center lg:text-left gap-6"
         >
-            <AtText
-                variant="h2"
-                class="section-title !text-blue-600 dark:text-blue-300"
-            >
+            <AtText variant="h2" class="section-title !text-blue-600 dark:text-blue-300">
                 {{ subTitle }}
             </AtText>
-            <AtText
-                variant="h1"
-                class="dark:text-white"
-            >
+            <AtText variant="h1" class="dark:text-white">
                 {{ title }}
             </AtText>
-            <AtText
-                variant="paragraph"
-                style="max-width: 650px"
-            >
+            <AtText variant="paragraph" style="max-width: 650px">
                 <AtRichText :document="description" />
             </AtText>
             <div class="cta-buttons flex items-center justify-center lg:justify-start">
@@ -52,10 +43,7 @@ const props = defineProps<{
                     >{{ $t('contactMe') }}</a
                 >
             </div>
-            <div
-                id="social_links"
-                class="text-3xl text-center lg:text-left"
-            >
+            <div id="social_links" class="text-3xl text-center lg:text-left">
                 <a
                     href="https://www.linkedin.com/in/hanielhernandez/"
                     alt="my linkedin profile"
@@ -75,10 +63,7 @@ const props = defineProps<{
             </div>
         </div>
         <div class="flex justify-center items-center w-full lg:w-1/2 lg:h-full px-4 lg:px-0">
-            <AtImage
-                v-bind="image"
-                class="graph"
-            />
+            <AtImage v-bind="image" class="graph" />
         </div>
     </div>
 </template>

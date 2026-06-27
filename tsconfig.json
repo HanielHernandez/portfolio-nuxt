@@ -17,16 +17,15 @@
         }
     },
     "include": [
-        "nuxt.config.ts",
-        "app.vue",
-        "components/**/*.ts",
-        "components/**/*.vue",
-        "pages/**/*.vue",
-        "layouts/**/*.vue",
-        "plugins/**/*.ts",
-        "types/**/*.ts",
-        "constants/**/*.ts",
-        "utils/**/*.ts",
-        ".storybook/**/*.ts"
-    ]
+  ".nuxt/**/*.d.ts",
+  "nuxt.config.ts",
+  "app.vue",
+  "components",
+  "pages",
+  "layouts",
+  "plugins",
+  "types",
+  "utils",
+  "constants"
+]
 }

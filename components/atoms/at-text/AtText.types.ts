@@ -11,7 +11,7 @@ export const textSizes: Record<AtTextVariant, string> = {
     paragraph: 'text-base',
     label: 'text-base',
     link: 'text-base cursor-pointer',
-    ['list-title']: 'text-base'
+    'list-title': 'text-base'
 }
 
 export const fontWeights: Record<AtTextVariant, string> = {
@@ -24,7 +24,7 @@ export const fontWeights: Record<AtTextVariant, string> = {
     paragraph: 'font-base',
     label: 'font-bold',
     link: 'font-bold',
-    ['list-title']: 'font-bold'
+    'list-title': 'font-bold'
 }
 
 export const leadingClasses: Record<AtTextVariant, string> = {
@@ -37,7 +37,7 @@ export const leadingClasses: Record<AtTextVariant, string> = {
     paragraph: 'leading-normal',
     label: '',
     link: '',
-    ['list-title']: 'leading-6'
+    'list-title': 'leading-6'
 }
 
 export const colorClasses: Record<AtTextVariant, string> = {
@@ -50,7 +50,19 @@ export const colorClasses: Record<AtTextVariant, string> = {
     paragraph: 'text-gray-600 dark:text-gray-400',
     label: 'text-neutral-800 dark:text-neutral-200',
     link: 'text-blue-600 ',
-    ['list-title']: 'leading-6'
+    'list-title': 'leading-6'
+}
+export const trackingClasses: Record<AtTextVariant, string> = {
+    h1: 'tracking-[-0.03em]',
+    h2: 'tracking-tight',
+    h3: 'tracking-tight',
+    h4: 'tracking-[-0.02em]',
+    h5: 'tracking-[-0.02em]',
+    h6: 'tracking-[-0.02em]',
+    paragraph: 'tracking-normal',
+    label: 'tracking-normal',
+    link: 'tracking-normal',
+    'list-title': 'tracking-normal'
 }
 
 export const atTextTagMap: Record<AtTextVariant, AtTextTag> = {
@@ -63,7 +75,7 @@ export const atTextTagMap: Record<AtTextVariant, AtTextTag> = {
     paragraph: 'p',
     label: 'label',
     link: 'a',
-    ['list-title']: 'span'
+    'list-title': 'span'
 }
 
 export interface AtTextProps {
