@@ -7,10 +7,12 @@ export default defineNuxtConfig({
         '@nuxtjs/i18n',
         '@nuxtjs/color-mode', //   '@nuxtjs/algolia',
         '@nuxt/content',
-        'nuxt-icon',
         'dayjs-nuxt',
         '@nuxt/image',
-        '@nuxtjs/storybook',
+        // '@nuxtjs/storybook' is intentionally NOT registered here: embedding Storybook in
+        // `nuxt dev` forces a split Nitro<->Vite TCP proxy that exhausts Windows ephemeral
+        // ports (EADDRINUSE/ENOBUFS) and breaks /_nuxt asset serving. Run Storybook standalone
+        // with `yarn storybook` instead.
         '@nuxt/icon'
     ],
     imports: {
@@ -59,7 +61,10 @@ export default defineNuxtConfig({
         strategy: 'prefix',
         langDir: 'lang',
         defaultLocale: 'en',
-        skipSettingLocaleOnNavigate: true
+        skipSettingLocaleOnNavigate: true,
+        bundle: {
+            optimizeTranslationDirective: false
+        }
     },
 
     vite: {

@@ -1,20 +1,23 @@
 <script setup lang="ts">
-import type AtSkillProps from './AtSkill.types';
-
+import type AtSkillProps from './AtSkill.types'
 
 const props = defineProps<AtSkillProps>()
 </script>
 <template>
-  <div
-    class="skill-card border border-neutral-200 items-center relative rounded cursor-pointer transition-colors ease-in-out 200 flex flex-col gap-4 p-4 w-28 h-28 rouned-md dark:hover:bg-neutral-800 hover:bg-neutral-200">
-    <AtImage v-bind="image" class=" object-contain w-12 h-12" />
+    <div
+        class="skill-card border border-neutral-200 items-center relative rounded cursor-pointer transition-colors ease-in-out 200 flex flex-col gap-4 p-4 w-28 h-28 rouned-md dark:hover:bg-neutral-800 hover:bg-neutral-200"
+    >
+        <AtImage
+            v-bind="image"
+            class="object-contain w-12 h-12"
+        />
 
-    <AtText> {{ name }}</AtText>
-  </div>
+        <AtText> {{ name }}</AtText>
+    </div>
 </template>
 <style lang="scss">
 .skill-card {
-  /* @apply p-4 mb-4 rounded-md;
+    /* @apply p-4 mb-4 rounded-md;
 
   &:hover {
     @apply dark:bg-neutral-700/50;

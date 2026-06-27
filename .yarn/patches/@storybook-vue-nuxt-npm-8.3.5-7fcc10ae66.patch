@@ -1,0 +1,7 @@
+diff --git a/preset.js b/preset.js
+index a1c51f23f35549671e5cfab640ae26b016d12e33..9aea7deb942b86580f0a96e60c9228d882d8bcbb 100644
+--- a/preset.js
++++ b/preset.js
+@@ -1 +1 @@
+-module.exports = require('./dist/preset.cjs')
++export { core, getNuxtProxyConfig, previewAnnotations, viteFinal } from './dist/preset.cjs'

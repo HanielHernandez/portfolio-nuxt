@@ -10,7 +10,7 @@
     // Formateo y lint
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.fixAll": "explicit"
+        "source.fixAll": "explicit"
     },
 
     // Reconocer automáticamente .ts/.vue

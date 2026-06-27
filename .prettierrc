@@ -5,5 +5,5 @@
     "printWidth": 120,
     "endOfLine": "auto",
     "tabWidth": 4,
-    "prettier.singleAttributePerLine": true
+    "singleAttributePerLine": true
 }
