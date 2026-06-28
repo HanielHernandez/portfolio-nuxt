@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { type MlWorkExperienceCardEmits, type MlWorkExperienceCardProps } from './MlWorkExperienceCard.type'
 import AtRichText from '../../atoms/at-rich-text/AtRichText.vue'
+import { type MlWorkExperienceCardEmits, type MlWorkExperienceCardProps } from './MlWorkExperienceCard.type'
 const props = withDefaults(defineProps<MlWorkExperienceCardProps>(), {
     expanded: false
 })
@@ -22,7 +22,7 @@ const fromToFormated = computed(() => {
 </script>
 <template>
     <div
-        class="expanding-card flex flex-row border border-neutral-200 dark:border-neutral-800 dark:hover:bg-neutral-800 hover:bg-neutral-100 transition-colors ease-in-out duration-300 p-4 mb-4 rounded-md cursor-pointer"
+        class="expanding-card shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] dark:shadow-none dark:ring-1 dark:ring-white/1 flex flex-row border border-neutral-200 dark:border-neutral-600 dark:hover:bg-neutral-800 hover:bg-neutral-100 transition-colors ease-in-out duration-300 p-4 mb-4 rounded-md cursor-pointer"
     >
         <div class="flex flex-col gap-4 w-full">
             <div class="">

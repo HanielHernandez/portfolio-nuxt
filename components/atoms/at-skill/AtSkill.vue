@@ -5,7 +5,7 @@ const props = defineProps<AtSkillProps>()
 </script>
 <template>
     <div
-        class="skill-card border border-neutral-200 items-center relative rounded cursor-pointer transition-colors ease-in-out 200 flex flex-col gap-4 p-4 w-28 h-28 rouned-md dark:hover:bg-neutral-800 hover:bg-neutral-200"
+        class="skill-card shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] dark:shadow-none dark:ring-1 border border-neutral-200 dark:border-neutral-600 items-center relative rounded cursor-pointer transition-colors ease-in-out 200 flex flex-col gap-4 p-4 w-28 h-28 rouned-md dark:hover:bg-neutral-800 hover:bg-neutral-200"
     >
         <AtImage
             v-bind="image"

@@ -5,8 +5,8 @@ const { $contentfulClient } = useNuxtApp()
 const { locale } = useI18n()
 
 const contentFullLocal: Record<string, string> = {
-    ['en']: 'en-US',
-    ['es']: 'es'
+    en: 'en-US',
+    es: 'es'
 }
 
 const {

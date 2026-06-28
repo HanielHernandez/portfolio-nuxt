@@ -28,7 +28,7 @@ const setCurrentExpanded = (index: number | string) => {
                 <MlWorkExperienceCard
                     :experience="experience"
                     :expanded="index === currentExpanded"
-                    @onExpand="setCurrentExpanded(index)"
+                    @on-expand="setCurrentExpanded(index)"
                 />
             </div>
         </div>

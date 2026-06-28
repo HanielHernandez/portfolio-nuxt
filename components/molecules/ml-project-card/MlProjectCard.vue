@@ -7,7 +7,7 @@ const props = defineProps<MlProjectCardProps>()
     <NuxtLink
         :to="props.url"
         target="_blank"
-        class="card flex flex-col items-start justify-start gap-4 cursor-pointer border dark:border-neutral-600 dark:hover:bg-neutral-700 border-neutral-200 hover:bg-neutral-100 transition-colors ease-in-out duration-300 rounded-md p-4"
+        class="card flex flex-col shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] dark:shadow-none dark:ring-1 tems-start justify-start gap-4 cursor-pointer border dark:border-neutral-600 dark:hover:bg-neutral-700 border-neutral-200 hover:bg-neutral-100 transition-colors ease-in-out duration-300 rounded-md p-4"
     >
         <AtImage
             v-bind="image"
@@ -36,6 +36,16 @@ const props = defineProps<MlProjectCardProps>()
                         {{ tag }}
                     </Chip>
                 </div>
+
+                <a
+                    :href="url"
+                    class="inline-flex items-center gap-1 text-blue-600 hover:text-blue-800 font-bold"
+                    target="_blank"
+                >
+                    {{ $t('myWork.projects.view') }}
+
+                    <Icon name="mdi:arrow-top-right" />
+                </a>
             </div>
         </div>
     </NuxtLink>

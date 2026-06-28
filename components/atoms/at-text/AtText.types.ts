@@ -57,7 +57,7 @@ export const trackingClasses: Record<AtTextVariant, string> = {
     h2: 'tracking-tight',
     h3: 'tracking-tight',
     h4: 'tracking-[-0.02em]',
-    h5: 'tracking-[-0.02em]',
+    h5: 'tracking-[-0.01em]',
     h6: 'tracking-[-0.02em]',
     paragraph: 'tracking-normal',
     label: 'tracking-normal',

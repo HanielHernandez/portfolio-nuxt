@@ -28,7 +28,8 @@
                 "singleQuote": true,
                 "semi": false,
                 "trailingComma": "none",
-                "arrayExpand": true
+                "arrayExpand": true,
+                "singleAttributePerLine": true
             }
         ]
     }
