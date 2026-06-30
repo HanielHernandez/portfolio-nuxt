@@ -47,8 +47,11 @@ onMounted(() => {
             id="navbar"
             :links="navbar.links || []"
         />
-        <slot />
-        <!-- <Footer/> -->
+        <div class="container mx-auto">
+            <slot />
+        </div>
+
+        <Footer />
     </div>
 </template>
 <style lang="scss"></style>

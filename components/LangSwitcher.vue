@@ -10,7 +10,7 @@ const otherLocale = computed(() => {
 <template>
     <div class="lang">
         <NuxtLink
-            class="py-2 px-4 uppercase font-bold inline-block dark:text-white"
+            class="inline-flex h-10 w-10 items-center justify-center rounded-full uppercase font-bold text-sm text-neutral-700 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-white/10 transition-colors ease-in-out duration-200"
             :to="switchLocalePath(otherLocale.code)"
         >
             {{ otherLocale.code }}
@@ -18,7 +18,6 @@ const otherLocale = computed(() => {
     </div>
 </template>
 <style lang="scss" scoped>
-.lang,
 .option {
     @apply cursor-pointer hover:bg-neutral-200 uppercase font-bold dark:hover:bg-neutral-800 transition-colors ease-in-out duration-150;
 }
