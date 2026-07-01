@@ -7,13 +7,19 @@ const props = defineProps<MlSkillsProps>()
     <div class="py-12 flex flex-wrap justify-between px-4 md:px-0">
         <div class="w-full px-4 lg:px-0 section-title">
             <AtText
+                variant="subtitle"
+                class="text-center"
+            >
+                {{ $t('aboutMe.skills.subtitle') }}
+            </AtText>
+            <AtText
                 variant="h2"
                 class="mb-4 lg:mb-12 text-center"
             >
                 {{ props.title }}
             </AtText>
         </div>
-        <div class="grid w-full grid-cols-3 md:grid-cols-6 xl:grid-cols-8 gap-4">
+        <div class="flex flex-wrap items-center justify-center gap-4 md:gap-x-4">
             <div
                 v-for="(skill, i) in props.skills"
                 :key="`skill-${skill.name}`"

@@ -12,7 +12,7 @@ const meta = {
             control: {
                 type: 'select'
             },
-            options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'paragraph', 'label', 'list-title', 'link']
+            options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'paragraph', 'subtitle', 'label', 'list-title', 'link']
         }
     },
 

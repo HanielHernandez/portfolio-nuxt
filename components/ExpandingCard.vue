@@ -56,35 +56,37 @@ const onLeave = (el: HTMLElement, done: () => any) => {
 }
 </script>
 <template lang="">
-    <div
-        class="expanding-card relative rounded-sm hover:bg-neutral-100 dark:hover:bg-neutral-900 border-neutral-100 dark:border-neutral-800 w-full mb-4"
-    >
+    <div class="border border-blue-600 pr-8">
         <div
-            class="expanding-card-title flex p-4 pr-14 cursor-pointer"
-            @click="onExpanButtonClick()"
-            ref="title"
-        >
-            <slot name="title" />
-            <button class="expanding-card-button text-neutral-600 text-lg">
-                <Icon
-                    name="mdi:chevron-down"
-                    class="mb-2"
-                />
-            </button>
-        </div>
-        <Transition
-            mode="in-out"
-            @enter="onEnter"
-            @leave="onLeave"
+            class="expanding-card relative rounded-sm hover:bg-neutral-100 dark:hover:bg-neutral-900 border-neutral-100 dark:border-neutral-800 w-full mb-4"
         >
             <div
-                v-if="expanded"
-                class="expanding-card-content"
-                ref="content"
+                ref="title"
+                class="expanding-card-title flex p-4 pr-14 cursor-pointer"
+                @click="onExpanButtonClick()"
             >
-                <slot />
+                <slot name="title" />
+                <button class="expanding-card-button text-neutral-600 text-lg">
+                    <Icon
+                        name="mdi:chevron-down"
+                        class="mb-2"
+                    />
+                </button>
             </div>
-        </Transition>
+            <Transition
+                mode="in-out"
+                @enter="onEnter"
+                @leave="onLeave"
+            >
+                <div
+                    v-if="expanded"
+                    ref="content"
+                    class="expanding-card-content"
+                >
+                    <slot />
+                </div>
+            </Transition>
+        </div>
     </div>
 </template>
 <style lang="scss">

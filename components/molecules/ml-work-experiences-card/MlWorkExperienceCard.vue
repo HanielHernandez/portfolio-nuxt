@@ -22,46 +22,47 @@ const fromToFormated = computed(() => {
 </script>
 <template>
     <div
-        class="expanding-card shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] dark:shadow-none dark:ring-1 dark:ring-white/1 flex flex-row border border-neutral-200 dark:border-neutral-600 dark:hover:bg-neutral-800 hover:bg-neutral-100 transition-colors ease-in-out duration-300 p-4 mb-4 rounded-md cursor-pointer"
+        class="border-l relative border-blue-300 pl-8 pb-8 before:size-8 before:bg-blue-600 before:rounded-full before:absolute before:left-[-1rem] before:top-0"
     >
-        <div class="flex flex-col gap-4 w-full">
-            <div class="">
-                <div class="flex flex-row justify-between">
-                    <AtText
-                        variant="h5"
-                        class=""
-                    >
-                        {{ experience.name }}
-                    </AtText>
-                    <AtText
-                        variant="label"
-                        class="!text-blue-600 text-sm !font-semibold"
-                    >
-                        {{ fromToFormated }}
-                    </AtText>
+        <div
+            class="border-l border-blue-600 px-4 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] dark:shadow-none dark:ring-1 dark:ring-white/1 flex flex-row border border-neutral-200 dark:border-neutral-600 dark:hover:bg-neutral-800 hover:bg-neutral-100 transition-colors ease-in-out duration-300 p-4 rounded-md cursor-pointer"
+        >
+            <div class="flex flex-col gap-4 w-full">
+                <div class="">
+                    <div class="flex flex-col gap-2">
+                        <AtText
+                            variant="h4"
+                            class=""
+                        >
+                            {{ experience.name }}
+                        </AtText>
+                        <AtText
+                            variant="paragraph"
+                            class="!text-blue-600 text-sm !font-bold flex items-center gap-2"
+                        >
+                            <Icon
+                                name="mdi:calendar"
+                                class="text-2xl leading-none"
+                            />
+                            {{ fromToFormated }}
+                        </AtText>
+                    </div>
                 </div>
-                <AtText
-                    as="span"
-                    variant="paragraph"
-                    class="!font-medium text-sm text-neutral-600 dark:text-neutral-400"
-                >
-                    {{ experience.companyName }}
-                </AtText>
-            </div>
 
-            <AtText>
-                <AtRichText
-                    :document="experience.description"
-                    class="dark:text-neutral-300 text-clip"
-                />
-            </AtText>
-            <div>
-                <chip
-                    v-for="tag in experience.tags"
-                    class="mr-2 mb-2"
-                >
-                    {{ tag }}
-                </chip>
+                <AtText>
+                    <AtRichText
+                        :document="experience.description"
+                        class="dark:text-neutral-300 text-clip"
+                    />
+                </AtText>
+                <div>
+                    <chip
+                        v-for="tag in experience.tags"
+                        class="mr-2 mb-2"
+                    >
+                        {{ tag }}
+                    </chip>
+                </div>
             </div>
         </div>
     </div>

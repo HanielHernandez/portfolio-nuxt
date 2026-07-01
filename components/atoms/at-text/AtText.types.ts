@@ -1,5 +1,16 @@
 export type AtTextTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'label' | 'a' | 'span' | 'div'
-export type AtTextVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'paragraph' | 'label' | 'list-title' | 'link'
+export type AtTextVariant =
+    | 'h1'
+    | 'h2'
+    | 'h3'
+    | 'h4'
+    | 'h5'
+    | 'h6'
+    | 'paragraph'
+    | 'subtitle'
+    | 'label'
+    | 'list-title'
+    | 'link'
 
 export const textSizes: Record<AtTextVariant, string> = {
     h1: 'text-5xl',
@@ -9,6 +20,7 @@ export const textSizes: Record<AtTextVariant, string> = {
     h5: 'text-lg',
     h6: 'text-base',
     paragraph: 'text-base',
+    subtitle: 'text-xl',
     label: 'text-base',
     link: 'text-base cursor-pointer',
     'list-title': 'text-base'
@@ -16,12 +28,13 @@ export const textSizes: Record<AtTextVariant, string> = {
 
 export const fontWeights: Record<AtTextVariant, string> = {
     h1: 'font-black',
-    h2: 'font-black',
-    h3: 'font-black',
-    h4: 'font-black',
+    h2: 'font-bold',
+    h3: 'font-bold',
+    h4: 'font-bold',
     h5: 'font-bold',
     h6: 'font-bold',
     paragraph: 'font-base',
+    subtitle: 'font-black',
     label: 'font-bold',
     link: 'font-bold',
     'list-title': 'font-bold'
@@ -35,6 +48,7 @@ export const leadingClasses: Record<AtTextVariant, string> = {
     h5: 'leading-normal',
     h6: 'leading-normal',
     paragraph: 'leading-normal',
+    subtitle: 'leading-tight',
     label: '',
     link: '',
     'list-title': 'leading-6'
@@ -48,6 +62,7 @@ export const colorClasses: Record<AtTextVariant, string> = {
     h5: 'text-neutral-800 dark:text-neutral-200',
     h6: 'text-neutral-800 dark:text-neutral-200',
     paragraph: 'text-gray-600 dark:text-gray-400',
+    subtitle: 'text-blue-600 dark:text-blue-400',
     label: 'text-neutral-800 dark:text-neutral-200',
     link: 'text-blue-600 ',
     'list-title': 'leading-6'
@@ -60,6 +75,7 @@ export const trackingClasses: Record<AtTextVariant, string> = {
     h5: 'tracking-[-0.01em]',
     h6: 'tracking-[-0.02em]',
     paragraph: 'tracking-normal',
+    subtitle: 'tracking-tight',
     label: 'tracking-normal',
     link: 'tracking-normal',
     'list-title': 'tracking-normal'
@@ -73,6 +89,7 @@ export const atTextTagMap: Record<AtTextVariant, AtTextTag> = {
     h5: 'h5',
     h6: 'h6',
     paragraph: 'p',
+    subtitle: 'p',
     label: 'label',
     link: 'a',
     'list-title': 'span'

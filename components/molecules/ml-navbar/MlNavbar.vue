@@ -219,7 +219,7 @@ watch(isDark, (newval) => {
         >
             <div
                 class="mx-auto w-full px-4 lg:px-8"
-                style="max-width: 1024px"
+                style="max-width: 1240px"
             >
                 <div class="flex w-full md:flex-row justify-between items-center gap-4">
                     <NuxtLink
@@ -251,7 +251,6 @@ watch(isDark, (newval) => {
                                     :to="link.url"
                                     :active="toLocalePath(link.url) == currentPath"
                                 >
-                                    <span class="font-black text-blue-600/80 mr-0.5">{{ `0${index + 1}` }}</span>
                                     {{ link.text }}
                                 </navbar-link>
                             </li>

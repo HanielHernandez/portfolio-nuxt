@@ -77,7 +77,12 @@ const { data, pending, status } = await useAsyncData(
     },
     {
         deep: true,
-        lazy: false
+        lazy: false,
+        // `skipSettingLocaleOnNavigate` defers the locale change until the page
+        // transition's onBeforeEnter (see app.vue), which runs *after* this fetch.
+        // Watching `locale` refetches once the pending change is finalized, so the
+        // content matches the newly selected language instead of the previous one.
+        watch: [locale]
     }
 )
 
