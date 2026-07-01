@@ -18,7 +18,7 @@ const setCurrentExpanded = (index: number | string) => {
 
         <div
             id="my_profesional_experience"
-            class="flex flex-col max-w-3xl items-center w-full mx-auto my-0"
+            class="flex md:pl-0 pl-4 flex-col max-w-3xl items-center w-full mx-auto my-0"
         >
             <div
                 v-for="(experience, index) in experiences"

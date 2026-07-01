@@ -1,10 +1,12 @@
 <template>
     <NuxtLink
         :to="localePath(to)"
-        class="px-6 py-4 text-2xl font-bold md:px-4 md:py-0 text-center nav-link lg:text-base hover:opacity-90 dark:opacity-80 dark:text-white dark:hover:text-gray-100 hover:text-gray-600 text-neutral-900 transition-all ease-in-out duration-300"
+        class="nav-link group relative inline-flex items-center px-3 py-2 text-sm font-semibold ransition-colors duration-300 ease-in-out lg:text-[0.95rem] text-neutral-600 hover:text-blue-600 dark:text-neutral-300 dark:hover:text-white"
         :class="{ active: active }"
     >
-        <slot></slot>
+        <span class="relative z-10">
+            <slot></slot>
+        </span>
     </NuxtLink>
 </template>
 
@@ -21,16 +23,3 @@ defineProps({
 })
 const localePath = useLocalePath()
 </script>
-
-<style lang="scss" scoped>
-.nav-link {
-    &.active {
-        @apply opacity-100;
-        @apply text-blue-600;
-    }
-
-    &:hover {
-        transform: scale(1.5);
-    }
-}
-</style>
